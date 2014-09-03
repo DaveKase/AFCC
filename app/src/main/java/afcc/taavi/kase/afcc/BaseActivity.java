@@ -8,7 +8,7 @@ import android.widget.Toast;
  * Created by Taavi Kase.
  */
 public class BaseActivity extends Activity {
-
+    public static final String ID ="id";
     /**
      * Creates toast message
      */
