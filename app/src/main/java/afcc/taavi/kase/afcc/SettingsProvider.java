@@ -122,7 +122,19 @@ public class SettingsProvider extends Provider {
         switch(Settings.URIMatcher.match(uri)) {
             case Settings.SETTINGS:
                 SQLiteDatabase db = this.mHelper.getMyWritableDatabase();
-                return db.update(Settings.TABLE_NAME, values, selection, selectionArgs);
+                Cursor cursor = db.query(Settings.TABLE_NAME, new String[] {Settings._ID}, null, null, null, null, null);
+
+                if(cursor.getCount() > 0) {
+                    return db.update(Settings.TABLE_NAME, values, selection, selectionArgs);
+                } else {
+                    try {
+                        insert(uri, values);
+                        return 1;
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        return 0;
+                    }
+                }
             default:
                 throw new IllegalArgumentException("Update works only for specific history");
         }

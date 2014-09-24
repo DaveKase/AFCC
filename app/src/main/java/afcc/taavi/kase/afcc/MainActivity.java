@@ -1,6 +1,11 @@
 package afcc.taavi.kase.afcc;
 
+import afcc.taavi.kase.afcc.Database.Settings;
+
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -24,6 +29,20 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        insertDefaultSettingsValues();
+    }
+
+    /** Inserts default values to settings table */
+    private void insertDefaultSettingsValues() {
+        Uri settingsUri = Settings.CONTENT_URI;
+        ContentValues values = new ContentValues();
+        values.put(Settings._ID, 0);
+        values.put(Settings.COL_DISTANCE, 0);
+        values.put(Settings.COL_UNIT, 0);
+        values.put(Settings.COL_CONSUMPTION, 0);
+
+        ContentResolver content = getContentResolver();
+        content.insert(settingsUri, values);
     }
 
     /**
