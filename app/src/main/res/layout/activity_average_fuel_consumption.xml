@@ -82,16 +82,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/distanceEdit"
-        android:layout_toEndOf="@+id/distanceEdit"
-        android:text="@string/km" />
+        android:layout_toEndOf="@+id/distanceEdit" />
 
     <TextView
         android:id="@+id/litreText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/fuelEdit"
-        android:layout_toEndOf="@+id/fuelEdit"
-        android:text="@string/litre" />
+        android:layout_toEndOf="@+id/fuelEdit" />
 
     <Button
         android:id="@+id/previousResultsButton"

@@ -9,8 +9,6 @@
     <string name="speedCalculator">Average Speed Calculator</string>
     <string name="speed">Speedometer</string>
     <string name="distance">Distance travelled:</string>
-    <string name="km">kilometres</string>
-    <string name="litre">litres</string>
     <string name="fuel">Fuel consumed:</string>
     <string name="average">Average fuel consumption:</string>
     <string name="calculate">Calculate</string>

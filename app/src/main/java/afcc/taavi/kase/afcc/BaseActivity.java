@@ -13,6 +13,21 @@ import android.widget.Toast;
  * This class is used to contain methods that would otherwise be repeated in sub-activities.
  */
 public class BaseActivity extends Activity {
+    public static final int DISTANCE_KM = 0;
+    public static final int DISTANCE_MILES = 1;
+
+    public static final int UNIT_LITERS = 0;
+    public static final int UNIT_GALLONS_USA = 1;
+    public static final int UNIT_GALLONS_UK = 2;
+
+    public static final int CONSUMPTION_L_100_KM = 0;
+    public static final int CONSUMPTION_KM_L = 1;
+    public static final int CONSUMPTION_MPG_USA = 2;
+    public static final int CONSUMPTION_MPG_UK = 3;
+
+    public static final int SPEED_KM_H = 0;
+    public static final int SPED_MPH = 1;
+
     /**
      * Makes Toast messages with text specified.
      *

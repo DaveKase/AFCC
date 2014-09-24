@@ -182,9 +182,9 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
         int loaderId = cursorLoader.getId();
         int cursorCount = cursor.getCount();
-        cursor.moveToPosition(0);
 
         if(cursorCount > 0) {
+            cursor.moveToPosition(0);
             setSelections(loaderId, cursor);
         } else {
             resetSpinners();

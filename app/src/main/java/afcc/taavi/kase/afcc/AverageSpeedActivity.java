@@ -1,15 +1,14 @@
 package afcc.taavi.kase.afcc;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+
 /**
  * Created by Taavi Kase on 24.09.2014.
  *
  * Average speed calculator activity
  */
-public class AverageSpeedActivity extends Activity {
+public class AverageSpeedActivity extends BaseActivity {
+
     /**
      * Called when the activity is first created.
      *
