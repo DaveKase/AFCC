@@ -20,6 +20,8 @@
     <string name="distanceUnit">Distance:</string>
     <string name="amount">Unit:</string>
     <string name="consumption">Consumption:</string>
+    <string name="speedText">Speed:</string>
+    <string name="restore">Restore defaults</string>
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="title_activity_average_speed">AverageSpeedActivity</string>
     <string name="title_activity_speedometer">SpeedometerActivity</string>

@@ -1,5 +1,6 @@
 package afcc.taavi.kase.afcc;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.UriMatcher;
 import android.database.sqlite.SQLiteDatabase;
@@ -23,7 +24,7 @@ public class Database {
     public static final class DatabaseHelper extends SQLiteOpenHelper {
         private static DatabaseHelper mInstance;
         private static final String DATABASE_NAME = "averageconsumption.db";
-        private static final int DATABASE_VERSION = 1;
+        private static final int DATABASE_VERSION = 2;
         private static SQLiteDatabase myWritableDb;
 
         /**
@@ -111,8 +112,17 @@ public class Database {
                     + Settings._ID + " INTEGER PRIMARY KEY, "
                     + Settings.COL_DISTANCE + " INTEGER, "
                     + Settings.COL_UNIT + " INTEGER, "
-                    + Settings.COL_CONSUMPTION + " INTEGER"
+                    + Settings.COL_CONSUMPTION + " INTEGER, "
+                    + Settings.COL_SPEED + " INTEGER"
                     + ");");
+
+            ContentValues values = new ContentValues();
+            values.put(Settings._ID, 0);
+            values.put(Settings.COL_DISTANCE, 0);
+            values.put(Settings.COL_UNIT, 0);
+            values.put(Settings.COL_CONSUMPTION, 0);
+            values.put(Settings.COL_SPEED, 0);
+            db.insert(Settings.TABLE_NAME, null, values);
         }
 
         /**
@@ -139,6 +149,7 @@ public class Database {
         public static final String COL_DISTANCE = "distance";
         public static final String COL_UNIT = "unit";
         public static final String COL_CONSUMPTION = "consumption";
+        public static final String COL_SPEED = "speed";
         public static final String DEFAULT_SORT_ORDER = _ID;
 
         public static final Uri CONTENT_URI = Uri.parse(SCHEME + AUTHORITY + "/" + TABLE_NAME);

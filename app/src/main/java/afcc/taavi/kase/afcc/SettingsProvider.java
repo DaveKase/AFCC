@@ -95,7 +95,7 @@ public class SettingsProvider extends Provider {
                         String sortOrder) {
         if (projection == null || projection.length == 0)
             projection = new String[]{Settings._ID, Settings.COL_DISTANCE, Settings.COL_UNIT,
-                    Settings.COL_UNIT};
+                    Settings.COL_UNIT, Settings.COL_SPEED};
 
         if (TextUtils.isEmpty(sortOrder))
             sortOrder = Settings.DEFAULT_SORT_ORDER;

@@ -64,10 +64,10 @@
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/consumptionSpinner"
         android:text="@string/save"
-        android:onClick="save" />
+        android:onClick="onClick"
+        android:layout_below="@+id/speedSpinner"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/versionText"
@@ -83,4 +83,29 @@
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/distanceText"
         android:layout_alignParentBottom="true" />
+
+    <TextView
+        android:id="@+id/speedText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/consumptionSpinner"
+        android:layout_alignParentStart="true"
+        android:text="@string/speedText" />
+
+    <Spinner
+        android:id="@+id/speedSpinner"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/consumptionSpinner"
+        android:layout_alignStart="@+id/consumptionSpinner"
+        android:entries="@array/speed" />
+
+    <Button
+        android:id="@+id/restoreButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/restore"
+        android:layout_toEndOf="@+id/unitsText"
+        android:layout_alignTop="@+id/saveButton"
+        android:onClick="onClick" />
 </RelativeLayout>
