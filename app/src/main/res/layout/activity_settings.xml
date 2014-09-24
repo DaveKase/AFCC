@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/unitsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/units" />
+
+    <TextView
+        android:id="@+id/distanceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/unitsText"
+        android:text="@string/distanceUnit" />
+
+    <TextView
+        android:id="@+id/amountText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/distanceSpinner"
+        android:text="@string/amount" />
+
+    <Spinner
+        android:id="@+id/amountSpinner"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/distanceSpinner"
+        android:layout_alignTop="@+id/amountText"
+        android:entries="@array/amounts" />
+
+    <TextView
+        android:id="@+id/consumptionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/amountSpinner"
+        android:text="@string/consumption" />
+
+    <Spinner
+        android:id="@+id/distanceSpinner"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/distanceText"
+        android:layout_toEndOf="@+id/consumptionText"
+        android:entries="@array/distances" />
+
+    <Spinner
+        android:id="@+id/consumptionSpinner"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/amountSpinner"
+        android:layout_alignTop="@+id/consumptionText"
+        android:entries="@array/consumptions" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/consumptionSpinner"
+        android:text="@string/save"
+        android:onClick="save" />
+
+    <TextView
+        android:id="@+id/versionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/version"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/versionNumberText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/distanceText"
+        android:layout_alignParentBottom="true" />
+</RelativeLayout>

@@ -20,9 +20,6 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        makeToast("Just for testing");
-        Log.e("MAIN", "TEST");
     }
 
     /**
@@ -40,7 +37,13 @@ public class MainActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        return id == R.id.action_settings || super.onOptionsItemSelected(item);
+        if(id == R.id.action_settings) {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     /**
@@ -54,16 +57,16 @@ public class MainActivity extends BaseActivity {
                 intent = new Intent(this, AverageFuelConsumptionActivity.class);
                 break;
             case R.id.speedButton:
-                //intent = new Intent(this, AverageFuelConsumptionActivity.class);
+                intent = new Intent(this, SpeedometerActivity.class);
                 break;
             case R.id.speedCalculatorButton:
-                //intent = new Intent(this, AverageFuelConsumptionActivity.class);
+                intent = new Intent(this, AverageSpeedActivity.class);
                 break;
         }
 
         try {
             startActivity(intent);
-        }catch(NullPointerException e) {
+        } catch(NullPointerException e) {
             Log.e(TAG, "Error with starting activity, have you declared an intent");
         }
     }

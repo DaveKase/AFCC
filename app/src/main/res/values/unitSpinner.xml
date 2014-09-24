@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="amounts">
+        <item>Liters</item>
+        <item>Gallons (USA) - 3,785 l</item>
+        <item>Gallons (UK) - 4,546 l</item>
+    </string-array>
+</resources>

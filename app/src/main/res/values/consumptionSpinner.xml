@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="consumptions">
+        <item>l / 100 km</item>
+        <item>km / l</item>
+        <item>MPG (USA)</item>
+        <item>MPG (UK)</item>
+    </string-array>
+</resources>
