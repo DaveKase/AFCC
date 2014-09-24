@@ -9,11 +9,10 @@ import android.widget.Toast;
 
 /**
  * Created by Taavi Kase.
+ *
  * This class is used to contain methods that would otherwise be repeated in sub-activities.
  */
 public class BaseActivity extends Activity {
-    public static final String ID ="id";
-
     /**
      * Makes Toast messages with text specified.
      *
@@ -34,7 +33,7 @@ public class BaseActivity extends Activity {
         bd = bd.setScale(2, RoundingMode.HALF_UP);
         double result = bd.doubleValue();
 
-        return String.valueOf(result).toString();
+        return String.valueOf(result);
     }
 
     /**

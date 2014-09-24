@@ -4,10 +4,19 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.view.View;
 
-
+/**
+ * Created by Taavi Kase on 24.09.2014.
+ *
+ * Average fuel consumption activity
+ */
 public class AverageFuelConsumptionActivity extends BaseActivity {
     private String mAverageConsumption = "";
 
+    /**
+     * Called when the activity is first created.
+     *
+     * @param savedInstanceState May contain data supplied by saveInstanceState or null
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +77,8 @@ public class AverageFuelConsumptionActivity extends BaseActivity {
      * Called when there is a double parsing exception
      */
     private void catcher() {
-        String text = "";
+        String text;
+
         if(getTextFromEditText(R.id.distanceEdit).equals("")) {
             text = "Insert value to distance travelled box!";
         } else if(getTextFromEditText(R.id.fuelEdit).equals("")) {

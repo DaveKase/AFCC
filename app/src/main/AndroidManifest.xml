@@ -58,5 +58,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="afcc.taavi.kase.afcc.BaseActivity" />
         </activity>
+
+        <provider
+            android:name=".AFCCProvider"
+            android:authorities="kase.taavi.averagefuelconsumption" >
+         </provider>
     </application>
 </manifest>

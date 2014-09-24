@@ -9,12 +9,16 @@ import android.view.View;
 
 /**
  * Created by Taavi Kase
+ *
+ * Main activity
  */
 public class MainActivity extends BaseActivity {
     private static final String TAG = "MainActivity";
 
     /**
      * Called when Activity is first created
+     *
+     * @param savedInstanceState May contain data supplied by saveInstanceState or null
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +28,9 @@ public class MainActivity extends BaseActivity {
 
     /**
      * Creates an options menu
+     *
+     * @param menu Options menu
+     * @return true
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -33,6 +40,9 @@ public class MainActivity extends BaseActivity {
 
     /**
      * Called when an item is selected from options menu
+     *
+     * @param item Selected menu item
+     * @return true if Settings menu was clicked
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -48,6 +58,8 @@ public class MainActivity extends BaseActivity {
 
     /**
      * Called when a button is pressed in activity
+     *
+     * @param clickedButton Button that was clicked
      */
     public void onClick(View clickedButton) {
         Intent intent = null;

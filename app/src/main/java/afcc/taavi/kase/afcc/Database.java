@@ -8,33 +8,104 @@ import android.net.Uri;
 import android.util.Log;
 
 /**
- * Created by Taavi on 24.09.2014.
+ * Created by Taavi Kase on 24.09.2014.
+ *
+ * Holds everything that is needed to create and maintain a database
  */
 public class Database {
     private static final String SCHEME = "content://";
     private static final String AUTHORITY = "kase.taavi.averagefuelconsumption";
     private static final String TAG = "Database";
 
+    /**
+     * Helps to create and update database
+     */
     public static final class DatabaseHelper extends SQLiteOpenHelper {
+        private static DatabaseHelper mInstance;
         private static final String DATABASE_NAME = "averageconsumption.db";
         private static final int DATABASE_VERSION = 1;
+        private static SQLiteDatabase myWritableDb;
 
+        /**
+         * Constructor
+         *
+         * @param context Application context
+         */
         public DatabaseHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
         }
 
+        /**
+         * Returns a instance of database helper
+         *
+         * @param context Application context
+         * @return Instance of database helper
+         */
+        public static DatabaseHelper getInstance(Context context) {
+            if (mInstance == null) {
+                mInstance = new DatabaseHelper(context);
+            }
+
+            return mInstance;
+        }
+
+        /**
+         * Returns a writable database instance in order not to open and close many
+         * SQLiteDatabase objects simultaneously
+         *
+         * @return a writable instance to SQLiteDatabase
+         */
+        public SQLiteDatabase getMyWritableDatabase() {
+            if ((myWritableDb == null) || (!myWritableDb.isOpen())) {
+                myWritableDb = this.getWritableDatabase();
+            }
+
+            myWritableDb.enableWriteAheadLogging();
+
+            return myWritableDb;
+        }
+
+        /**
+         * Closes the database
+         */
+        @Override
+        public void close() {
+            super.close();
+            if (myWritableDb != null) {
+                myWritableDb.close();
+                myWritableDb = null;
+            }
+        }
+
+        /**
+         * Creates a database
+         *
+         * @param db Instance of database
+         */
         @Override
         public void onCreate(SQLiteDatabase db) {
             Log.i(TAG, "creating database " + DATABASE_NAME + " version: " + DATABASE_VERSION);
             onCreateSettings(db);
         }
 
+        /**
+         * Upgrades a database
+         *
+         * @param db Instance of database
+         * @param oldVersion Number of a previous database version
+         * @param newVersion Number of a new database version
+         */
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             Log.w(TAG, "Upgrading database from version " + oldVersion + " to " + newVersion);
             onUpgradeSettings(db);
         }
 
+        /**
+         * Creates settings table
+         *
+         * @param db Instance of database
+         */
         private void onCreateSettings(SQLiteDatabase db) {
             db.execSQL("CREATE TABLE " + Settings.TABLE_NAME + " ("
                     + Settings._ID + " INTEGER PRIMARY KEY, "
@@ -44,19 +115,31 @@ public class Database {
                     + ");");
         }
 
+        /**
+         * Upgrades settings table
+         *
+         * @param db Instance of database
+         */
         private void onUpgradeSettings(SQLiteDatabase db) {
             db.execSQL("DROP TABLE IF EXISTS " + Settings.TABLE_NAME);
             onCreateSettings(db);
         }
     }
 
+    /**
+     * Adds basic columns to database tables
+     */
     public static interface BaseColumns extends android.provider.BaseColumns {}
 
+    /**
+     * Holds settings table static variables and URI
+     */
     public static final class Settings implements BaseColumns {
         public static final String TABLE_NAME ="settings";
         public static final String COL_DISTANCE = "distance";
         public static final String COL_UNIT = "unit";
         public static final String COL_CONSUMPTION = "consumption";
+        public static final String DEFAULT_SORT_ORDER = _ID;
 
         public static final Uri CONTENT_URI = Uri.parse(SCHEME + AUTHORITY + "/" + TABLE_NAME);
         public static final int SETTINGS = 1;
