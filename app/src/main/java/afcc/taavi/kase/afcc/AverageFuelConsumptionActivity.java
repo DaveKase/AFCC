@@ -116,7 +116,13 @@ public class AverageFuelConsumptionActivity extends BaseActivity  implements Loa
         makeToast("Show clicked");
     }
 
-
+    /**
+     * Creates CursorLoaders
+     *
+     * @param id CursorLoader ID
+     * @param bundle May hold various data needed for queries
+     * @return CursorLoader object
+     */
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle bundle) {
         Uri settingsUri = Database.Settings.CONTENT_URI;
@@ -128,6 +134,12 @@ public class AverageFuelConsumptionActivity extends BaseActivity  implements Loa
         }
     }
 
+    /**
+     * Called after query is finished.
+     *
+     * @param cursorLoader CursorLoader object
+     * @param cursor Holds data from database query
+     */
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
         switch(cursorLoader.getId()) {
@@ -143,6 +155,12 @@ public class AverageFuelConsumptionActivity extends BaseActivity  implements Loa
         }
     }
 
+    /**
+     * Sets texts to unit TextViews
+     *
+     * @param distance Integer representation of distance unit
+     * @param unit Integer representation of amount unit
+     */
     private void setTexts(int distance, int unit) {
         TextView distanceText = (TextView) findViewById(R.id.kmText);
         TextView unitText = (TextView) findViewById(R.id.litreText);
@@ -154,6 +172,12 @@ public class AverageFuelConsumptionActivity extends BaseActivity  implements Loa
         unitText.setText(amountUnit);
     }
 
+    /**
+     * Returns string distance unit name
+     *
+     * @param distance Integer representation of distance unit
+     * @return Unit name
+     */
     private String getDistanceUnit(int distance) {
         switch (distance) {
             case DISTANCE_KM:
@@ -165,6 +189,12 @@ public class AverageFuelConsumptionActivity extends BaseActivity  implements Loa
         return "";
     }
 
+    /**
+     * Returns amount unit name
+     *
+     * @param unit Integer representation of amount unit
+     * @return Unit name
+     */
     private String getAmountUnit(int unit) {
         switch (unit) {
             case UNIT_LITERS:
@@ -178,6 +208,11 @@ public class AverageFuelConsumptionActivity extends BaseActivity  implements Loa
         return "";
     }
 
+    /**
+     * Called when CursorLoaders are reset.
+     *
+     * @param cursorLoader CursorLoader object
+     */
     @Override
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
         // Nothing to do here
