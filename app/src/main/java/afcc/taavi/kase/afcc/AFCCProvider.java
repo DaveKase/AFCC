@@ -5,6 +5,7 @@ import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
+import android.provider.ContactsContract;
 
 import java.security.InvalidParameterException;
 
@@ -24,7 +25,9 @@ public class AFCCProvider extends ContentProvider {
     public boolean onCreate() {
         mOpenHelper = DatabaseHelper.getInstance(getContext());
         providers = new Provider[] {
-                new SettingsProvider(getContext(), mOpenHelper, Database.Settings.URIMatcher)
+                new SettingsProvider(getContext(), mOpenHelper, Database.Settings.URIMatcher),
+                new PreviousResultsProvider(getContext(), mOpenHelper,
+                        Database.PreviousResults.URIMatcher)
         };
 
         return true;

@@ -24,7 +24,7 @@ public class Database {
     public static final class DatabaseHelper extends SQLiteOpenHelper {
         private static DatabaseHelper mInstance;
         private static final String DATABASE_NAME = "averageconsumption.db";
-        private static final int DATABASE_VERSION = 2;
+        private static final int DATABASE_VERSION = 3;
         private static SQLiteDatabase myWritableDb;
 
         /**
@@ -87,6 +87,7 @@ public class Database {
         public void onCreate(SQLiteDatabase db) {
             Log.i(TAG, "creating database " + DATABASE_NAME + " version: " + DATABASE_VERSION);
             onCreateSettings(db);
+            onCreatePreviousResults(db);
         }
 
         /**
@@ -100,6 +101,7 @@ public class Database {
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             Log.w(TAG, "Upgrading database from version " + oldVersion + " to " + newVersion);
             onUpgradeSettings(db);
+            onUpgradePreviousResults(db);
         }
 
         /**
@@ -126,6 +128,20 @@ public class Database {
         }
 
         /**
+         * Creates previous results table
+         *
+         * @param db Instance of database
+         */
+        private void onCreatePreviousResults(SQLiteDatabase db) {
+            db.execSQL("CREATE TABLE " + PreviousResults.TABLE_NAME + "("
+            + PreviousResults._ID + " INTEGER PRIMARY KEY, "
+            + PreviousResults.COL_DATE + " DATETIME, "
+            + PreviousResults.COL_RESULT + " TEXT, "
+            + PreviousResults.COL_UNIT + " TEXT"
+            + ");");
+        }
+
+        /**
          * Upgrades settings table
          *
          * @param db Instance of database
@@ -133,6 +149,16 @@ public class Database {
         private void onUpgradeSettings(SQLiteDatabase db) {
             db.execSQL("DROP TABLE IF EXISTS " + Settings.TABLE_NAME);
             onCreateSettings(db);
+        }
+
+        /**
+         * Upgrades previous results table
+         *
+         * @param db Instance of database
+         */
+        private void onUpgradePreviousResults(SQLiteDatabase db) {
+            db.execSQL("DROP TABLE IF EXISTS " + PreviousResults.TABLE_NAME);
+            onCreatePreviousResults(db);
         }
     }
 
@@ -161,5 +187,29 @@ public class Database {
         }
 
         public static String CONTENT_TYPE = "vnd.android.cusror.dir/vnd.kase.settings";
+    }
+
+    /**
+     * Holds previous results table static variables and URIs
+     */
+    public static final class PreviousResults implements BaseColumns {
+        public static final String TABLE_NAME = "previous_results";
+        public static final String COL_DATE = "date";
+        public static final String COL_RESULT = "result";
+        public static final String COL_UNIT = "unit";
+        public static final String DEFAULT_SORT_ORDER = _ID;
+
+        public static final Uri CONTENT_URI = Uri.parse(SCHEME + AUTHORITY + "/" + TABLE_NAME);
+        public static final int RESULTS = 1;
+        public static final int RESULT = 2;
+
+        public static final UriMatcher URIMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+        static {
+            URIMatcher.addURI(AUTHORITY, TABLE_NAME, RESULTS);
+            URIMatcher.addURI(AUTHORITY, TABLE_NAME + "/#", RESULT);
+        }
+
+        public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.kase.results";
+        public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd.kase.result";
     }
 }

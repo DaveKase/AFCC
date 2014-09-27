@@ -28,18 +28,6 @@ public class SettingsProvider extends Provider {
     }
 
     /**
-     * Doesn't allow to delete anything from database
-     *
-     * @param uri Path to Settings table
-     * @param selection Column names to select
-     * @param selectionArgs Arguments for selection
-     */
-    @Override
-    public int delete(Uri uri, String selection, String[] selectionArgs) {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
      * Returns content type
      *
      * @param uri Path to Settings table
@@ -54,6 +42,18 @@ public class SettingsProvider extends Provider {
             default:
                 throw new IllegalArgumentException("Unknown URI");
         }
+    }
+
+    /**
+     * Doesn't allow to delete anything from database
+     *
+     * @param uri Path to Settings table
+     * @param selection Column names to select
+     * @param selectionArgs Arguments for selection
+     */
+    @Override
+    public int delete(Uri uri, String selection, String[] selectionArgs) {
+        throw new UnsupportedOperationException();
     }
 
     /**

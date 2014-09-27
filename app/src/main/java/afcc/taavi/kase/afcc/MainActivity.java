@@ -47,13 +47,21 @@ public class MainActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.action_settings) {
-            Intent intent = new Intent(this, SettingsActivity.class);
-            startActivity(intent);
-            return true;
+        Intent intent;
+
+        switch(id) {
+            case R.id.action_settings:
+                intent = new Intent(this, SettingsActivity.class);
+                break;
+            case R.id.action_about:
+                intent = new Intent(this, AboutActivity.class);
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
         }
 
-        return super.onOptionsItemSelected(item);
+        startActivity(intent);
+        return true;
     }
 
     /**

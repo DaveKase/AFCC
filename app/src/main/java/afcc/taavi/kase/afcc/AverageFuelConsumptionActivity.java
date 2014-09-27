@@ -2,6 +2,7 @@ package afcc.taavi.kase.afcc;
 
 import android.app.LoaderManager;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
@@ -113,7 +114,8 @@ public class AverageFuelConsumptionActivity extends BaseActivity  implements Loa
      * Shows previous results
      */
     private void show() {
-        makeToast("Show clicked");
+        Intent intent = new Intent(this, PreviousResultsActivity.class);
+        startActivity(intent);
     }
 
     /**
