@@ -224,6 +224,6 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
      */
     @Override
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
-        // Nothing to do here.
+        // Nothing to do here
     }
 }
