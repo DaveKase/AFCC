@@ -41,8 +41,8 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
         initializeSpinners();
-        versionName();
         startLoaders();
     }
 
@@ -52,24 +52,6 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
         mUnitSpinner = (Spinner) findViewById(R.id.unitSpinner);
         mConsumptionSpinner = (Spinner) findViewById(R.id.consumptionSpinner);
         mSpeedSpinner = (Spinner) findViewById(R.id.speedSpinner);
-    }
-
-    /**
-     * Gets the app version name and sets it to versionNumberText TextView.
-     */
-    private void versionName() {
-        String version;
-
-        try {
-            PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
-            version = pInfo.versionName;
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-            version = "Did not get a version name";
-        }
-
-        TextView versionNumberText = (TextView) findViewById(R.id.versionNumberText);
-        versionNumberText.setText(version);
     }
 
     /** Starts CursorLoaders */
