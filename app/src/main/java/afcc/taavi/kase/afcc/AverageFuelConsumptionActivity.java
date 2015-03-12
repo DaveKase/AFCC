@@ -1,14 +1,22 @@
 package afcc.taavi.kase.afcc;
 
+import afcc.taavi.kase.afcc.Database.PreviousResults;
+
 import android.app.LoaderManager;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.view.View;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by Taavi Kase on 24.09.2014.
@@ -16,7 +24,9 @@ import android.view.View;
  * Average fuel consumption activity
  */
 public class AverageFuelConsumptionActivity extends BaseActivity  implements LoaderManager.LoaderCallbacks<Cursor>  {
+    private static String TAG = "AverageFuelConsumptionActivity";
     private String mAverageConsumption = "";
+    private String mUnit = "";
     private static final int SETTINGS_LOADER = 0;
 
     /**
@@ -104,11 +114,33 @@ public class AverageFuelConsumptionActivity extends BaseActivity  implements Loa
      */
     private void save() {
         if(!mAverageConsumption.equals("")) {
+            Date date = new Date();
+            String dateString = new SimpleDateFormat("dd/MM/yyyy").format(date);
+            Log.d(TAG, "dateString = " + dateString);
+
+            ContentValues values = new ContentValues();
+            values.put(PreviousResults.COL_DATE, dateString);
+            values.put(PreviousResults.COL_RESULT, mAverageConsumption);
+            values.put(PreviousResults.COL_UNIT, mUnit);
+
+            ContentResolver resolver = getContentResolver();
+            resolver.insert(PreviousResults.CONTENT_URI, values);
+
             makeToast(mAverageConsumption + " saved!");
         } else {
             makeToast("Nothing to save");
         }
     }
+
+    /*
+     private void onCreatePreviousResults(SQLiteDatabase db) {
+            db.execSQL("CREATE TABLE " + PreviousResults.TABLE_NAME + "("
+            + PreviousResults._ID + " INTEGER PRIMARY KEY, "
+            + PreviousResults.COL_DATE + " DATETIME, "
+            + PreviousResults.COL_RESULT + " TEXT, "
+            + PreviousResults.COL_UNIT + " TEXT"
+            + ");");
+     }*/
 
     /**
      * Shows previous results
@@ -168,10 +200,10 @@ public class AverageFuelConsumptionActivity extends BaseActivity  implements Loa
         TextView unitText = (TextView) findViewById(R.id.litreText);
 
         String distanceUnit = getDistanceUnit(distance);
-        String amountUnit = getAmountUnit(unit);
+        mUnit = getAmountUnit(unit);
 
         distanceText.setText(distanceUnit);
-        unitText.setText(amountUnit);
+        unitText.setText(mUnit);
     }
 
     /**
