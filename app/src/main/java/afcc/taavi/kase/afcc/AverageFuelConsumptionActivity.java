@@ -114,33 +114,27 @@ public class AverageFuelConsumptionActivity extends BaseActivity  implements Loa
      */
     private void save() {
         if(!mAverageConsumption.equals("")) {
-            Date date = new Date();
-            String dateString = new SimpleDateFormat("dd/MM/yyyy").format(date);
-            Log.d(TAG, "dateString = " + dateString);
-
-            ContentValues values = new ContentValues();
-            values.put(PreviousResults.COL_DATE, dateString);
-            values.put(PreviousResults.COL_RESULT, mAverageConsumption);
-            values.put(PreviousResults.COL_UNIT, mUnit);
-
-            ContentResolver resolver = getContentResolver();
-            resolver.insert(PreviousResults.CONTENT_URI, values);
-
-            makeToast(mAverageConsumption + " saved!");
+            saveResults();
         } else {
             makeToast("Nothing to save");
         }
     }
 
-    /*
-     private void onCreatePreviousResults(SQLiteDatabase db) {
-            db.execSQL("CREATE TABLE " + PreviousResults.TABLE_NAME + "("
-            + PreviousResults._ID + " INTEGER PRIMARY KEY, "
-            + PreviousResults.COL_DATE + " DATETIME, "
-            + PreviousResults.COL_RESULT + " TEXT, "
-            + PreviousResults.COL_UNIT + " TEXT"
-            + ");");
-     }*/
+    private void saveResults() {
+        Date date = new Date();
+        String dateString = new SimpleDateFormat("dd/MM/yyyy").format(date);
+        Log.d(TAG, dateString);
+
+        ContentValues values = new ContentValues();
+        values.put(PreviousResults.COL_DATE, dateString);
+        values.put(PreviousResults.COL_RESULT, mAverageConsumption);
+        values.put(PreviousResults.COL_UNIT, mUnit);
+
+        ContentResolver resolver = getContentResolver();
+        resolver.insert(PreviousResults.CONTENT_URI, values);
+
+        makeToast(mAverageConsumption + " saved!");
+    }
 
     /**
      * Shows previous results
