@@ -23,7 +23,7 @@ import java.util.Locale;
  *
  * Average fuel consumption activity
  */
-public class AverageFuelConsumptionActivity extends BaseActivity  implements LoaderManager.LoaderCallbacks<Cursor>  {
+public class AverageFuelConsumptionActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor>  {
     //private static String TAG = "AverageFuelConsumptionActivity";
     private String mAverageConsumption = "";
     private String mUnit = "";
@@ -120,6 +120,9 @@ public class AverageFuelConsumptionActivity extends BaseActivity  implements Loa
         }
     }
 
+    /**
+     * If there are results to save, this method is called to save the results to database
+     */
     private void saveResults() {
         Date date = new Date();
         String dateString = new SimpleDateFormat("dd/MM/yyyy", Locale.US).format(date);
