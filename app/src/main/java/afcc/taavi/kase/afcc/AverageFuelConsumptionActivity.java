@@ -11,12 +11,12 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 import android.view.View;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by Taavi Kase on 24.09.2014.
@@ -24,7 +24,7 @@ import java.util.Date;
  * Average fuel consumption activity
  */
 public class AverageFuelConsumptionActivity extends BaseActivity  implements LoaderManager.LoaderCallbacks<Cursor>  {
-    private static String TAG = "AverageFuelConsumptionActivity";
+    //private static String TAG = "AverageFuelConsumptionActivity";
     private String mAverageConsumption = "";
     private String mUnit = "";
     private static final int SETTINGS_LOADER = 0;
@@ -122,8 +122,7 @@ public class AverageFuelConsumptionActivity extends BaseActivity  implements Loa
 
     private void saveResults() {
         Date date = new Date();
-        String dateString = new SimpleDateFormat("dd/MM/yyyy").format(date);
-        Log.d(TAG, dateString);
+        String dateString = new SimpleDateFormat("dd/MM/yyyy", Locale.US).format(date);
 
         ContentValues values = new ContentValues();
         values.put(PreviousResults.COL_DATE, dateString);
