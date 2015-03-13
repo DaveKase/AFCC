@@ -1,10 +1,14 @@
 package afcc.taavi.kase.afcc;
 
+import afcc.taavi.kase.afcc.Database.PreviousResults;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.text.TextUtils;
 
 /**
  * Created by Taavi on 27.09.2014.
@@ -31,7 +35,13 @@ public class PreviousResultsProvider extends Provider  {
      */
     @Override
     public String getType(Uri uri) {
-        return null;
+        int uriType = PreviousResults.URIMatcher.match(uri);
+        switch (uriType) {
+            case PreviousResults.RESULTS:
+                return PreviousResults.CONTENT_TYPE;
+            default:
+                throw new IllegalArgumentException("Unknown URI");
+        }
     }
 
     /**
@@ -54,7 +64,20 @@ public class PreviousResultsProvider extends Provider  {
      */
     @Override
     public Uri insert(Uri uri, ContentValues values) throws Exception {
-        return null;
+        try {
+            int uriType = PreviousResults.URIMatcher.match(uri);
+
+            if (uriType != PreviousResults.RESULTS) {
+                throw new IllegalArgumentException("Unknown URI");
+            }
+
+            SQLiteDatabase db = this.mHelper.getMyWritableDatabase();
+            long id = db.insertOrThrow(PreviousResults.TABLE_NAME, null, values);
+            return Uri.withAppendedPath(uri, "" + id);
+        } catch(Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     /**
@@ -68,8 +91,24 @@ public class PreviousResultsProvider extends Provider  {
      * @return Cursor object with resulting data
      */
     @Override
-    public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-        return null;
+    public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs,
+                        String sortOrder) {
+
+        if (projection == null || projection.length == 0) {
+            projection = new String[]{PreviousResults._ID, PreviousResults.COL_RESULT,
+                    PreviousResults.COL_UNIT, PreviousResults.COL_DATE};
+        }
+
+        if (TextUtils.isEmpty(sortOrder)) {
+            sortOrder = PreviousResults.DEFAULT_SORT_ORDER;
+        }
+
+        SQLiteDatabase db = this.mHelper.getMyWritableDatabase();
+        Cursor cursor = db.query(PreviousResults.TABLE_NAME, projection, selection, selectionArgs,
+                null, null, sortOrder);
+
+        cursor.setNotificationUri(this.mContext.getContentResolver(), uri);
+        return cursor;
     }
 
     /**
@@ -83,6 +122,25 @@ public class PreviousResultsProvider extends Provider  {
      */
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
-        return 0;
+        switch(PreviousResults.URIMatcher.match(uri)) {
+            case PreviousResults.RESULTS:
+                SQLiteDatabase db = this.mHelper.getMyWritableDatabase();
+                Cursor cursor = db.query(PreviousResults.TABLE_NAME,
+                        new String[] {PreviousResults._ID}, null, null, null, null, null);
+
+                if(cursor.getCount() > 0) {
+                    return db.update(PreviousResults.TABLE_NAME, values, selection, selectionArgs);
+                } else {
+                    try {
+                        insert(uri, values);
+                        return 1;
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        return 0;
+                    }
+                }
+            default:
+                throw new IllegalArgumentException("Update works only for specific history");
+        }
     }
 }

@@ -93,6 +93,7 @@ public class SettingsProvider extends Provider {
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs,
                         String sortOrder) {
+
         if (projection == null || projection.length == 0)
             projection = new String[]{Settings._ID, Settings.COL_DISTANCE, Settings.COL_UNIT,
                     Settings.COL_UNIT, Settings.COL_SPEED};
@@ -122,7 +123,8 @@ public class SettingsProvider extends Provider {
         switch(Settings.URIMatcher.match(uri)) {
             case Settings.SETTINGS:
                 SQLiteDatabase db = this.mHelper.getMyWritableDatabase();
-                Cursor cursor = db.query(Settings.TABLE_NAME, new String[] {Settings._ID}, null, null, null, null, null);
+                Cursor cursor = db.query(Settings.TABLE_NAME, new String[] {Settings._ID}, null,
+                        null, null, null, null);
 
                 if(cursor.getCount() > 0) {
                     return db.update(Settings.TABLE_NAME, values, selection, selectionArgs);
