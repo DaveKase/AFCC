@@ -96,7 +96,7 @@ public class PreviousResultsProvider extends Provider  {
 
         if (projection == null || projection.length == 0) {
             projection = new String[]{PreviousResults._ID, PreviousResults.COL_RESULT,
-                    PreviousResults.COL_UNIT, PreviousResults.COL_DATE};
+                    PreviousResults.COL_UNIT, PreviousResults.COL_DATE, PreviousResults.COL_ROW};
         }
 
         if (TextUtils.isEmpty(sortOrder)) {
@@ -140,7 +140,7 @@ public class PreviousResultsProvider extends Provider  {
                     }
                 }
             default:
-                throw new IllegalArgumentException("Update works only for specific history");
+                throw new IllegalArgumentException("No update");
         }
     }
 }

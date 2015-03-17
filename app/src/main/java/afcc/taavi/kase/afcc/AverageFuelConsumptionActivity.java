@@ -131,6 +131,7 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements Load
         values.put(PreviousResults.COL_DATE, dateString);
         values.put(PreviousResults.COL_RESULT, mAverageConsumption);
         values.put(PreviousResults.COL_UNIT, mUnit);
+        values.put(PreviousResults.COL_ROW, "0");
 
         ContentResolver resolver = getContentResolver();
         resolver.insert(PreviousResults.CONTENT_URI, values);
@@ -156,6 +157,7 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements Load
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle bundle) {
         Uri settingsUri = Database.Settings.CONTENT_URI;
+
         switch(id) {
             case SETTINGS_LOADER:
                 return new CursorLoader(this, settingsUri, null, null, null, null);

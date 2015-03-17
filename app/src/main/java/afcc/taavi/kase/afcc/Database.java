@@ -24,7 +24,7 @@ public class Database {
     public static final class DatabaseHelper extends SQLiteOpenHelper {
         private static DatabaseHelper mInstance;
         private static final String DATABASE_NAME = "averageconsumption.db";
-        private static final int DATABASE_VERSION = 3;
+        private static final int DATABASE_VERSION = 6;
         private static SQLiteDatabase myWritableDb;
 
         /**
@@ -133,12 +133,17 @@ public class Database {
          * @param db Instance of database
          */
         private void onCreatePreviousResults(SQLiteDatabase db) {
-            db.execSQL("CREATE TABLE " + PreviousResults.TABLE_NAME + "("
-            + PreviousResults._ID + " INTEGER PRIMARY KEY, "
-            + PreviousResults.COL_DATE + " DATETIME, "
-            + PreviousResults.COL_RESULT + " TEXT, "
-            + PreviousResults.COL_UNIT + " TEXT"
-            + ");");
+            String sql = "CREATE TABLE " + PreviousResults.TABLE_NAME + "("
+                    + PreviousResults._ID + " INTEGER PRIMARY KEY, "
+                    + PreviousResults.COL_DATE + " DATETIME, "
+                    + PreviousResults.COL_RESULT + " TEXT, "
+                    + PreviousResults.COL_UNIT + " TEXT, "
+                    + PreviousResults.COL_ROW + " TEXT"
+                    + ");";
+
+            Log.d(TAG, "sql = " + sql);
+
+            db.execSQL(sql);
         }
 
         /**
@@ -197,6 +202,7 @@ public class Database {
         public static final String COL_DATE = "date";
         public static final String COL_RESULT = "result";
         public static final String COL_UNIT = "unit";
+        public static final String COL_ROW = "nr";
         public static final String DEFAULT_SORT_ORDER = _ID;
 
         public static final Uri CONTENT_URI = Uri.parse(SCHEME + AUTHORITY + "/" + TABLE_NAME);

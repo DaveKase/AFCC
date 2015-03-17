@@ -138,7 +138,7 @@ public class SettingsProvider extends Provider {
                     }
                 }
             default:
-                throw new IllegalArgumentException("Update works only for specific history");
+                throw new IllegalArgumentException("No update");
         }
     }
 }
