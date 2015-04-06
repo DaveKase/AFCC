@@ -1,4 +1,4 @@
-package afcc.taavi.kase.afcc;
+package afcc.taavi.kase.afcc.activity;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

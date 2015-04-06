@@ -72,10 +72,10 @@
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/averageText"
-        android:layout_toEndOf="@+id/calculateButton"
         android:text="@string/save"
-        android:onClick="onClick" />
+        android:onClick="onClick"
+        android:layout_below="@+id/averageText"
+        android:layout_toEndOf="@+id/distanceText" />
 
     <TextView
         android:id="@+id/kmText"
@@ -95,6 +95,7 @@
         android:id="@+id/previousResultsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/averageText"
         android:layout_alignBaseline="@+id/saveButton"
         android:layout_alignBottom="@+id/saveButton"
         android:layout_alignParentEnd="true"

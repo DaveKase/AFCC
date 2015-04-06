@@ -13,7 +13,7 @@
     <string name="average">Average fuel consumption:</string>
     <string name="calculate">Calculate</string>
     <string name="save">Save</string>
-    <string name="show">Show previous results</string>
+    <string name="show">View saved results</string>
     <string name="units">Units to use:</string>
     <string name="distanceUnit">Distance:</string>
     <string name="amount">Unit:</string>

@@ -1,4 +1,4 @@
-package afcc.taavi.kase.afcc;
+package afcc.taavi.kase.afcc.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import afcc.taavi.kase.afcc.R;
 
 /**
  * Created by Taavi Kase
