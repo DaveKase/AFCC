@@ -1,18 +1,18 @@
 package afcc.taavi.kase.afcc.activity;
 
-import afcc.taavi.kase.afcc.R;
-import afcc.taavi.kase.afcc.database.SettingsTable;
-
+import android.app.LoaderManager;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.CursorLoader;
+import android.content.Loader;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Spinner;
-import android.content.Loader;
-import android.database.Cursor;
-import android.app.LoaderManager;
+
+import afcc.taavi.kase.afcc.R;
+import afcc.taavi.kase.afcc.database.SettingsTable;
 
 /**
  * Created by Taavi Kase
@@ -44,7 +44,9 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
         startLoaders();
     }
 
-    /** Initializes spinner values */
+    /**
+     * Initializes spinner values
+     */
     private void initializeSpinners() {
         mDistanceSpinner = (Spinner) findViewById(R.id.distanceSpinner);
         mUnitSpinner = (Spinner) findViewById(R.id.unitSpinner);
@@ -52,7 +54,9 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
         mSpeedSpinner = (Spinner) findViewById(R.id.speedSpinner);
     }
 
-    /** Starts CursorLoaders */
+    /**
+     * Starts CursorLoaders
+     */
     private void startLoaders() {
         getLoaderManager().restartLoader(DISTANCE_LOADER, null, this);
         getLoaderManager().restartLoader(UNIT_LOADER, null, this);
@@ -68,7 +72,7 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
     public void onClick(View clickedButton) {
         int id = clickedButton.getId();
 
-        switch(id) {
+        switch (id) {
             case R.id.saveButton:
                 save();
                 break;
@@ -78,7 +82,9 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
         }
     }
 
-    /** Called when Save button is clicked. Saves all data to database */
+    /**
+     * Called when Save button is clicked. Saves all data to database
+     */
     public void save() {
         int distance = (int) mDistanceSpinner.getSelectedItemId();
         int unit = (int) mUnitSpinner.getSelectedItemId();
@@ -99,7 +105,9 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
         finish();
     }
 
-    /** Restores spinners default settings */
+    /**
+     * Restores spinners default settings
+     */
     public void restoreDefaults() {
         ContentValues values = new ContentValues();
         values.put(SettingsTable.COL_DISTANCE, 0);
@@ -115,7 +123,9 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
         resetSpinners();
     }
 
-    /** Resets spinners to 0 position */
+    /**
+     * Resets spinners to 0 position
+     */
     private void resetSpinners() {
         mDistanceSpinner.setSelection(0);
         mUnitSpinner.setSelection(0);
@@ -126,7 +136,7 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
     /**
      * Creates CursorLoaders
      *
-     * @param id CursorLoader ID
+     * @param id     CursorLoader ID
      * @param bundle May hold various data needed for queries
      * @return CursorLoader object
      */
@@ -134,7 +144,7 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
     public Loader<Cursor> onCreateLoader(int id, Bundle bundle) {
         Uri settingsUri = SettingsTable.CONTENT_URI;
 
-        switch(id) {
+        switch (id) {
             case DISTANCE_LOADER:
                 String[] distanceProjection = {SettingsTable.COL_DISTANCE};
                 return new CursorLoader(this, settingsUri, distanceProjection, null, null, null);
@@ -156,14 +166,14 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
      * Called after query is finished.
      *
      * @param cursorLoader CursorLoader object
-     * @param cursor Holds data from database query
+     * @param cursor       Holds data from database query
      */
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
         int loaderId = cursorLoader.getId();
         int cursorCount = cursor.getCount();
 
-        if(cursorCount > 0) {
+        if (cursorCount > 0) {
             cursor.moveToPosition(0);
             setSelections(loaderId, cursor);
         } else {
@@ -175,7 +185,7 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
      * Sets spinner selections
      *
      * @param loaderId Loader ID
-     * @param cursor Holds data from database query
+     * @param cursor   Holds data from database query
      */
     private void setSelections(int loaderId, Cursor cursor) {
         switch (loaderId) {

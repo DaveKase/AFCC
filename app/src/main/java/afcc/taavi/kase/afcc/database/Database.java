@@ -19,9 +19,9 @@ public class Database {
      * Helps to create and update database
      */
     public static final class DatabaseHelper extends SQLiteOpenHelper {
-        private static DatabaseHelper mInstance;
         private static final String DATABASE_NAME = "averageconsumption.db";
         private static final int DATABASE_VERSION = 6;
+        private static DatabaseHelper mInstance;
         private static SQLiteDatabase myWritableDb;
 
         /**
@@ -78,7 +78,7 @@ public class Database {
         /**
          * Upgrades a database
          *
-         * @param db Instance of database
+         * @param db         Instance of database
          * @param oldVersion Number of a previous database version
          * @param newVersion Number of a new database version
          */

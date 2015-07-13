@@ -51,7 +51,7 @@ public class MainActivity extends BaseActivity {
         int id = item.getItemId();
         Intent intent;
 
-        switch(id) {
+        switch (id) {
             case R.id.action_settings:
                 intent = new Intent(this, SettingsActivity.class);
                 break;
@@ -74,7 +74,7 @@ public class MainActivity extends BaseActivity {
     public void onClick(View clickedButton) {
         Intent intent = null;
 
-        switch(clickedButton.getId()) {
+        switch (clickedButton.getId()) {
             case R.id.fuelConsumptionButton:
                 intent = new Intent(this, AverageFuelConsumptionActivity.class);
                 break;
@@ -88,7 +88,7 @@ public class MainActivity extends BaseActivity {
 
         try {
             startActivity(intent);
-        } catch(NullPointerException e) {
+        } catch (NullPointerException e) {
             Log.e(TAG, "Error with starting activity, have you declared an intent");
         }
     }

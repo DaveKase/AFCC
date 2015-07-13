@@ -11,7 +11,7 @@ import android.net.Uri;
  * Holds settings table static variables and URI
  */
 public class SettingsTable implements BaseColumns {
-    public static final String TABLE_NAME ="settings";
+    public static final String TABLE_NAME = "settings";
     public static final String COL_DISTANCE = "distance";
     public static final String COL_UNIT = "unit";
     public static final String COL_CONSUMPTION = "consumption";
@@ -24,11 +24,11 @@ public class SettingsTable implements BaseColumns {
     public static final int SETTINGS = 1;
 
     public static final UriMatcher URIMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+    public static String CONTENT_TYPE = "vnd.android.cusror.dir/vnd.kase.settings";
+
     static {
         URIMatcher.addURI(Database.AUTHORITY, TABLE_NAME, SETTINGS);
     }
-
-    public static String CONTENT_TYPE = "vnd.android.cusror.dir/vnd.kase.settings";
 
     /**
      * Creates settings table

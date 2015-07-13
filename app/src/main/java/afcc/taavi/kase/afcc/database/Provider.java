@@ -1,11 +1,12 @@
 package afcc.taavi.kase.afcc.database;
 
-import afcc.taavi.kase.afcc.database.Database.DatabaseHelper;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
+
+import afcc.taavi.kase.afcc.database.Database.DatabaseHelper;
 
 /**
  * Created by Taavi on 24.09.2014.
@@ -19,9 +20,9 @@ public abstract class Provider {
 
     /**
      * @param context Application context
-     * @param helper Database helper
+     * @param helper  Database helper
      * @param matcher URI matcher
-     * */
+     */
     public Provider(Context context, DatabaseHelper helper, UriMatcher matcher) {
         mContext = context;
         mHelper = helper;
@@ -30,8 +31,11 @@ public abstract class Provider {
 
     // Abstract methods
     public abstract int delete(Uri uri, String selection, String[] selectionArgs);
+
     public abstract String getType(Uri uri);
+
     public abstract Uri insert(Uri uri, ContentValues values) throws Exception;
+
     public abstract Cursor query(Uri uri, String[] projection, String selection,
                                  String[] selectionArgs, String sortOrder);
 

@@ -1,7 +1,5 @@
 package afcc.taavi.kase.afcc.database;
 
-import afcc.taavi.kase.afcc.database.Database.DatabaseHelper;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.UriMatcher;
@@ -9,6 +7,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.text.TextUtils;
+
+import afcc.taavi.kase.afcc.database.Database.DatabaseHelper;
 
 /**
  * Created by Taavi Kase on 24.09.2014.
@@ -20,7 +20,7 @@ public class SettingsProvider extends Provider {
      * Constructor
      *
      * @param context Application context
-     * @param helper Database helper
+     * @param helper  Database helper
      * @param matcher URI matcher
      */
     public SettingsProvider(Context context, DatabaseHelper helper, UriMatcher matcher) {
@@ -47,8 +47,8 @@ public class SettingsProvider extends Provider {
     /**
      * Doesn't allow to delete anything from database
      *
-     * @param uri Path to Settings table
-     * @param selection Column names to select
+     * @param uri           Path to Settings table
+     * @param selection     Column names to select
      * @param selectionArgs Arguments for selection
      */
     @Override
@@ -59,7 +59,7 @@ public class SettingsProvider extends Provider {
     /**
      * Inserts data into settings table
      *
-     * @param uri Path to Settings table
+     * @param uri    Path to Settings table
      * @param values Values to insert into Settings table
      */
     @Override
@@ -74,7 +74,7 @@ public class SettingsProvider extends Provider {
             SQLiteDatabase db = this.mHelper.getMyWritableDatabase();
             long id = db.insertOrThrow(SettingsTable.TABLE_NAME, null, values);
             return Uri.withAppendedPath(uri, "" + id);
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -83,11 +83,11 @@ public class SettingsProvider extends Provider {
     /**
      * Queries data from database
      *
-     * @param uri Path to Settings table
-     * @param projection Column names
-     * @param selection Column names to select
+     * @param uri           Path to Settings table
+     * @param projection    Column names
+     * @param selection     Column names to select
      * @param selectionArgs Arguments for selection
-     * @param sortOrder The order to sort the result by
+     * @param sortOrder     The order to sort the result by
      * @return Cursor object with resulting data
      */
     @Override
@@ -112,21 +112,21 @@ public class SettingsProvider extends Provider {
     /**
      * Updates Settings table
      *
-     * @param uri Path to Settings table
-     * @param values Values to insert into Settings table
-     * @param selection Column names to select
+     * @param uri           Path to Settings table
+     * @param values        Values to insert into Settings table
+     * @param selection     Column names to select
      * @param selectionArgs Arguments for selection
      * @return Updated row count
      */
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
-        switch(SettingsTable.URIMatcher.match(uri)) {
+        switch (SettingsTable.URIMatcher.match(uri)) {
             case SettingsTable.SETTINGS:
                 SQLiteDatabase db = this.mHelper.getMyWritableDatabase();
-                Cursor cursor = db.query(SettingsTable.TABLE_NAME, new String[] {SettingsTable._ID}, null,
+                Cursor cursor = db.query(SettingsTable.TABLE_NAME, new String[]{SettingsTable._ID}, null,
                         null, null, null, null);
 
-                if(cursor.getCount() > 0) {
+                if (cursor.getCount() > 0) {
                     return db.update(SettingsTable.TABLE_NAME, values, selection, selectionArgs);
                 } else {
                     try {

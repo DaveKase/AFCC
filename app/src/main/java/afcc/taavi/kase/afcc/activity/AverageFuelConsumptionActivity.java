@@ -1,9 +1,5 @@
 package afcc.taavi.kase.afcc.activity;
 
-import afcc.taavi.kase.afcc.R;
-import afcc.taavi.kase.afcc.database.PreviousResultsTable;
-import afcc.taavi.kase.afcc.database.SettingsTable;
-
 import android.app.LoaderManager;
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -13,23 +9,27 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.widget.TextView;
 import android.view.View;
+import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import afcc.taavi.kase.afcc.R;
+import afcc.taavi.kase.afcc.database.PreviousResultsTable;
+import afcc.taavi.kase.afcc.database.SettingsTable;
 
 /**
  * Created by Taavi Kase on 24.09.2014.
  *
  * Average fuel consumption activity
  */
-public class AverageFuelConsumptionActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor>  {
+public class AverageFuelConsumptionActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+    private static final int SETTINGS_LOADER = 0;
     //private static String TAG = "AverageFuelConsumptionActivity";
     private String mAverageConsumption = "";
     private String mUnit = "";
-    private static final int SETTINGS_LOADER = 0;
 
     /**
      * Called when the activity is first created.
@@ -50,7 +50,7 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements Load
      * @param clickedButton Object of a clicked button
      */
     public void onClick(View clickedButton) {
-        switch(clickedButton.getId()) {
+        switch (clickedButton.getId()) {
             case R.id.calculateButton:
                 calculate();
                 break;
@@ -67,7 +67,7 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements Load
      * Gets the values from EditTexts, performs average fuel consumption calculation and shows the
      * result
      */
-    public void calculate() {
+    private void calculate() {
         try {
             double distance = parser(getTextFromEditText(R.id.distanceEdit));
             double fuel = parser(getTextFromEditText(R.id.fuelEdit));
@@ -100,9 +100,9 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements Load
     private void catcher() {
         String text;
 
-        if(getTextFromEditText(R.id.distanceEdit).equals("")) {
+        if (getTextFromEditText(R.id.distanceEdit).equals("")) {
             text = "Insert value to distance travelled box!";
-        } else if(getTextFromEditText(R.id.fuelEdit).equals("")) {
+        } else if (getTextFromEditText(R.id.fuelEdit).equals("")) {
             text = "Insert value to fuel box!";
         } else {
             text = "Wrong values used, try again!";
@@ -115,7 +115,7 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements Load
      * Saves the result to database
      */
     private void save() {
-        if(!mAverageConsumption.equals("")) {
+        if (!mAverageConsumption.equals("")) {
             saveResults();
         } else {
             makeToast("Nothing to save");
@@ -152,7 +152,7 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements Load
     /**
      * Creates CursorLoaders
      *
-     * @param id CursorLoader ID
+     * @param id     CursorLoader ID
      * @param bundle May hold various data needed for queries
      * @return CursorLoader object
      */
@@ -160,7 +160,7 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements Load
     public Loader<Cursor> onCreateLoader(int id, Bundle bundle) {
         Uri settingsUri = SettingsTable.CONTENT_URI;
 
-        switch(id) {
+        switch (id) {
             case SETTINGS_LOADER:
                 return new CursorLoader(this, settingsUri, null, null, null, null);
             default:
@@ -172,13 +172,13 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements Load
      * Called after query is finished.
      *
      * @param cursorLoader CursorLoader object
-     * @param cursor Holds data from database query
+     * @param cursor       Holds data from database query
      */
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
-        switch(cursorLoader.getId()) {
+        switch (cursorLoader.getId()) {
             case SETTINGS_LOADER:
-                if(cursor.getCount() > 0) {
+                if (cursor.getCount() > 0) {
                     cursor.moveToPosition(0);
                     int distance = cursor.getInt(cursor.getColumnIndex(SettingsTable.COL_DISTANCE));
                     int unit = cursor.getInt(cursor.getColumnIndex(SettingsTable.COL_UNIT));
@@ -193,7 +193,7 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements Load
      * Sets texts to unit TextViews
      *
      * @param distance Integer representation of distance unit
-     * @param unit Integer representation of amount unit
+     * @param unit     Integer representation of amount unit
      */
     private void setTexts(int distance, int unit) {
         TextView distanceText = (TextView) findViewById(R.id.kmText);

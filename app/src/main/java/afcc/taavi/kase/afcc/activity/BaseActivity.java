@@ -1,16 +1,17 @@
 package afcc.taavi.kase.afcc.activity;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-
 import android.app.Activity;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 /**
  * Created by Taavi Kase.
- *
- * This class is used to contain methods that would otherwise be repeated in sub-activities.
+ * <p/>
+ * This class is used to contain constants and methods that would otherwise be repeated in
+ * sub-activities.
  */
 public class BaseActivity extends Activity {
     public static final int DISTANCE_KM = 0;

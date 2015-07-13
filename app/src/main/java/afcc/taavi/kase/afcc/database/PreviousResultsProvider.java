@@ -45,8 +45,8 @@ public class PreviousResultsProvider extends Provider {
     /**
      * Deletes records from database
      *
-     * @param uri Path to Settings table
-     * @param selection Column names to select
+     * @param uri           Path to Settings table
+     * @param selection     Column names to select
      * @param selectionArgs Arguments for selection
      */
     @Override
@@ -57,7 +57,7 @@ public class PreviousResultsProvider extends Provider {
     /**
      * Inserts data into settings table
      *
-     * @param uri Path to Settings table
+     * @param uri    Path to Settings table
      * @param values Values to insert into Settings table
      */
     @Override
@@ -72,7 +72,7 @@ public class PreviousResultsProvider extends Provider {
             SQLiteDatabase db = this.mHelper.getMyWritableDatabase();
             long id = db.insertOrThrow(PreviousResultsTable.TABLE_NAME, null, values);
             return Uri.withAppendedPath(uri, "" + id);
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -81,11 +81,11 @@ public class PreviousResultsProvider extends Provider {
     /**
      * Queries data from database
      *
-     * @param uri Path to Settings table
-     * @param projection Column names
-     * @param selection Column names to select
+     * @param uri           Path to Settings table
+     * @param projection    Column names
+     * @param selection     Column names to select
      * @param selectionArgs Arguments for selection
-     * @param sortOrder The order to sort the result by
+     * @param sortOrder     The order to sort the result by
      * @return Cursor object with resulting data
      */
     @Override
@@ -113,21 +113,21 @@ public class PreviousResultsProvider extends Provider {
     /**
      * Updates Settings table
      *
-     * @param uri Path to Settings table
-     * @param values Values to insert into Settings table
-     * @param selection Column names to select
+     * @param uri           Path to Settings table
+     * @param values        Values to insert into Settings table
+     * @param selection     Column names to select
      * @param selectionArgs Arguments for selection
      * @return Updated row count
      */
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
-        switch(PreviousResultsTable.URIMatcher.match(uri)) {
+        switch (PreviousResultsTable.URIMatcher.match(uri)) {
             case PreviousResultsTable.RESULTS:
                 SQLiteDatabase db = this.mHelper.getMyWritableDatabase();
                 Cursor cursor = db.query(PreviousResultsTable.TABLE_NAME,
-                        new String[] {PreviousResultsTable._ID}, null, null, null, null, null);
+                        new String[]{PreviousResultsTable._ID}, null, null, null, null, null);
 
-                if(cursor.getCount() > 0) {
+                if (cursor.getCount() > 0) {
                     return db.update(PreviousResultsTable.TABLE_NAME, values, selection, selectionArgs);
                 } else {
                     try {

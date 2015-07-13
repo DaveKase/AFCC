@@ -1,8 +1,5 @@
 package afcc.taavi.kase.afcc.activity;
 
-import afcc.taavi.kase.afcc.R;
-import afcc.taavi.kase.afcc.database.PreviousResultsTable;
-
 import android.app.ListActivity;
 import android.app.LoaderManager;
 import android.content.CursorLoader;
@@ -17,15 +14,19 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
+import afcc.taavi.kase.afcc.R;
+import afcc.taavi.kase.afcc.database.PreviousResultsTable;
+
 /**
  * Created by Taavi Kase
- *
+ * <p/>
  * This activity shows saved results as a list view
  */
 public class PreviousResultsActivity extends ListActivity
         implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final int RESULTS_LOADER = 0;
+
     private SimpleCursorAdapter mAdapter;
     private String[] mProjection = {PreviousResultsTable._ID, PreviousResultsTable.COL_ROW,
             PreviousResultsTable.COL_RESULT, PreviousResultsTable.COL_UNIT,
@@ -45,6 +46,26 @@ public class PreviousResultsActivity extends ListActivity
     }
 
     /**
+     * Here we will change the data from cursor to more convenient format
+     */
+    SimpleCursorAdapter.ViewBinder viewBinder = new SimpleCursorAdapter.ViewBinder() {
+        public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
+            switch (view.getId()) {
+                case R.id.nrText:
+                    TextView nrText = (TextView) view;
+                    int row = cursor.getPosition() + 1;
+                    String rowNr = "" + row;
+                    nrText.setText(rowNr);
+                    break;
+                default:
+                    return false;
+            }
+
+            return true;
+        }
+    };
+
+    /**
      * Queries previous results from database, puts it to ListView
      */
     private void setPreviousResults() {
@@ -61,12 +82,12 @@ public class PreviousResultsActivity extends ListActivity
         resultsList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
-                return longClick(adapterView, view, position, id);
+                return longClick(id);
             }
         });
     }
 
-    private boolean longClick(AdapterView<?> adapterView, View view, int position, long id) {
+    private boolean longClick( long id) {
         Log.d("PRA", "id = " + id);
         return true;
     }
@@ -74,8 +95,8 @@ public class PreviousResultsActivity extends ListActivity
     /**
      * Instantiate and return a new Loader for the given ID.
      *
-     * @param id  The ID whose loader is to be created.
-     * @param bundle  Any arguments supplied by the caller.
+     * @param id     The ID whose loader is to be created.
+     * @param bundle Any arguments supplied by the caller.
      * @return Return a new Loader instance that is ready to start loading.
      */
     @Override
@@ -96,36 +117,16 @@ public class PreviousResultsActivity extends ListActivity
      * old cursor once we return.)
      *
      * @param cursorLoader Current cursorLoader object
-     * @param cursor Holds data from database
+     * @param cursor       Holds data from database
      */
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
-        switch(cursorLoader.getId()) {
+        switch (cursorLoader.getId()) {
             case RESULTS_LOADER:
                 mAdapter.swapCursor(cursor);
                 break;
         }
     }
-
-    /**
-     * Here we will change the data from cursor to more convenient format
-     */
-    SimpleCursorAdapter.ViewBinder viewBinder = new SimpleCursorAdapter.ViewBinder() {
-        public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
-            switch(view.getId()) {
-                case R.id.nrText:
-                    TextView nrText = (TextView) view;
-                    int row = cursor.getPosition() + 1;
-                    String rowNr = "" + row;
-                    nrText.setText(rowNr);
-                    break;
-                default:
-                    return false;
-            }
-
-            return true;
-        }
-    };
 
     /**
      * Called when a previously created loader is reset, making the data unavailable.
