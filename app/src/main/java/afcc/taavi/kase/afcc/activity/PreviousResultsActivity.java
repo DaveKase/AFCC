@@ -1,8 +1,10 @@
 package afcc.taavi.kase.afcc.activity;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.app.LoaderManager;
 import android.content.CursorLoader;
+import android.content.DialogInterface;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
@@ -13,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import afcc.taavi.kase.afcc.R;
 import afcc.taavi.kase.afcc.database.PreviousResultsTable;
@@ -26,7 +29,6 @@ public class PreviousResultsActivity extends ListActivity
         implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final int RESULTS_LOADER = 0;
-
     private SimpleCursorAdapter mAdapter;
     private String[] mProjection = {PreviousResultsTable._ID, PreviousResultsTable.COL_ROW,
             PreviousResultsTable.COL_RESULT, PreviousResultsTable.COL_UNIT,
@@ -44,7 +46,6 @@ public class PreviousResultsActivity extends ListActivity
 
         setPreviousResults();
     }
-
     /**
      * Here we will change the data from cursor to more convenient format
      */
@@ -87,9 +88,41 @@ public class PreviousResultsActivity extends ListActivity
         });
     }
 
-    private boolean longClick( long id) {
-        Log.d("PRA", "id = " + id);
+    /**
+     * Called when user long clicks a list item
+     *
+     * @param id ID of an item that was clicked
+     * @return true
+     */
+    private boolean longClick(final long id) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle("Delete an Item?");
+        builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                onDeleteClicked(id);
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builder.show();
         return true;
+    }
+
+    /**
+     * Called when user clicks on Delete in the alert dialog
+     *
+     * @param id ID of an item that is to be deleted
+     */
+    private void onDeleteClicked(long id) {
+        Log.d("PRA", "delete id " + id);
+        Toast.makeText(PreviousResultsActivity.this, "Item " + id + " deleted",
+                Toast.LENGTH_SHORT).show();
     }
 
     /**

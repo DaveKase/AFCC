@@ -7,6 +7,7 @@ import junit.framework.TestCase;
 /**
  * Created by Taavi Kase on 10.07.2015 16:57.
  */
+@SuppressWarnings("ALL")
 public class AverageFuelConsumptionActivityTest extends TestCase {
     private static final String TAG = "AfccActivityTest";
 
