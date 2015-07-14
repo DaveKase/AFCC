@@ -51,7 +51,8 @@ public class PreviousResultsProvider extends Provider {
      */
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
-        return 0;
+        SQLiteDatabase db = this.mHelper.getMyWritableDatabase();
+        return db.delete(PreviousResultsTable.TABLE_NAME, selection, selectionArgs);
     }
 
     /**

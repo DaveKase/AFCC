@@ -1,6 +1,5 @@
 package afcc.taavi.kase.afcc.activity;
 
-import android.app.Activity;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -13,7 +12,7 @@ import afcc.taavi.kase.afcc.R;
  *
  * Average fuel consumption activity
  */
-public class AboutActivity extends Activity {
+public class AboutActivity extends BaseActivity {
     /**
      * Called when the activity is first created.
      *

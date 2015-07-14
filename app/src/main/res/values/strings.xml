@@ -24,5 +24,6 @@
     <string name="title_activity_average_speed">AverageSpeedActivity</string>
     <string name="title_activity_speedometer">SpeedometerActivity</string>
     <string name="version">Version:</string>
+    <string name="empty">No previous results</string>
 
 </resources>

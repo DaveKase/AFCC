@@ -10,7 +10,6 @@ import afcc.taavi.kase.afcc.R;
  * Average speed calculator activity
  */
 public class AverageSpeedActivity extends BaseActivity {
-
     /**
      * Called when the activity is first created.
      *

@@ -1,6 +1,7 @@
 package afcc.taavi.kase.afcc.activity;
 
 import android.app.Activity;
+import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -28,6 +29,23 @@ public class BaseActivity extends Activity {
 
     public static final int SPEED_KM_H = 0;
     public static final int SPED_MPH = 1;
+
+    /**
+     * Called when user selects a menu item
+     *
+     * @param item Item that was selected
+     * @return True if selection was handled, false otherwise
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     /**
      * Makes Toast messages with text specified.

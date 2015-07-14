@@ -3,13 +3,14 @@ package afcc.taavi.kase.afcc.activity;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.app.LoaderManager;
+import android.content.ContentResolver;
 import android.content.CursorLoader;
 import android.content.DialogInterface;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -22,7 +23,7 @@ import afcc.taavi.kase.afcc.database.PreviousResultsTable;
 
 /**
  * Created by Taavi Kase
- * <p/>
+ *
  * This activity shows saved results as a list view
  */
 public class PreviousResultsActivity extends ListActivity
@@ -46,6 +47,24 @@ public class PreviousResultsActivity extends ListActivity
 
         setPreviousResults();
     }
+
+    /**
+     * Called when user selects a menu item
+     *
+     * @param item Item that was selected
+     * @return True if selection was handled, false otherwise
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     /**
      * Here we will change the data from cursor to more convenient format
      */
@@ -120,8 +139,17 @@ public class PreviousResultsActivity extends ListActivity
      * @param id ID of an item that is to be deleted
      */
     private void onDeleteClicked(long id) {
-        Log.d("PRA", "delete id " + id);
-        Toast.makeText(PreviousResultsActivity.this, "Item " + id + " deleted",
+        Uri uri = PreviousResultsTable.CONTENT_URI;
+        String selection = PreviousResultsTable._ID + " = ?";
+        String[] selectionArgs = {String.valueOf(id)};
+
+        ContentResolver content = getContentResolver();
+        content.delete(uri, selection, selectionArgs);
+
+        getLoaderManager().restartLoader(RESULTS_LOADER, null, this);
+        mAdapter.notifyDataSetChanged();
+
+        Toast.makeText(PreviousResultsActivity.this, "Item deleted",
                 Toast.LENGTH_SHORT).show();
     }
 
