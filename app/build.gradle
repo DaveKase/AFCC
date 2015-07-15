@@ -1,19 +1,19 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 20
+    compileSdkVersion 21
     buildToolsVersion "20.0.0"
 
     defaultConfig {
         applicationId "afcc.taavi.kase.afcc"
         minSdkVersion 19
-        targetSdkVersion 20
-        versionCode 6
-        versionName "0.0.6 (development)"
+        targetSdkVersion 21
+        versionCode 7
+        versionName "0.0.7 (development)"
     }
     buildTypes {
         release {
-            minifyEnabled = false
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
