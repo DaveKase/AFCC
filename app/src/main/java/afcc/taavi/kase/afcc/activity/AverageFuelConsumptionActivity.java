@@ -30,6 +30,7 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements Load
     //private static String TAG = "AverageFuelConsumptionActivity";
     private String mAverageConsumption = "";
     private String mUnit = "";
+    private int mCalculationType = 0;
 
     /**
      * Called when the activity is first created.
@@ -69,14 +70,64 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements Load
      */
     private void calculate() {
         try {
-            double distance = parser(getTextFromEditText(R.id.distanceEdit));
-            double fuel = parser(getTextFromEditText(R.id.fuelEdit));
-            double value = (fuel * 100) / distance;
-            String result = rounder(value);
+            String result = "";
+            switch(mCalculationType) {
+                case CONSUMPTION_L_100_KM:
+                    result = calculateL100Km();
+                    break;
+                case CONSUMPTION_KM_L:
+                    result = calculateLkm();
+                    break;
+                case CONSUMPTION_MPG_USA:
+                    result = calculateMpg();
+                    break;
+                case CONSUMPTION_MPG_UK:
+                    result = calculateMpg();
+                    break;
+                default:
+                    makeToast("Did not find calculation type");
+            }
+
             showResult(result);
         } catch (NumberFormatException e) {
             catcher();
         }
+    }
+
+    /**
+     * Calculates fuel consumption for l / 100km calculation type
+     *
+     * @return Result as string
+     */
+    private String calculateL100Km() {
+        double distance = parser(getTextFromEditText(R.id.distanceEdit));
+        double fuel = parser(getTextFromEditText(R.id.fuelEdit));
+        double value = (fuel * 100) / distance;
+        return rounder(value);
+    }
+
+    /**
+     * Calculates fuel consumption for l / km calculation type
+     *
+     * @return Result as string
+     */
+    private String calculateLkm() {
+        double distance = parser(getTextFromEditText(R.id.distanceEdit));
+        double fuel = parser(getTextFromEditText(R.id.fuelEdit));
+        double value = distance / fuel;
+        return rounder(value);
+    }
+
+    /**
+     * Calculates fuel consumption for mpg calculation type (both US and UK types)
+     *
+     * @return Result as string
+     */
+    private String calculateMpg() {
+        double distance = parser(getTextFromEditText(R.id.distanceEdit));
+        double fuel = parser(getTextFromEditText(R.id.fuelEdit));
+        double value = distance / fuel;
+        return rounder(value);
     }
 
     /**
@@ -87,7 +138,7 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements Load
     private void showResult(String result) {
         TextView averageText = (TextView) findViewById(R.id.averageText);
         TextView averageResultText = (TextView) findViewById(R.id.averageResultText);
-        mAverageConsumption = result + " l / 100 km";
+        mAverageConsumption = result + getResultUnit();
 
         averageResultText.setText(mAverageConsumption);
         averageText.setVisibility(View.VISIBLE);
@@ -182,6 +233,7 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements Load
                     cursor.moveToPosition(0);
                     int distance = cursor.getInt(cursor.getColumnIndex(SettingsTable.COL_DISTANCE));
                     int unit = cursor.getInt(cursor.getColumnIndex(SettingsTable.COL_UNIT));
+                    mCalculationType = cursor.getInt(cursor.getColumnIndex(SettingsTable.COL_CONSUMPTION));
                     setTexts(distance, unit);
                 }
 
@@ -240,6 +292,26 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements Load
         }
 
         return "";
+    }
+
+    /**
+     * Returns unit name for calculation type
+     *
+     * @return Unit name based on calculation type
+     */
+    private String getResultUnit() {
+        switch (mCalculationType) {
+            case CONSUMPTION_L_100_KM:
+                return " l / 100 km";
+            case CONSUMPTION_KM_L:
+                return " km / l";
+            case CONSUMPTION_MPG_USA:
+                return " mpg";
+            case CONSUMPTION_MPG_UK:
+                return " mpg";
+            default:
+                return "";
+        }
     }
 
     /**

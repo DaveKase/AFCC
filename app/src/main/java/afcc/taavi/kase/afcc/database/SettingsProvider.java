@@ -96,7 +96,8 @@ public class SettingsProvider extends Provider {
 
         if (projection == null || projection.length == 0)
             projection = new String[]{SettingsTable._ID, SettingsTable.COL_DISTANCE,
-                    SettingsTable.COL_UNIT, SettingsTable.COL_UNIT, SettingsTable.COL_SPEED};
+                    SettingsTable.COL_UNIT, SettingsTable.COL_UNIT, SettingsTable.COL_SPEED,
+                    SettingsTable.COL_CONSUMPTION};
 
         if (TextUtils.isEmpty(sortOrder))
             sortOrder = SettingsTable.DEFAULT_SORT_ORDER;
