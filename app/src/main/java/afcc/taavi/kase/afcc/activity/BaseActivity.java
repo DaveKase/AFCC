@@ -1,6 +1,6 @@
 package afcc.taavi.kase.afcc.activity;
 
-import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -10,11 +10,11 @@ import java.math.RoundingMode;
 
 /**
  * Created by Taavi Kase.
- * <p/>
+ *
  * This class is used to contain constants and methods that would otherwise be repeated in
  * sub-activities.
  */
-public class BaseActivity extends Activity {
+public class BaseActivity extends FragmentActivity {
     public static final int DISTANCE_KM = 0;
     public static final int DISTANCE_MILES = 1;
 

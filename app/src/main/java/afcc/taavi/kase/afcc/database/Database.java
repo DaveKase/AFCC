@@ -58,8 +58,6 @@ public class Database {
                 myWritableDb = this.getWritableDatabase();
             }
 
-            myWritableDb.enableWriteAheadLogging();
-
             return myWritableDb;
         }
 

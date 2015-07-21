@@ -1,20 +1,19 @@
 package afcc.taavi.kase.afcc.activity;
 
 import android.app.AlertDialog;
-import android.app.ListActivity;
-import android.app.LoaderManager;
 import android.content.ContentResolver;
-import android.content.CursorLoader;
 import android.content.DialogInterface;
-import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,7 +25,7 @@ import afcc.taavi.kase.afcc.database.PreviousResultsTable;
  *
  * This activity shows saved results as a list view
  */
-public class PreviousResultsActivity extends ListActivity
+public class PreviousResultsActivity extends BaseActivity
         implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final int RESULTS_LOADER = 0;
@@ -94,10 +93,13 @@ public class PreviousResultsActivity extends ListActivity
                 mProjection, to, RESULTS_LOADER);
 
         mAdapter.setViewBinder(viewBinder);
-        getLoaderManager().restartLoader(RESULTS_LOADER, null, this);
+        getSupportLoaderManager().restartLoader(RESULTS_LOADER, null, this);
 
         ListView resultsList = (ListView) findViewById(android.R.id.list);
         resultsList.setAdapter(mAdapter);
+
+        TextView empty = (TextView) findViewById(R.id.empty);
+        resultsList.setEmptyView(empty);
 
         resultsList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -146,7 +148,7 @@ public class PreviousResultsActivity extends ListActivity
         ContentResolver content = getContentResolver();
         content.delete(uri, selection, selectionArgs);
 
-        getLoaderManager().restartLoader(RESULTS_LOADER, null, this);
+        getSupportLoaderManager().restartLoader(RESULTS_LOADER, null, this);
         mAdapter.notifyDataSetChanged();
 
         Toast.makeText(PreviousResultsActivity.this, "Item deleted",

@@ -1,15 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 21
+    compileSdkVersion 22
     buildToolsVersion "20.0.0"
-
     defaultConfig {
         applicationId "afcc.taavi.kase.afcc"
-        minSdkVersion 19
-        targetSdkVersion 21
-        versionCode 7
-        versionName "0.0.7 (development)"
+        minSdkVersion 10
+        targetSdkVersion 22
+        versionCode 8
+        versionName "0.0.8 (development)"
     }
     buildTypes {
         release {
@@ -17,8 +16,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:support-v4:22.2.1'
 }
