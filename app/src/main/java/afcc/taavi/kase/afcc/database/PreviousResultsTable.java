@@ -28,8 +28,12 @@ public class PreviousResultsTable implements BaseColumns {
         URIMatcher.addURI(Database.AUTHORITY, TABLE_NAME, RESULTS);
         URIMatcher.addURI(Database.AUTHORITY, TABLE_NAME + "/#", RESULT);
     }
-    //public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd.kase.result";
 
+    /**
+     * Creates previous results table
+     *
+     * @param db Instance of database
+     */
     public static void createTable(SQLiteDatabase db) {
         String sql = "CREATE TABLE " + TABLE_NAME + "("
                 + _ID + " INTEGER PRIMARY KEY, "

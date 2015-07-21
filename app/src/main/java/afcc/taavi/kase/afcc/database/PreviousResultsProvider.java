@@ -28,8 +28,8 @@ public class PreviousResultsProvider extends Provider {
     /**
      * Returns content type
      *
-     * @param uri Path to Settings table
-     * @return ContentType of Settings table
+     * @param uri Path to Previous Results table
+     * @return ContentType of Previous Results table
      */
     @Override
     public String getType(Uri uri) {
@@ -45,9 +45,10 @@ public class PreviousResultsProvider extends Provider {
     /**
      * Deletes records from database
      *
-     * @param uri           Path to Settings table
+     * @param uri           Path to Previous Results table
      * @param selection     Column names to select
      * @param selectionArgs Arguments for selection
+     * @return the number of rows affected
      */
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
@@ -56,10 +57,11 @@ public class PreviousResultsProvider extends Provider {
     }
 
     /**
-     * Inserts data into settings table
+     * Inserts data into Previous Results table
      *
-     * @param uri    Path to Settings table
-     * @param values Values to insert into Settings table
+     * @param uri    Path to Previous Results table
+     * @param values Values to insert into Previous Results table
+     * @return the row ID of the newly inserted row, or -1 if an error occurred
      */
     @Override
     public Uri insert(Uri uri, ContentValues values) throws Exception {
@@ -82,7 +84,7 @@ public class PreviousResultsProvider extends Provider {
     /**
      * Queries data from database
      *
-     * @param uri           Path to Settings table
+     * @param uri           Path to Previous Results table
      * @param projection    Column names
      * @param selection     Column names to select
      * @param selectionArgs Arguments for selection
@@ -112,10 +114,10 @@ public class PreviousResultsProvider extends Provider {
     }
 
     /**
-     * Updates Settings table
+     * Updates Previous Results table
      *
-     * @param uri           Path to Settings table
-     * @param values        Values to insert into Settings table
+     * @param uri           Path to Previous Results table
+     * @param values        Values to insert into Previous Results table
      * @param selection     Column names to select
      * @param selectionArgs Arguments for selection
      * @return Updated row count

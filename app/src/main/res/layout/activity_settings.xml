@@ -37,8 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/distanceSpinner"
         android:layout_alignLeft="@+id/distanceSpinner"
-        android:layout_alignTop="@+id/amountText"
-        android:entries="@array/amounts" />
+        android:layout_alignTop="@+id/amountText" />
 
     <TextView
         android:id="@+id/consumptionText"
@@ -55,8 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/distanceText"
         android:layout_toEndOf="@+id/consumptionText"
-        android:layout_toRightOf="@+id/consumptionText"
-        android:entries="@array/distances" />
+        android:layout_toRightOf="@+id/consumptionText" />
 
     <Spinner
         android:id="@+id/consumptionSpinner"
@@ -64,8 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/unitSpinner"
         android:layout_alignLeft="@+id/unitSpinner"
-        android:layout_alignTop="@+id/consumptionText"
-        android:entries="@array/consumptions" />
+        android:layout_alignTop="@+id/consumptionText" />
 
     <Button
         android:id="@+id/saveButton"
@@ -92,8 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/consumptionSpinner"
         android:layout_alignStart="@+id/consumptionSpinner"
-        android:layout_alignLeft="@+id/consumptionSpinner"
-        android:entries="@array/speed" />
+        android:layout_alignLeft="@+id/consumptionSpinner" />
 
     <Button
         android:id="@+id/restoreButton"

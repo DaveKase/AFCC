@@ -20,7 +20,7 @@ public class Database {
      */
     public static final class DatabaseHelper extends SQLiteOpenHelper {
         private static final String DATABASE_NAME = "averageconsumption.db";
-        private static final int DATABASE_VERSION = 6;
+        private static final int DATABASE_VERSION = 7;
         private static DatabaseHelper mInstance;
         private static SQLiteDatabase myWritableDb;
 
@@ -69,6 +69,12 @@ public class Database {
         @Override
         public void onCreate(SQLiteDatabase db) {
             Log.i(TAG, "creating database " + DATABASE_NAME + " version: " + DATABASE_VERSION);
+
+            DistanceTable.createTable(db);
+            UnitTable.createTable(db);
+            ConsumptionTable.createTable(db);
+            SpeedTable.createTable(db);
+
             SettingsTable.createTable(db);
             PreviousResultsTable.createTable(db);
         }
@@ -83,8 +89,54 @@ public class Database {
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             Log.w(TAG, "Upgrading database from version " + oldVersion + " to " + newVersion);
+
+            onUpgradeDistance(db);
+            onUpgradeUnit(db);
+            onUpgradeConsumption(db);
+            onUpgradeSpeed(db);
+
             onUpgradeSettings(db);
             onUpgradePreviousResults(db);
+        }
+
+        /**
+         * Upgrades distance table
+         *
+         * @param db Instance of database
+         */
+        private void onUpgradeDistance(SQLiteDatabase db) {
+            db.execSQL("DROP TABLE IF EXISTS " + DistanceTable.TABLE_NAME);
+            DistanceTable.createTable(db);
+        }
+
+        /**
+         * Upgrades unit table
+         *
+         * @param db Instance of database
+         */
+        private void onUpgradeUnit(SQLiteDatabase db) {
+            db.execSQL("DROP TABLE IF EXISTS " + UnitTable.TABLE_NAME);
+            UnitTable.createTable(db);
+        }
+
+        /**
+         * Upgrades consumption table
+         *
+         * @param db Instance of database
+         */
+        private void onUpgradeConsumption(SQLiteDatabase db) {
+            db.execSQL("DROP TABLE IF EXISTS " + ConsumptionTable.TABLE_NAME);
+            ConsumptionTable.createTable(db);
+        }
+
+        /**
+         * Upgrades speed table
+         *
+         * @param db Instance of database
+         */
+        private void onUpgradeSpeed(SQLiteDatabase db) {
+            db.execSQL("DROP TABLE IF EXISTS " + SpeedTable.TABLE_NAME);
+            SpeedTable.createTable(db);
         }
 
         /**

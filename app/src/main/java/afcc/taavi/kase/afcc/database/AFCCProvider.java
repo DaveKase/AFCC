@@ -25,6 +25,10 @@ public class AFCCProvider extends ContentProvider {
     public boolean onCreate() {
         mOpenHelper = DatabaseHelper.getInstance(getContext());
         providers = new Provider[]{
+                new DistanceProvider(getContext(), mOpenHelper, DistanceTable.URIMatcher),
+                new UnitProvider(getContext(), mOpenHelper, UnitTable.URIMatcher),
+                new ConsumptionProvider(getContext(), mOpenHelper, ConsumptionTable.URIMatcher),
+                new SpeedProvider(getContext(), mOpenHelper, SpeedTable.URIMatcher),
                 new SettingsProvider(getContext(), mOpenHelper, SettingsTable.URIMatcher),
                 new PreviousResultsProvider(getContext(), mOpenHelper,
                         PreviousResultsTable.URIMatcher)

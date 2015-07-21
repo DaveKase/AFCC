@@ -24,6 +24,10 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
     private static final int UNIT_LOADER = 1;
     private static final int CONSUMPTION_LOADER = 2;
     private static final int SPEED_LOADER = 3;
+    private static final int DISTANCE_SPINNER_LOADER = 4;
+    private static final int UNIT_SPINNER_LOADER = 5;
+    private static final int CONSUMPTION_SPINNER_LOADER = 6;
+    private static final int SPEED_SPINNER_LOADER = 7;
 
     private Spinner mDistanceSpinner;
     private Spinner mUnitSpinner;
@@ -170,15 +174,24 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
      */
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
-        int loaderId = cursorLoader.getId();
-        int cursorCount = cursor.getCount();
-
-        if (cursorCount > 0) {
-            cursor.moveToPosition(0);
-            setSelections(loaderId, cursor);
-        } else {
-            resetSpinners();
+        switch (cursorLoader.getId()) {
+            case DISTANCE_LOADER:
+                break;
         }
+
+//        int loaderId = cursorLoader.getId();
+//        int cursorCount = cursor.getCount();
+//
+//        if (cursorCount > 0) {
+//            cursor.moveToPosition(0);
+//            setSelections(loaderId, cursor);
+//        } else {
+//            resetSpinners();
+//        }
+    }
+
+    private void startSpinnerLoaders() {
+
     }
 
     /**

@@ -50,6 +50,7 @@ public class SettingsProvider extends Provider {
      * @param uri           Path to Settings table
      * @param selection     Column names to select
      * @param selectionArgs Arguments for selection
+     * @throws UnsupportedOperationException
      */
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
@@ -57,10 +58,11 @@ public class SettingsProvider extends Provider {
     }
 
     /**
-     * Inserts data into settings table
+     * Inserts data into Settings table
      *
      * @param uri    Path to Settings table
      * @param values Values to insert into Settings table
+     * @return the row ID of the newly inserted row, or -1 if an error occurred
      */
     @Override
     public Uri insert(Uri uri, ContentValues values) throws Exception {
