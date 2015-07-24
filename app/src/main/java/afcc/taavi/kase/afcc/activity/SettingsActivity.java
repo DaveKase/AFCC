@@ -8,11 +8,17 @@ import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Spinner;
 
 import afcc.taavi.kase.afcc.R;
+import afcc.taavi.kase.afcc.database.ConsumptionTable;
+import afcc.taavi.kase.afcc.database.DistanceTable;
 import afcc.taavi.kase.afcc.database.SettingsTable;
+import afcc.taavi.kase.afcc.database.SpeedTable;
+import afcc.taavi.kase.afcc.database.UnitTable;
 
 /**
  * Created by Taavi Kase
@@ -20,14 +26,23 @@ import afcc.taavi.kase.afcc.database.SettingsTable;
  * Settings activity
  */
 public class SettingsActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor> {
-    private static final int DISTANCE_LOADER = 0;
-    private static final int UNIT_LOADER = 1;
-    private static final int CONSUMPTION_LOADER = 2;
-    private static final int SPEED_LOADER = 3;
-    private static final int DISTANCE_SPINNER_LOADER = 4;
-    private static final int UNIT_SPINNER_LOADER = 5;
-    private static final int CONSUMPTION_SPINNER_LOADER = 6;
-    private static final int SPEED_SPINNER_LOADER = 7;
+    //private static final String TAG = "SettingsActivity";
+    private static final int SETTINGS_LOADER = 0;
+    private static final int DISTANCE_SPINNER_LOADER = 1;
+    private static final int UNIT_SPINNER_LOADER = 2;
+    private static final int CONSUMPTION_SPINNER_LOADER = 3;
+    private static final int SPEED_SPINNER_LOADER = 4;
+
+    private int mDistance = 0;
+    private int mUnit = 0;
+    private int mConsumption = 0;
+    private int mSpeed = 0;
+    private int mPosition = 0;
+
+    private SimpleCursorAdapter mDistanceAdapter;
+    private SimpleCursorAdapter mUnitAdapter;
+    private SimpleCursorAdapter mConsumptionAdapter;
+    private SimpleCursorAdapter mSpeedAdapter;
 
     private Spinner mDistanceSpinner;
     private Spinner mUnitSpinner;
@@ -45,7 +60,6 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
         setContentView(R.layout.activity_settings);
 
         initializeSpinners();
-        startLoaders();
     }
 
     /**
@@ -56,16 +70,8 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
         mUnitSpinner = (Spinner) findViewById(R.id.unitSpinner);
         mConsumptionSpinner = (Spinner) findViewById(R.id.consumptionSpinner);
         mSpeedSpinner = (Spinner) findViewById(R.id.speedSpinner);
-    }
 
-    /**
-     * Starts CursorLoaders
-     */
-    private void startLoaders() {
-        getSupportLoaderManager().restartLoader(DISTANCE_LOADER, null, this);
-        getSupportLoaderManager().restartLoader(UNIT_LOADER, null, this);
-        getSupportLoaderManager().restartLoader(CONSUMPTION_LOADER, null, this);
-        getSupportLoaderManager().restartLoader(SPEED_LOADER, null, this);
+        getSupportLoaderManager().restartLoader(SETTINGS_LOADER, null, this);
     }
 
     /**
@@ -89,17 +95,17 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
     /**
      * Called when Save button is clicked. Saves all data to database
      */
-    public void save() {
-        int distance = (int) mDistanceSpinner.getSelectedItemId();
-        int unit = (int) mUnitSpinner.getSelectedItemId();
-        int consumption = (int) mConsumptionSpinner.getSelectedItemId();
-        int speed = (int) mSpeedSpinner.getSelectedItemId();
+    private void save() {
+        mDistance = (int) mDistanceSpinner.getSelectedItemId();
+        mUnit = (int) mUnitSpinner.getSelectedItemId();
+        mConsumption = (int) mConsumptionSpinner.getSelectedItemId();
+        mSpeed = (int) mSpeedSpinner.getSelectedItemId();
 
         ContentValues values = new ContentValues();
-        values.put(SettingsTable.COL_DISTANCE, distance);
-        values.put(SettingsTable.COL_UNIT, unit);
-        values.put(SettingsTable.COL_CONSUMPTION, consumption);
-        values.put(SettingsTable.COL_SPEED, speed);
+        values.put(SettingsTable.COL_DISTANCE, mDistance);
+        values.put(SettingsTable.COL_UNIT, mUnit);
+        values.put(SettingsTable.COL_CONSUMPTION, mConsumption);
+        values.put(SettingsTable.COL_SPEED, mSpeed);
 
         ContentResolver content = getContentResolver();
         String selection = SettingsTable._ID + " = 0";
@@ -112,7 +118,7 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
     /**
      * Restores spinners default settings
      */
-    public void restoreDefaults() {
+    private void restoreDefaults() {
         ContentValues values = new ContentValues();
         values.put(SettingsTable.COL_DISTANCE, 0);
         values.put(SettingsTable.COL_UNIT, 0);
@@ -123,18 +129,115 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
         String selection = SettingsTable._ID + " = 0";
         content.update(SettingsTable.CONTENT_URI, values, selection, null);
 
+        getSupportLoaderManager().restartLoader(SETTINGS_LOADER, null, this);
         makeToast("Defaults restored!");
-        resetSpinners();
     }
 
     /**
-     * Resets spinners to 0 position
+     * Gets data from settings cursor. Initializes corresponding class variables and starts spinner
+     * loaders
+     *
+     * @param cursor Holds data queried from settings table
      */
-    private void resetSpinners() {
-        mDistanceSpinner.setSelection(0);
-        mUnitSpinner.setSelection(0);
-        mConsumptionSpinner.setSelection(0);
-        mSpeedSpinner.setSelection(0);
+    private void getSettings(Cursor cursor) {
+        mDistance = cursor.getInt(cursor.getColumnIndex(SettingsTable.COL_DISTANCE));
+        mPosition = mDistance;
+        mUnit = cursor.getInt(cursor.getColumnIndex(SettingsTable.COL_UNIT));
+        mConsumption = cursor.getInt(cursor.getColumnIndex(SettingsTable.COL_CONSUMPTION));
+        mSpeed = cursor.getInt(cursor.getColumnIndex(SettingsTable.COL_SPEED));
+
+        int[] to = {android.R.id.text1};
+
+        setDistanceSpinnerLoader(to);
+        setUnitSpinnerLoader(to);
+        setConsumptionSpinnerLoader(to);
+        setSpeedSpinnerLoader(to);
+    }
+
+    /**
+     * Sets adapter and starts cursor loader to inflate distance spinner. Also sets on item selected
+     * listener so if user selects different distance unit other spinners show data corresponding to
+     * that.
+     *
+     * @param to TextView to set data to
+     */
+    private void setDistanceSpinnerLoader(int[] to) {
+        String[] from = {DistanceTable.COL_TEXT, DistanceTable._ID};
+        mDistanceAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_spinner_item, null,
+                from, to, DISTANCE_SPINNER_LOADER);
+
+        mDistanceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        getSupportLoaderManager().restartLoader(DISTANCE_SPINNER_LOADER, null, this);
+        mDistanceSpinner.setAdapter(mDistanceAdapter);
+        mDistanceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position != mPosition) {
+                    mPosition = position;
+                    onDistanceSelected();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+    }
+
+    /**
+     * Called when user selects new distance unit. Restarts loaders for unit and consumption spinner
+     * and sets speed spinner selection according to new distance unit.
+     */
+    private void onDistanceSelected() {
+        mDistance = (int) mDistanceSpinner.getSelectedItemId();
+        getSupportLoaderManager().restartLoader(UNIT_SPINNER_LOADER, null, this);
+        getSupportLoaderManager().restartLoader(CONSUMPTION_SPINNER_LOADER, null, this);
+        mSpeed = mDistance;
+        mSpeedSpinner.setSelection(mSpeed);
+    }
+
+    /**
+     * Sets adapter and starts cursor loader to inflate unit spinner
+     *
+     * @param to TextView to set data to
+     */
+    private void setUnitSpinnerLoader(int[] to) {
+        String[] from = {UnitTable.COL_TEXT, UnitTable._ID};
+        mUnitAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_spinner_item, null,
+                from, to, UNIT_SPINNER_LOADER);
+
+        mUnitAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        getSupportLoaderManager().restartLoader(UNIT_SPINNER_LOADER, null, this);
+        mUnitSpinner.setAdapter(mUnitAdapter);
+    }
+
+    /**
+     * Sets adapter and starts cursor loader to inflate consumption spinner
+     *
+     * @param to TextView to set data to
+     */
+    private void setConsumptionSpinnerLoader(int[] to) {
+        String[] from = {ConsumptionTable.COL_TEXT, ConsumptionTable._ID};
+        mConsumptionAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_spinner_item,
+                null, from, to, CONSUMPTION_SPINNER_LOADER);
+
+        mConsumptionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        getSupportLoaderManager().restartLoader(CONSUMPTION_SPINNER_LOADER, null, this);
+        mConsumptionSpinner.setAdapter(mConsumptionAdapter);
+    }
+
+    /**
+     * Sets adapter and starts cursor loader to inflate speed spinner
+     *
+     * @param to TextView to set data to
+     */
+    private void setSpeedSpinnerLoader(int[] to) {
+        String[] from = {SpeedTable.COL_TEXT, SpeedTable._ID};
+        mSpeedAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_spinner_item, null,
+                from, to, SPEED_SPINNER_LOADER);
+
+        mSpeedAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        getSupportLoaderManager().restartLoader(SPEED_SPINNER_LOADER, null, this);
+        mSpeedSpinner.setAdapter(mSpeedAdapter);
     }
 
     /**
@@ -146,21 +249,27 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
      */
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle bundle) {
-        Uri settingsUri = SettingsTable.CONTENT_URI;
-
         switch (id) {
-            case DISTANCE_LOADER:
-                String[] distanceProjection = {SettingsTable.COL_DISTANCE};
-                return new CursorLoader(this, settingsUri, distanceProjection, null, null, null);
-            case UNIT_LOADER:
-                String[] unitProjection = {SettingsTable.COL_UNIT};
-                return new CursorLoader(this, settingsUri, unitProjection, null, null, null);
-            case CONSUMPTION_LOADER:
-                String[] consumptionProjection = {SettingsTable.COL_CONSUMPTION};
-                return new CursorLoader(this, settingsUri, consumptionProjection, null, null, null);
-            case SPEED_LOADER:
-                String[] speedProjection = {SettingsTable.COL_SPEED};
-                return new CursorLoader(this, settingsUri, speedProjection, null, null, null);
+            case SETTINGS_LOADER:
+                Uri settingsUri = SettingsTable.CONTENT_URI;
+                return new CursorLoader(this, settingsUri, null, null, null, null);
+            case DISTANCE_SPINNER_LOADER:
+                Uri distanceUri = DistanceTable.CONTENT_URI;
+                return new CursorLoader(this, distanceUri, null, null, null, null);
+            case UNIT_SPINNER_LOADER:
+                Uri unitUri = UnitTable.CONTENT_URI;
+                String unitSelection = UnitTable.COL_DISTANCE_ID + " = ?";
+                String[] unitSelectionArgs = {String.valueOf(mDistance)};
+                return new CursorLoader(this, unitUri, null, unitSelection, unitSelectionArgs, null);
+            case CONSUMPTION_SPINNER_LOADER:
+                Uri consumptionUri = ConsumptionTable.CONTENT_URI;
+                String consumptionSelection = ConsumptionTable.COL_DISTANCE_ID + " = ?";
+                String[] consumptionSelectionArgs = {String.valueOf(mDistance)};
+                return new CursorLoader(this, consumptionUri, null, consumptionSelection,
+                        consumptionSelectionArgs, null);
+            case SPEED_SPINNER_LOADER:
+                Uri speedUri = SpeedTable.CONTENT_URI;
+                return new CursorLoader(this, speedUri, null, null, null, null);
             default:
                 return null;
         }
@@ -175,48 +284,29 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
         switch (cursorLoader.getId()) {
-            case DISTANCE_LOADER:
+            case SETTINGS_LOADER:
+                cursor.moveToFirst();
+                getSettings(cursor);
                 break;
-        }
-
-//        int loaderId = cursorLoader.getId();
-//        int cursorCount = cursor.getCount();
-//
-//        if (cursorCount > 0) {
-//            cursor.moveToPosition(0);
-//            setSelections(loaderId, cursor);
-//        } else {
-//            resetSpinners();
-//        }
-    }
-
-    private void startSpinnerLoaders() {
-
-    }
-
-    /**
-     * Sets spinner selections
-     *
-     * @param loaderId Loader ID
-     * @param cursor   Holds data from database query
-     */
-    private void setSelections(int loaderId, Cursor cursor) {
-        switch (loaderId) {
-            case DISTANCE_LOADER:
-                int distance = cursor.getInt(cursor.getColumnIndex(SettingsTable.COL_DISTANCE));
-                mDistanceSpinner.setSelection(distance);
+            case DISTANCE_SPINNER_LOADER:
+                mDistanceAdapter.swapCursor(cursor);
+                mDistanceSpinner.setSelection(mDistance);
                 break;
-            case UNIT_LOADER:
-                int unit = cursor.getInt(cursor.getColumnIndex(SettingsTable.COL_UNIT));
-                mUnitSpinner.setSelection(unit);
+            case UNIT_SPINNER_LOADER:
+                mUnitAdapter.swapCursor(cursor);
                 break;
-            case CONSUMPTION_LOADER:
-                int consumption = cursor.getInt(cursor.getColumnIndex(SettingsTable.COL_CONSUMPTION));
-                mConsumptionSpinner.setSelection(consumption);
+            case CONSUMPTION_SPINNER_LOADER:
+                mConsumptionAdapter.swapCursor(cursor);
+
+                if (mDistance == 0) {
+                    mConsumptionSpinner.setSelection(mConsumption);
+                }
+
                 break;
-            case SPEED_LOADER:
-                int speed = cursor.getInt(cursor.getColumnIndex(SettingsTable.COL_SPEED));
-                mSpeedSpinner.setSelection(speed);
+            case SPEED_SPINNER_LOADER:
+                mSpeedAdapter.swapCursor(cursor);
+                mSpeedSpinner.setSelection(mSpeed);
+                break;
         }
     }
 
@@ -227,6 +317,19 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
      */
     @Override
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
-        // Nothing to do here
+        switch (cursorLoader.getId()) {
+            case DISTANCE_SPINNER_LOADER:
+                mDistanceAdapter.swapCursor(null);
+                break;
+            case UNIT_SPINNER_LOADER:
+                mUnitAdapter.swapCursor(null);
+                break;
+            case CONSUMPTION_SPINNER_LOADER:
+                mConsumptionAdapter.swapCursor(null);
+                break;
+            case SPEED_SPINNER_LOADER:
+                mSpeedAdapter.swapCursor(null);
+                break;
+        }
     }
 }

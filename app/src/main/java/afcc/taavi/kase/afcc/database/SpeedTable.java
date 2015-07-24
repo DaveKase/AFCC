@@ -11,7 +11,7 @@ import android.net.Uri;
  * Holds previous results table static variables and URIs
  */
 public class SpeedTable implements BaseColumns {
-    public static final String TABLE_NAME = "unit_table";
+    public static final String TABLE_NAME = "speed_table";
     public static final String COL_DISTANCE_ID ="distance_id";
     public static final String COL_TEXT = "text";
     public static final String DEFAULT_SORT_ORDER = _ID;

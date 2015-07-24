@@ -20,7 +20,7 @@ public class Database {
      */
     public static final class DatabaseHelper extends SQLiteOpenHelper {
         private static final String DATABASE_NAME = "averageconsumption.db";
-        private static final int DATABASE_VERSION = 7;
+        private static final int DATABASE_VERSION = 9;
         private static DatabaseHelper mInstance;
         private static SQLiteDatabase myWritableDb;
 
