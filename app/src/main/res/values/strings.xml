@@ -25,5 +25,10 @@
     <string name="title_activity_speedometer">SpeedometerActivity</string>
     <string name="version">Version:</string>
     <string name="empty">No previous results</string>
+    <string name="speed_distance">Distance:</string>
+    <string name="speed_time">Time:</string>
+    <string name="speed_time_hint">HH:mm</string>
+    <string name="speed_time_unit">Hours:minutes</string>
+    <string name="average_speed">Average speed:</string>
 
 </resources>

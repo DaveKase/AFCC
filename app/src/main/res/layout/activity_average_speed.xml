@@ -1,7 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-</LinearLayout>
+
+    <TextView
+        android:id="@+id/distanceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/speed_distance" />
+
+    <EditText
+        android:id="@+id/distanceEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/timeEdit"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/timeEdit"
+        android:layout_below="@+id/distanceText"
+        android:inputType="phone" />
+
+    <TextView
+        android:id="@+id/timeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/distanceEdit"
+        android:text="@string/speed_time" />
+
+    <EditText
+        android:id="@+id/timeEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/timeText"
+        android:ems="10"
+        android:hint="@string/speed_time_hint"
+        android:inputType="time" />
+
+    <TextView
+        android:id="@+id/distanceUnitText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/distanceEdit"
+        android:layout_toEndOf="@+id/distanceEdit"
+        android:layout_toRightOf="@+id/distanceEdit" />
+
+    <TextView
+        android:id="@+id/timeUnitText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/timeEdit"
+        android:layout_toEndOf="@+id/timeEdit"
+        android:layout_toRightOf="@+id/timeEdit"
+        android:text="@string/speed_time_unit"/>
+
+    <TextView
+        android:id="@+id/averageSpeedText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/timeEdit"
+        android:text="@string/average_speed"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/averageSpeedResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/calculateButton"
+        android:layout_toRightOf="@+id/calculateButton"
+        android:layout_toEndOf="@+id/calculateButton"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/calculateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/averageSpeedText"
+        android:text="@string/calculate"
+        android:onClick="calculate" />
+</RelativeLayout>
