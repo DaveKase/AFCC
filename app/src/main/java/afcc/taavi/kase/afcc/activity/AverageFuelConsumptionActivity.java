@@ -25,9 +25,11 @@ import afcc.taavi.kase.afcc.database.SettingsTable;
  *
  * Average fuel consumption activity
  */
-public class AverageFuelConsumptionActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor> {
-    private static final int SETTINGS_LOADER = 0;
+public class AverageFuelConsumptionActivity extends BaseActivity implements
+        LoaderManager.LoaderCallbacks<Cursor> {
+
     //private static String TAG = "AverageFuelConsumptionActivity";
+    private static final int SETTINGS_LOADER = 0;
     private String mAverageConsumption = "";
     private String mUnit = "";
     private int mCalculationType = 0;
@@ -75,14 +77,8 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements Load
                 case CONSUMPTION_L_100_KM:
                     result = calculateL100Km();
                     break;
-                case CONSUMPTION_KM_L:
-                    result = calculateLkm();
-                    break;
-                case CONSUMPTION_MPG_USA:
-                    result = calculateMpg();
-                    break;
-                case CONSUMPTION_MPG_UK:
-                    result = calculateMpg();
+                case CONSUMPTION_KM_L: case CONSUMPTION_MPG:
+                    result = calculateDistancePerAmount();
                     break;
                 default:
                     makeToast("Did not find calculation type");
@@ -111,19 +107,7 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements Load
      *
      * @return Result as string
      */
-    private String calculateLkm() {
-        double distance = parser(getTextFromEditText(R.id.distanceEdit));
-        double fuel = parser(getTextFromEditText(R.id.fuelEdit));
-        double value = distance / fuel;
-        return rounder(value);
-    }
-
-    /**
-     * Calculates fuel consumption for mpg calculation type (both US and UK types)
-     *
-     * @return Result as string
-     */
-    private String calculateMpg() {
+    private String calculateDistancePerAmount() {
         double distance = parser(getTextFromEditText(R.id.distanceEdit));
         double fuel = parser(getTextFromEditText(R.id.fuelEdit));
         double value = distance / fuel;
@@ -285,10 +269,8 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements Load
         switch (unit) {
             case UNIT_LITERS:
                 return "litres";
-            case UNIT_GALLONS_UK:
-                return "gallons (UK)";
-            case UNIT_GALLONS_USA:
-                return "gallons (USA)";
+            case UNIT_GALLONS:
+                return "gallons";
         }
 
         return "";
@@ -305,9 +287,7 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements Load
                 return " l / 100 km";
             case CONSUMPTION_KM_L:
                 return " km / l";
-            case CONSUMPTION_MPG_USA:
-                return " mpg";
-            case CONSUMPTION_MPG_UK:
+            case CONSUMPTION_MPG:
                 return " mpg";
             default:
                 return "";
