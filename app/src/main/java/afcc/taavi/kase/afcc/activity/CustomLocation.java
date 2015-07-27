@@ -34,7 +34,7 @@ public class CustomLocation extends Location {
             speed = speed * 2.2369f;
         } else {
             // Convert m/s to km/h
-            speed = (speed * 3600) / 100;
+            speed = (speed * 3600) / 1000;
         }
 
         return speed;
