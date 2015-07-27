@@ -44,6 +44,9 @@ public class SpeedometerActivity extends BaseActivity implements LoaderManager.L
         startSpeedometer();
     }
 
+    /**
+     * Called when Activity is about to pause
+     */
     @Override
     public void onPause() {
         super.onPause();
