@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">AFCC</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -30,5 +29,5 @@
     <string name="speed_time_hint">HH:mm</string>
     <string name="speed_time_unit">Hours:minutes</string>
     <string name="average_speed">Average speed:</string>
-
+    <string name="speed_text">Your speed is:</string>
 </resources>

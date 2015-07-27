@@ -26,7 +26,7 @@ public class BaseActivity extends FragmentActivity {
     public static final int CONSUMPTION_MPG = 2;
 
     public static final int SPEED_KM_H = 0;
-    public static final int SPED_MPH = 1;
+    public static final int SPEED_MPH = 1;
 
     /**
      * Called when user selects a menu item
