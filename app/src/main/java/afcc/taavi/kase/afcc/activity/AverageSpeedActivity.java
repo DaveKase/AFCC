@@ -15,7 +15,7 @@ import afcc.taavi.kase.afcc.database.SettingsTable;
 
 /**
  * Created by Taavi Kase on 24.09.2014.
- * 
+ *
  * Average speed calculator activity
  */
 public class AverageSpeedActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -77,11 +77,11 @@ public class AverageSpeedActivity extends BaseActivity implements LoaderManager.
 
                 String speed = rounder(distance / hours);
                 showResults(speed);
-            } catch (NumberFormatException e) {
-                makeToast("Wrong time values used, hours and minutes have to be integers");
+            } catch (Exception e) {
+                makeToast("Time is in wrong format, should be HH:mm where hours and minutes are integers");
             }
         } else {
-            makeToast("Time is in wrong format, should be HH:mm");
+            makeToast("Time is in wrong format, should be HH:mm where hours and minutes are integers");
         }
     }
 
