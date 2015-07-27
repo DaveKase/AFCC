@@ -22,8 +22,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:textSize="80dp"
-        android:text="500" />
+        android:textSize="80sp" />
 
     <TextView
         android:id="@+id/speedUnit"
@@ -33,4 +32,22 @@
         android:layout_below="@+id/speedValue"
         android:layout_toRightOf="@+id/speedText"
         android:layout_toEndOf="@+id/speedText" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/speedText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/progressText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/search_sattellites"
+        android:layout_alignBottom="@+id/progressBar"
+        android:layout_toRightOf="@+id/progressBar"
+        android:layout_toEndOf="@+id/progressBar" />
 </RelativeLayout>

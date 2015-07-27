@@ -1,11 +1,16 @@
 package afcc.taavi.kase.afcc.activity;
 
+import android.content.Context;
 import android.database.Cursor;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import afcc.taavi.kase.afcc.R;
@@ -16,8 +21,13 @@ import afcc.taavi.kase.afcc.database.SettingsTable;
  *
  * Speedometer activity
  */
-public class SpeedometerActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+public class SpeedometerActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor>,
+        BaseGpsListener {
+
+    //private static final String TAG = "SpeedometerActivity";
     private static final int UNIT_LOADER = 0;
+    private int mUnit = 0;
+
     /**
      * Called when Activity is first created
      *
@@ -29,12 +39,63 @@ public class SpeedometerActivity extends BaseActivity implements LoaderManager.L
         setContentView(R.layout.activity_speedometer);
 
         getSpeedUnit();
+        startSpeedometer();
     }
 
+    /**
+     * Gets speed unit from database
+     */
     private void getSpeedUnit() {
         getSupportLoaderManager().restartLoader(UNIT_LOADER, null, this);
     }
 
+    /**
+     * Starts location manager to listen to location change to get speed
+     */
+    private void startSpeedometer() {
+        LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+        updateSpeed(null);
+    }
+
+    /**
+     * Updates speed text view
+     *
+     * @param location Instance of CustomLocation
+     */
+    public void updateSpeed(CustomLocation location) {
+        int currentSpeed = 0;
+
+        if (location != null) {
+            ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+            progressBar.setVisibility(View.GONE);
+
+            TextView progressText = (TextView) findViewById(R.id.progressText);
+            progressText.setVisibility(View.GONE);
+
+            currentSpeed = (int) location.getSpeed();
+        }
+
+        TextView txtCurrentSpeed = (TextView) this.findViewById(R.id.speedValue);
+        txtCurrentSpeed.setText(String.valueOf(currentSpeed));
+    }
+
+    /**
+     * Detects if unit used is km/h or mph
+     *
+     * @return true if km/h is used, false for mph
+     */
+    private boolean useMetricUnits() {
+        return mUnit == SPEED_KM_H;
+    }
+
+    /**
+     * Creates CursorLoaders
+     *
+     * @param id   CursorLoader ID
+     * @param args May hold various data needed for queries
+     * @return CursorLoader object
+     */
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         switch (id) {
@@ -47,9 +108,15 @@ public class SpeedometerActivity extends BaseActivity implements LoaderManager.L
         }
     }
 
+    /**
+     * Called after query is finished.
+     *
+     * @param loader CursorLoader object
+     * @param cursor Holds data from database query
+     */
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
-        switch(loader.getId()) {
+        switch (loader.getId()) {
             case UNIT_LOADER:
                 cursor.moveToFirst();
                 setUnit(cursor);
@@ -57,14 +124,25 @@ public class SpeedometerActivity extends BaseActivity implements LoaderManager.L
         }
     }
 
+    /**
+     * Sets unit to unit text view
+     *
+     * @param cursor Cursor object that holds data that determines what unit should be used
+     */
     private void setUnit(Cursor cursor) {
-        int unit = cursor.getInt(cursor.getColumnIndex(SettingsTable.COL_SPEED));
-        String unitValue = getUnit(unit);
+        mUnit = cursor.getInt(cursor.getColumnIndex(SettingsTable.COL_SPEED));
+        String unitValue = getUnit(mUnit);
 
         TextView speedUnit = (TextView) findViewById(R.id.speedUnit);
         speedUnit.setText(unitValue);
     }
 
+    /**
+     * Returns either km/h or mph based on query result
+     *
+     * @param unit If unit is 0 km/h is returned, if unit is 1 mph is returned
+     * @return Unit as String
+     */
     private String getUnit(int unit) {
         switch (unit) {
             case SPEED_KM_H:
@@ -76,6 +154,34 @@ public class SpeedometerActivity extends BaseActivity implements LoaderManager.L
         }
     }
 
+    /**
+     * Called when location changes
+     *
+     * @param location Instance of location class
+     */
     @Override
-    public void onLoaderReset(Loader<Cursor> loader) { }
+    public void onLocationChanged(Location location) {
+        if (location != null) {
+            CustomLocation customLocation = new CustomLocation(location, this.useMetricUnits());
+            this.updateSpeed(customLocation);
+        }
+    }
+
+    /**
+     * Unused methods
+     */
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {}
+
+    @Override
+    public void onProviderDisabled(String provider) {}
+
+    @Override
+    public void onProviderEnabled(String provider) {}
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {}
+
+    @Override
+    public void onGpsStatusChanged(int event) {}
 }
