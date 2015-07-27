@@ -5,16 +5,16 @@ This app is for calculating average fuel consumption of vehicles. It can calcula
 For addition there is an average speed calculator, which uses time and distance travelled to calculate the average speed and a speedometer
 which uses GPS data to calculate speed.
 
-Settings - lets select which units to use for distance, amount, consumption and speed. It saves data to database. If "Restore defaults" is clicked, default
+Settings - Lets select which units to use for distance, amount, consumption and speed. It saves data to database. If "Restore defaults" is clicked, default
 	units are used for distance (km), amount (litres), consumption (l/100km) and speed (km/h).
 
-Average Fuel Consumption Calculator - allows to calculate average fuel consumption based on distance travelled and amount of fuel consumed. It uses units set in settings
+Average Fuel Consumption Calculator - Allows to calculate average fuel consumption based on distance travelled and amount of fuel consumed. It uses units set in settings
 	"Calculate" button initializes the calculation, "Save" button saves result to database and "View Saved Results" shows previously saved results.
 	
 Previous Results - Shows previously saved results as a list with date when the result was saved. When long-clicked on the list item, alert view appears to
 	allow deletion of that result.
 	
 Average Speed Calculator - Calculates average speed based on distance and time taken. It uses distance unit set in settings. Time has to be in format Hours:Minutes
-	meaning that if it took 45 minutes to travel, 0:45 should be entered into time text box. "Calculate" button initializes the calculation of average speed
+	meaning that if it took 45 minutes to travel, 0:45 should be entered into time text box. "Calculate" button initializes the calculation of average speed.
 	
 Speedometer - Shows current speed based on device's GPS data. Uses speed unit that was set in settings.
