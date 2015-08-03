@@ -91,6 +91,12 @@ public class BaseActivity extends FragmentActivity {
         return editText.getText().toString();
     }
 
+    /**
+     * Gets string value from resource id if exists
+     *
+     * @param id ID of an item to get
+     * @return String value of the item
+     */
     public String getResourceString(int id) {
         return getResources().getString(id);
     }
