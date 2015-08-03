@@ -8,8 +8,6 @@ import android.widget.Toast;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import afcc.taavi.kase.afcc.R;
-
 /**
  * Created by Taavi Kase.
  *
