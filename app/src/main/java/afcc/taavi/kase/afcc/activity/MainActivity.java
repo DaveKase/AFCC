@@ -7,6 +7,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import afcc.taavi.kase.afcc.R;
 
 /**
@@ -26,6 +29,20 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        setAds();
+    }
+
+    /**
+     * Sets Google Ads to corresponding AdView
+     */
+    private void setAds() {
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        //AdRequest adRequest = new AdRequest.Builder().build();
+
+        String deviceId = getResourceString(R.string.device_id);
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice(deviceId).build();
+        mAdView.loadAd(adRequest);
     }
 
     /**

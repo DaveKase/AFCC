@@ -8,6 +8,8 @@ import android.widget.Toast;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import afcc.taavi.kase.afcc.R;
+
 /**
  * Created by Taavi Kase.
  *
@@ -87,5 +89,9 @@ public class BaseActivity extends FragmentActivity {
     public String getTextFromEditText(int textViewId) {
         EditText editText = (EditText) findViewById(textViewId);
         return editText.getText().toString();
+    }
+
+    public String getResourceString(int id) {
+        return getResources().getString(id);
     }
 }

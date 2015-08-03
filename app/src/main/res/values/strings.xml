@@ -67,4 +67,7 @@
     <string name="speedometer_text">Shows current speed based on device\'s GPS data. Uses speed unit
         that was set in settings.
     </string>
+
+    <string name="banner_ad_unit_id">ca-app-pub-2267964394802376/3218938843</string>
+    <string name="device_id">857F95938F400A5727FD80B1203B624C</string>
 </resources>
