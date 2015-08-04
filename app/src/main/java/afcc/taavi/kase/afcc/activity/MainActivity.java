@@ -19,6 +19,7 @@ import afcc.taavi.kase.afcc.R;
  */
 public class MainActivity extends BaseActivity {
     private static final String TAG = "MainActivity";
+    private AdView mAdView;
 
     /**
      * Called when Activity is first created
@@ -37,12 +38,27 @@ public class MainActivity extends BaseActivity {
      * Sets Google Ads to corresponding AdView
      */
     private void setAds() {
-        AdView mAdView = (AdView) findViewById(R.id.adView);
-        //AdRequest adRequest = new AdRequest.Builder().build();
-
+        mAdView = (AdView) findViewById(R.id.adView);
         String deviceId = getResourceString(R.string.device_id);
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice(deviceId).build();
+
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(deviceId)
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+
         mAdView.loadAd(adRequest);
+    }
+
+    /**
+     * Called when activity is resumed
+     */
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if (mAdView != null) {
+            mAdView.resume();
+        }
     }
 
     /**
@@ -108,5 +124,29 @@ public class MainActivity extends BaseActivity {
         } catch (NullPointerException e) {
             Log.e(TAG, "Error with starting activity, have you declared an intent");
         }
+    }
+
+    /**
+     * Called when activity is paused
+     */
+    @Override
+    public void onPause() {
+        if (mAdView != null) {
+            mAdView.pause();
+        }
+
+        super.onPause();
+    }
+
+    /**
+     * Called when activity is destroyed
+     */
+    @Override
+    public void onDestroy() {
+        if (mAdView != null) {
+            mAdView.destroy();
+        }
+
+        super.onDestroy();
     }
 }
