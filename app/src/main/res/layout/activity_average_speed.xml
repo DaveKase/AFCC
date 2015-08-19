@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/distanceText"
@@ -15,32 +15,31 @@
         android:id="@+id/distanceEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/timeEdit"
+        android:layout_alignEnd="@+id/startTimeEdit"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/timeEdit"
+        android:layout_alignRight="@+id/startTimeEdit"
         android:layout_below="@+id/distanceText"
         android:inputType="phone" />
 
     <TextView
-        android:id="@+id/timeText"
+        android:id="@+id/startTimeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/distanceEdit"
-        android:text="@string/speed_time" />
+        android:text="@string/speed_time_from" />
 
     <EditText
-        android:id="@+id/timeEdit"
+        android:id="@+id/startTimeEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/timeText"
+        android:layout_below="@+id/startTimeText"
         android:ems="10"
-        android:hint="@string/speed_time_hint"
-        android:inputType="time" />
+        android:hint="@string/speed_time_hint" />
 
     <TextView
         android:id="@+id/distanceUnitText"
@@ -54,10 +53,39 @@
         android:id="@+id/timeUnitText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/timeEdit"
-        android:layout_toEndOf="@+id/timeEdit"
-        android:layout_toRightOf="@+id/timeEdit"
-        android:text="@string/speed_time_unit"/>
+        android:layout_alignBottom="@+id/startTimeEdit"
+        android:layout_toEndOf="@+id/startTimeEdit"
+        android:layout_toRightOf="@+id/startTimeEdit"
+        android:text="@string/speed_time_unit" />
+
+    <TextView
+        android:id="@+id/endTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/startTimeEdit"
+        android:text="@string/speed_time_to" />
+
+    <EditText
+        android:id="@+id/endTimeEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/endTimeText"
+        android:ems="10"
+        android:hint="@string/speed_time_hint"
+        android:inputType="time" />
+
+    <TextView
+        android:id="@+id/timeUnitText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/endTimeEdit"
+        android:layout_toEndOf="@+id/endTimeEdit"
+        android:layout_toRightOf="@+id/endTimeEdit"
+        android:text="@string/speed_time_unit" />
 
     <TextView
         android:id="@+id/averageSpeedText"
@@ -65,15 +93,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/timeEdit"
+        android:layout_below="@+id/endTimeEdit"
         android:text="@string/average_speed"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/averageSpeedResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/calculateButton"
+        android:layout_alignTop="@+id/averageSpeedText"
         android:layout_toRightOf="@+id/calculateButton"
         android:layout_toEndOf="@+id/calculateButton"
         android:visibility="gone" />
@@ -82,9 +110,9 @@
         android:id="@+id/calculateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/averageSpeedText"
+        android:onClick="calculate"
         android:text="@string/calculate"
-        android:onClick="calculate" />
+        android:layout_below="@+id/averageSpeedText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

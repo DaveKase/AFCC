@@ -26,6 +26,8 @@
     <string name="empty">No previous results</string>
     <string name="speed_distance">Distance:</string>
     <string name="speed_time">Time:</string>
+    <string name="speed_time_from">Start time:</string>
+    <string name="speed_time_to">End time:</string>
     <string name="speed_time_hint">HH:mm</string>
     <string name="speed_time_unit">Hours:minutes</string>
     <string name="average_speed">Average speed:</string>
