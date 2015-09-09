@@ -29,26 +29,44 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
     @Override
     @NonNull
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        final Calendar c = Calendar.getInstance();
         int hour;
         int minute;
 
         savedInstanceState = getArguments();
 
         if (savedInstanceState != null) {
-            String time = savedInstanceState.getString("time");
-            assert time != null;
-
-            String[] hourAndMinute = time.split(":");
-            hour = Integer.parseInt(hourAndMinute[0]);
-            minute = Integer.parseInt(hourAndMinute[1]);
+            Bundle bundle = getTime(savedInstanceState);
+            hour = bundle.getInt("hour");
+            minute = bundle.getInt("minute");
         } else {
+            final Calendar c = Calendar.getInstance();
             hour = c.get(Calendar.HOUR_OF_DAY);
             minute = c.get(Calendar.MINUTE);
         }
 
         return new TimePickerDialog(
                 getActivity(), this, hour, minute, DateFormat.is24HourFormat(getActivity()));
+    }
+
+    /**
+     * Gets time from savedInstanceState
+     *
+     * @param savedInstanceState Instance to get the time from
+     * @return New Bundle with hour and minute
+     */
+    private Bundle getTime(Bundle savedInstanceState) {
+        String time = savedInstanceState.getString("time");
+        assert time != null;
+
+        String[] hourAndMinute = time.split(":");
+        int hour = Integer.parseInt(hourAndMinute[0]);
+        int minute = Integer.parseInt(hourAndMinute[1]);
+
+        Bundle bundle = new Bundle();
+        bundle.putInt("hour", hour);
+        bundle.putInt("minute", minute);
+
+        return bundle;
     }
 
     /**
