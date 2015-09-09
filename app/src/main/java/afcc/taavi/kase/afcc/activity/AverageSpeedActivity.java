@@ -3,7 +3,6 @@ package afcc.taavi.kase.afcc.activity;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -18,7 +17,7 @@ import afcc.taavi.kase.afcc.database.SettingsTable;
 
 /**
  * Created by Taavi Kase on 24.09.2014.
- * 
+ *
  * Average speed calculator activity
  */
 public class AverageSpeedActivity extends BaseActivity
@@ -90,7 +89,15 @@ public class AverageSpeedActivity extends BaseActivity
      */
     public void setTime(View v) {
         mEditText = (EditText) v;
-        DialogFragment newFragment = new TimePickerFragment();
+        String text = ((EditText) v).getText().toString();
+        TimePickerFragment newFragment = new TimePickerFragment();
+
+        if (!text.equals("")) {
+            Bundle bundle = new Bundle();
+            bundle.putString("time", text);
+            newFragment.setArguments(bundle);
+        }
+
         newFragment.show(getSupportFragmentManager(), "timePicker");
     }
 
@@ -252,6 +259,7 @@ public class AverageSpeedActivity extends BaseActivity
 
         return t;
     }
+
     /**
      * Creates CursorLoaders
      *
