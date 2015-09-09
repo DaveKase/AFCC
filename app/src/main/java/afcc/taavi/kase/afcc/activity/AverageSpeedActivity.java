@@ -18,7 +18,7 @@ import afcc.taavi.kase.afcc.database.SettingsTable;
 
 /**
  * Created by Taavi Kase on 24.09.2014.
- *
+ * 
  * Average speed calculator activity
  */
 public class AverageSpeedActivity extends BaseActivity
@@ -103,7 +103,18 @@ public class AverageSpeedActivity extends BaseActivity
     public void onTimePicked(Calendar time) {
         int hours = time.get(Calendar.HOUR_OF_DAY);
         int minutes = time.get(Calendar.MINUTE);
-        String t = hours + ":" + minutes;
+        String h = String.valueOf(hours);
+        String m = String.valueOf(minutes);
+
+        if (hours < 10) {
+            h = "0" + hours;
+        }
+
+        if (minutes < 10) {
+            m = "0" + minutes;
+        }
+
+        String t = h + ":" + m;
         mEditText.setText(t);
     }
 
@@ -123,7 +134,7 @@ public class AverageSpeedActivity extends BaseActivity
             String endTime = endTimeEdit.getText().toString();
 
             if (distance > 0 && !startTime.equals("") && !endTime.equals("")) {
-                calculateAverageSpeed(distance, startTime, endTime);
+                calculateAverageSpeed(distance, startTime, endTime, false);
             } else {
                 validateEditTexts(distance, startTime, endTime);
             }
@@ -135,9 +146,9 @@ public class AverageSpeedActivity extends BaseActivity
     /**
      * Checks if there is some invalid data entered or data wasn't entered at all to EditTexts
      *
-     * @param distance Distance that should have been entered and it has to be bigger than zero
+     * @param distance  Distance that should have been entered and it has to be bigger than zero
      * @param startTime Start time that should have been entered
-     * @param endTime End time that should have been entered
+     * @param endTime   End time that should have been entered
      */
     private void validateEditTexts(double distance, String startTime, String endTime) {
         if (distance <= 0) {
@@ -152,10 +163,11 @@ public class AverageSpeedActivity extends BaseActivity
     /**
      * Calculates average speed from distance and time
      *
-     * @param distance  Distance travelled
-     * @param startTime Time taken to travel that distance
+     * @param distance     Distance travelled
+     * @param startTime    Time taken to travel that distance
+     * @param isSecondCall True if this method is called from itself, false otherwise
      */
-    private void calculateAverageSpeed(double distance, String startTime, String endTime) {
+    private void calculateAverageSpeed(double distance, String startTime, String endTime, boolean isSecondCall) {
         try {
             double startHours = getHoursFromTime(startTime);
             double endHours = getHoursFromTime(endTime);
@@ -165,7 +177,14 @@ public class AverageSpeedActivity extends BaseActivity
                 String speed = rounder(distance / hours);
                 showResults(speed);
             } else {
-                makeToast("There's nothing to calculate, time interval is zero");
+                if (isSecondCall) {
+                    makeToast("There's nothing to calculate, time interval is zero");
+                } else {
+                    startTime = revertAmPm(startTime);
+                    endTime = revertAmPm(endTime);
+
+                    calculateAverageSpeed(distance, startTime, endTime, true);
+                }
             }
         } catch (Exception e) {
             makeToast("Time is in wrong format");
@@ -213,6 +232,26 @@ public class AverageSpeedActivity extends BaseActivity
         averageSpeedResult.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * Converts PM time to AM and AM time to PM to allow time calculations where start time is PM
+     * and end time is AM
+     *
+     * @param time Time to convert
+     * @return Converted time
+     */
+    private String revertAmPm(String time) {
+        String[] hourAndMinute = time.split(":");
+        String hour = hourAndMinute[0];
+        String minute = hourAndMinute[1];
+        String t;
+
+        int h = Integer.parseInt(hour);
+
+        hour = h < 13 ? String.valueOf(h + 12) : String.valueOf(h - 12);
+        t = hour + ":" + minute;
+
+        return t;
+    }
     /**
      * Creates CursorLoaders
      *
