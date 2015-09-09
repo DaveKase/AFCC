@@ -123,7 +123,8 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements
     private void showResult(String result) {
         TextView averageText = (TextView) findViewById(R.id.averageText);
         TextView averageResultText = (TextView) findViewById(R.id.averageResultText);
-        mAverageConsumption = result + getResultUnit();
+        mUnit = getResultUnit();
+        mAverageConsumption = result + " " + mUnit;
 
         averageResultText.setText(mAverageConsumption);
         averageText.setVisibility(View.VISIBLE);
@@ -178,9 +179,12 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements
         Date date = new Date();
         String dateString = new SimpleDateFormat("dd/MM/yyyy", Locale.US).format(date);
 
+        String[] consumptionAndUnit = mAverageConsumption.split(" ");
+        String consumption = consumptionAndUnit[0];
+
         ContentValues values = new ContentValues();
         values.put(PreviousResultsTable.COL_DATE, dateString);
-        values.put(PreviousResultsTable.COL_RESULT, mAverageConsumption);
+        values.put(PreviousResultsTable.COL_RESULT, consumption);
         values.put(PreviousResultsTable.COL_UNIT, mUnit);
         values.put(PreviousResultsTable.COL_ROW, "0");
 
@@ -250,10 +254,10 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements
         TextView unitText = (TextView) findViewById(R.id.litreText);
 
         String distanceUnit = getDistanceUnit(distance);
-        mUnit = getAmountUnit(unit);
+        String amountUnit = getAmountUnit(unit);
 
         distanceText.setText(distanceUnit);
-        unitText.setText(mUnit);
+        unitText.setText(amountUnit);
     }
 
     /**
@@ -298,11 +302,11 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements
     private String getResultUnit() {
         switch (mCalculationType) {
             case CONSUMPTION_L_100_KM:
-                return " l / 100 km";
+                return "l/100 km";
             case CONSUMPTION_KM_L:
-                return " km / l";
+                return "km/l";
             case CONSUMPTION_MPG:
-                return " mpg";
+                return "mpg";
             default:
                 return "";
         }
