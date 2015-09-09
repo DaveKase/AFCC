@@ -7,7 +7,6 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
-import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -102,7 +101,10 @@ public class AverageSpeedActivity extends BaseActivity
      */
     @Override
     public void onTimePicked(Calendar time) {
-        mEditText.setText(DateFormat.format("HH:mm", time));
+        int hours = time.get(Calendar.HOUR_OF_DAY);
+        int minutes = time.get(Calendar.MINUTE);
+        String t = hours + ":" + minutes;
+        mEditText.setText(t);
     }
 
     /**

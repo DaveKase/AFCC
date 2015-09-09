@@ -10,6 +10,7 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -152,6 +153,19 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements
     private void save() {
         if (!mAverageConsumption.equals("")) {
             saveResults();
+
+            TextView averageText = (TextView) findViewById(R.id.averageText);
+            TextView averageResultText = (TextView) findViewById(R.id.averageResultText);
+            EditText distanceEdit = (EditText) findViewById(R.id.distanceEdit);
+            EditText fuelEdit = (EditText) findViewById(R.id.fuelEdit);
+
+            mAverageConsumption = "";
+
+            averageResultText.setText(mAverageConsumption);
+            distanceEdit.setText("");
+            fuelEdit.setText("");
+            averageText.setVisibility(View.GONE);
+            averageResultText.setVisibility(View.GONE);
         } else {
             makeToast("Nothing to save");
         }

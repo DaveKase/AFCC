@@ -15,7 +15,7 @@
     <string name="show">View saved results</string>
     <string name="units">Units to use:</string>
     <string name="distanceUnit">Distance:</string>
-    <string name="amount">Unit:</string>
+    <string name="amount">Volume:</string>
     <string name="consumption">Consumption:</string>
     <string name="speedText">Speed:</string>
     <string name="restore">Restore defaults</string>
