@@ -7,8 +7,8 @@ android {
         applicationId "afcc.taavi.kase.afcc"
         minSdkVersion 10
         targetSdkVersion 22
-        versionCode 17
-        versionName "0.1.5 (RC 4)"
+        versionCode 18
+        versionName "0.2.0 (RC 5)"
     }
     buildTypes {
         release {
