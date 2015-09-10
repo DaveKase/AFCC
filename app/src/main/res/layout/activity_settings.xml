@@ -8,6 +8,7 @@
         android:id="@+id/unitsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -17,6 +18,7 @@
         android:id="@+id/distanceText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/unitsText"
@@ -26,43 +28,45 @@
         android:id="@+id/amountText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/amount"
         android:layout_below="@+id/distanceSpinner"
-        android:text="@string/amount" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Spinner
         android:id="@+id/unitSpinner"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/distanceSpinner"
-        android:layout_alignLeft="@+id/distanceSpinner"
-        android:layout_alignTop="@+id/amountText" />
+        android:layout_below="@+id/amountText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/consumptionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/consumption"
         android:layout_below="@+id/unitSpinner"
-        android:text="@string/consumption" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Spinner
         android:id="@+id/distanceSpinner"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/distanceText"
-        android:layout_toEndOf="@+id/consumptionText"
-        android:layout_toRightOf="@+id/consumptionText" />
+        android:layout_below="@+id/distanceText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Spinner
         android:id="@+id/consumptionSpinner"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/unitSpinner"
-        android:layout_alignLeft="@+id/unitSpinner"
-        android:layout_alignTop="@+id/consumptionText" />
+        android:layout_below="@+id/consumptionText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/saveButton"
@@ -71,33 +75,35 @@
         android:text="@string/save"
         android:onClick="onClick"
         android:layout_below="@+id/speedSpinner"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true" />
+        android:layout_alignRight="@+id/amountText"
+        android:layout_alignEnd="@+id/amountText" />
 
     <TextView
         android:id="@+id/speedText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/speedText"
         android:layout_below="@+id/consumptionSpinner"
-        android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:text="@string/speedText" />
+        android:layout_alignParentStart="true" />
 
     <Spinner
         android:id="@+id/speedSpinner"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/consumptionSpinner"
-        android:layout_alignStart="@+id/consumptionSpinner"
-        android:layout_alignLeft="@+id/consumptionSpinner" />
+        android:layout_below="@+id/speedText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/restoreButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/restore"
-        android:layout_toEndOf="@+id/unitsText"
-        android:layout_toRightOf="@+id/unitsText"
-        android:layout_alignTop="@+id/saveButton"
-        android:onClick="onClick" />
+        android:onClick="onClick"
+        android:layout_below="@+id/speedSpinner"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

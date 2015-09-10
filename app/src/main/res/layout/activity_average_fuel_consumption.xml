@@ -8,6 +8,7 @@
         android:id="@+id/distanceText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -29,6 +30,7 @@
         android:id="@+id/fuelText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/distanceEdit"
@@ -48,6 +50,7 @@
         android:id="@+id/averageText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/fuelEdit"
@@ -58,6 +61,7 @@
         android:id="@+id/averageResultText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignBaseline="@+id/averageText"
         android:layout_alignBottom="@+id/averageText"
         android:layout_marginStart="14dp"
@@ -83,13 +87,13 @@
         android:text="@string/save"
         android:onClick="onClick"
         android:layout_below="@+id/averageText"
-        android:layout_toEndOf="@+id/distanceText"
-        android:layout_toRightOf="@+id/distanceText"/>
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/kmText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignBottom="@+id/distanceEdit"
         android:layout_toEndOf="@+id/distanceEdit"
         android:layout_toRightOf="@+id/distanceEdit" />
@@ -98,6 +102,7 @@
         android:id="@+id/litreText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignBottom="@+id/fuelEdit"
         android:layout_toEndOf="@+id/fuelEdit"
         android:layout_toRightOf="@+id/fuelEdit" />
@@ -106,11 +111,9 @@
         android:id="@+id/previousResultsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/averageText"
-        android:layout_alignBaseline="@+id/saveButton"
-        android:layout_alignBottom="@+id/saveButton"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:text="@string/show"
-        android:onClick="onClick" />
+        android:onClick="onClick"
+        android:layout_alignTop="@+id/saveButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

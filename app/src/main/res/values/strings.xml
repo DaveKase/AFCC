@@ -17,7 +17,7 @@
     <string name="average">Average fuel consumption:</string>
     <string name="calculate">Calculate</string>
     <string name="save">Save</string>
-    <string name="show">View saved results</string>
+    <string name="show">Saved results</string>
     <string name="units">Units to use:</string>
     <string name="distanceUnit">Distance:</string>
     <string name="amount">Volume:</string>
@@ -63,9 +63,8 @@
 
     <string name="average_speed_calculator">Average Speed Calculator</string>
     <string name="average_speed_calculator_text">Calculates average speed based on distance and time
-        taken. It uses distance unit set in settings. Time has to be in format Hours:Minutes meaning
-        that if it took 45 minutes to travel, 0:45 should be entered into time text box. "Calculate"
-        button initializes the calculation of average speed.
+        taken. It uses distance unit set in settings. Start and end times are set using time pickers.
+        "Calculate" button initializes the calculation of average speed.
     </string>
 
     <string name="speedometer_text">Shows current speed based on device\'s GPS data. Uses speed unit

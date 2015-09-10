@@ -14,36 +14,20 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/versionText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:text="@string/version" />
-
-        <TextView
-            android:id="@+id/versionNumberText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/aboutText"
-            android:layout_toRightOf="@+id/versionText"
-            android:layout_toEndOf="@+id/versionText"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp" />
-
-        <TextView
             android:id="@+id/aboutText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/versionText"
-            android:layout_marginTop="10dp"
-            android:text="@string/about" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/about"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
         <TextView
             android:id="@+id/settings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/aboutText"
@@ -54,6 +38,7 @@
         <TextView
             android:id="@+id/settingsText"
             android:layout_width="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_height="wrap_content"
             android:layout_below="@+id/settings"
             android:text="@string/settings_text" />
@@ -62,6 +47,7 @@
             android:id="@+id/afcc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/settingsText"
@@ -73,6 +59,7 @@
             android:id="@+id/afccText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/afcc"
@@ -82,6 +69,7 @@
             android:id="@+id/previousResults"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/afccText"
@@ -93,6 +81,7 @@
             android:id="@+id/previousResultsText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/previousResults"
@@ -102,6 +91,7 @@
             android:id="@+id/averageSpeed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/previousResultsText"
@@ -113,6 +103,7 @@
             android:id="@+id/averageSpeedText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/averageSpeed"
@@ -122,6 +113,7 @@
             android:id="@+id/speedometer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_below="@+id/averageSpeedText"
             android:layout_marginTop="10dp"
             android:text="@string/speed"
@@ -131,7 +123,28 @@
             android:id="@+id/speedometerText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_below="@+id/speedometer"
             android:text="@string/speedometer_text" />
+
+        <TextView
+            android:id="@+id/versionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/version"
+            android:layout_below="@+id/speedometerText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="48dp" />
+
+        <TextView
+            android:id="@+id/versionNumberText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_alignTop="@+id/versionText"
+            android:layout_toRightOf="@+id/versionText"
+            android:layout_toEndOf="@+id/versionText" />
     </RelativeLayout>
 </ScrollView>

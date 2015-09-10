@@ -9,6 +9,7 @@
         android:id="@+id/distanceText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/speed_distance" />
 
     <EditText
@@ -26,6 +27,7 @@
         android:id="@+id/startTimeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/distanceEdit"
@@ -45,23 +47,16 @@
         android:id="@+id/distanceUnitText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignBottom="@+id/distanceEdit"
         android:layout_toEndOf="@+id/distanceEdit"
         android:layout_toRightOf="@+id/distanceEdit" />
 
     <TextView
-        android:id="@+id/timeUnitText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/startTimeEdit"
-        android:layout_toEndOf="@+id/startTimeEdit"
-        android:layout_toRightOf="@+id/startTimeEdit"
-        android:text="@string/speed_time_unit" />
-
-    <TextView
         android:id="@+id/endTimeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/startTimeEdit"
@@ -79,18 +74,10 @@
         android:inputType="time" />
 
     <TextView
-        android:id="@+id/timeUnitText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/endTimeEdit"
-        android:layout_toEndOf="@+id/endTimeEdit"
-        android:layout_toRightOf="@+id/endTimeEdit"
-        android:text="@string/speed_time_unit" />
-
-    <TextView
         android:id="@+id/averageSpeedText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/endTimeEdit"
@@ -101,6 +88,7 @@
         android:id="@+id/averageSpeedResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignTop="@+id/averageSpeedText"
         android:layout_toRightOf="@+id/averageSpeedText"
         android:layout_toEndOf="@+id/averageSpeedText"

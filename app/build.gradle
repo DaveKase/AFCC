@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 22
+    compileSdkVersion 23
     buildToolsVersion "20.0.0"
     defaultConfig {
         applicationId "afcc.taavi.kase.afcc"
         minSdkVersion 10
-        targetSdkVersion 22
+        targetSdkVersion 23
         versionCode 18
         versionName "0.2.0 (RC 5)"
     }
@@ -22,6 +22,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:support-v4:22.2.1'
+    compile 'com.android.support:support-v4:23.0.1'
+    compile "com.android.support:appcompat-v7:23.0.1"
     compile 'com.google.android.gms:play-services-ads:7.5.0'
 }
