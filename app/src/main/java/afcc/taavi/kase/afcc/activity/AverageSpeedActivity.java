@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -23,7 +24,7 @@ import afcc.taavi.kase.afcc.database.SettingsTable;
 public class AverageSpeedActivity extends BaseActivity
         implements LoaderManager.LoaderCallbacks<Cursor>, TimePickerFragment.TimePickedListener {
 
-    //private static final String TAG = "AverageSpeedActivity";
+    private static final String TAG = "AverageSpeedActivity";
     private static final int UNITS_LOADER = 0;
     private int mUnit = 0;
     private EditText mEditText;
@@ -37,6 +38,12 @@ public class AverageSpeedActivity extends BaseActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_average_speed);
+
+        try {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        } catch (NullPointerException e) {
+            Log.e(TAG, "No actionbar");
+        }
 
         getSupportLoaderManager().restartLoader(UNITS_LOADER, null, this);
         setListenersToEditTexts();

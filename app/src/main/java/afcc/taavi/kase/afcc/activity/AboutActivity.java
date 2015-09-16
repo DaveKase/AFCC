@@ -3,6 +3,7 @@ package afcc.taavi.kase.afcc.activity;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import afcc.taavi.kase.afcc.R;
@@ -13,6 +14,7 @@ import afcc.taavi.kase.afcc.R;
  * Average fuel consumption activity
  */
 public class AboutActivity extends BaseActivity {
+    private static final String TAG = "AboutActivity";
     /**
      * Called when the activity is first created.
      *
@@ -22,6 +24,12 @@ public class AboutActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+
+        try {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        } catch (NullPointerException e) {
+            Log.e(TAG, "No actionbar");
+        }
 
         versionName();
     }

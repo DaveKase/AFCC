@@ -2,8 +2,20 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
-        <item name="android:background">@color/l_blue</item>
+    <style name="AppTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
     </style>
 
+    <style name="MyTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowBackground">@color/l_blue</item>
+
+        <!-- Support library compatibility -->
+        <item name="actionBarStyle">@style/MyActionBar</item>
+    </style>
+
+    <style name="MyActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@color/d_blue</item>
+
+        <!-- Support library compatibility -->
+        <item name="background">@color/d_blue</item>
+    </style>
 </resources>

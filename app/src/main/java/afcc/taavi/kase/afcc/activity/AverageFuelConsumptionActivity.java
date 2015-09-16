@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -29,7 +30,7 @@ import afcc.taavi.kase.afcc.database.SettingsTable;
 public class AverageFuelConsumptionActivity extends BaseActivity implements
         LoaderManager.LoaderCallbacks<Cursor> {
 
-    //private static String TAG = "AverageFuelConsumptionActivity";
+    private static String TAG = "AverageFuelConsumptionActivity";
     private static final int SETTINGS_LOADER = 0;
     private String mAverageConsumption = "";
     private String mUnit = "";
@@ -44,6 +45,12 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_average_fuel_consumption);
+
+        try {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        } catch (NullPointerException e) {
+            Log.e(TAG, "No actionbar");
+        }
 
         getSupportLoaderManager().restartLoader(SETTINGS_LOADER, null, this);
     }

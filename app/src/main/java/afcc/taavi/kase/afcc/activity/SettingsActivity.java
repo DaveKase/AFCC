@@ -9,6 +9,7 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SimpleCursorAdapter;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
@@ -26,7 +27,7 @@ import afcc.taavi.kase.afcc.database.UnitTable;
  * Settings activity
  */
 public class SettingsActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor> {
-    //private static final String TAG = "SettingsActivity";
+    private static final String TAG = "SettingsActivity";
     private static final int SETTINGS_LOADER = 0;
     private static final int DISTANCE_SPINNER_LOADER = 1;
     private static final int UNIT_SPINNER_LOADER = 2;
@@ -58,6 +59,12 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        try {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        } catch (NullPointerException e) {
+            Log.e(TAG, "No actionbar");
+        }
 
         initializeSpinners();
     }

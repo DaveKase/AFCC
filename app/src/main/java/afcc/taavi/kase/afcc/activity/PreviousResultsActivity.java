@@ -10,6 +10,7 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SimpleCursorAdapter;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -28,6 +29,7 @@ import afcc.taavi.kase.afcc.database.PreviousResultsTable;
 public class PreviousResultsActivity extends BaseActivity
         implements LoaderManager.LoaderCallbacks<Cursor> {
 
+    private static final String TAG = "PreviousResultsActivity";
     private static final int RESULTS_LOADER = 0;
     private SimpleCursorAdapter mAdapter;
     private String[] mProjection = {PreviousResultsTable._ID, PreviousResultsTable.COL_ROW,
@@ -43,6 +45,12 @@ public class PreviousResultsActivity extends BaseActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_previous_results);
+
+        try {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        } catch (NullPointerException e) {
+            Log.e(TAG, "No actionbar");
+        }
 
         setPreviousResults();
     }

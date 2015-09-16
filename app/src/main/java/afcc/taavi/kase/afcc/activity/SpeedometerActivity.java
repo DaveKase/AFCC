@@ -1,6 +1,8 @@
 package afcc.taavi.kase.afcc.activity;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.location.Location;
 import android.location.LocationManager;
@@ -9,6 +11,7 @@ import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
@@ -25,7 +28,7 @@ import afcc.taavi.kase.afcc.database.SettingsTable;
 public class SpeedometerActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor>,
         BaseGpsListener {
 
-    //private static final String TAG = "SpeedometerActivity";
+    private static final String TAG = "SpeedometerActivity";
     private static final int UNIT_LOADER = 0;
     private int mUnit = 0;
 
@@ -38,6 +41,12 @@ public class SpeedometerActivity extends BaseActivity implements LoaderManager.L
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speedometer);
+
+        try {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        } catch (NullPointerException e) {
+            Log.e(TAG, "No actionbar");
+        }
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         getSpeedUnit();
@@ -66,8 +75,14 @@ public class SpeedometerActivity extends BaseActivity implements LoaderManager.L
      */
     private void startSpeedometer() {
         LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
-        updateSpeed(null);
+
+        try {
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+            updateSpeed(null);
+        } catch (SecurityException se) {
+            Log.e(TAG, "No permission to request location updates!");
+            makeToast("Can't get location updates, no permission granted");
+        }
     }
 
     /**
