@@ -30,8 +30,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_below="@+id/speedValue"
-        android:layout_toRightOf="@+id/speedText"
-        android:layout_toEndOf="@+id/speedText" />
+        android:layout_centerHorizontal="true" />
 
     <ProgressBar
         android:id="@+id/progressBar"

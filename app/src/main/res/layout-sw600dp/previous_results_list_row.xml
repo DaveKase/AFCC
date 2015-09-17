@@ -16,7 +16,8 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="10" />
+        android:text="10"
+        android:layout_weight="0.12" />
 
     <TextView
         android:id="@+id/resultText"
@@ -24,7 +25,7 @@
         android:layout_height="40dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="100.34"
-        android:layout_weight="0.93" />
+        android:layout_weight="0.36" />
 
     <TextView
         android:id="@+id/unitText"
@@ -32,7 +33,7 @@
         android:layout_height="40dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="l/100 km"
-        android:layout_weight="0.17" />
+        android:layout_weight="0.25" />
 
     <TextView
         android:id="@+id/dateText"
@@ -40,5 +41,5 @@
         android:layout_height="40dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="17/09/2015"
-        android:layout_weight="0.60" />
+        android:layout_weight="0.05" />
 </LinearLayout>
