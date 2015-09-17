@@ -8,6 +8,7 @@
     <string name="title_activity_average_speed">Average Speed Calculator</string>
     <string name="title_activity_speedometer">Speedometer</string>
     <string name="action_settings">Settings</string>
+    <string name="action_about">About</string>
     <string name="choose">What would you like to do?</string>
     <string name="fuelConsumption">Average Fuel Consumption Calculator</string>
     <string name="speedCalculator">Average Speed Calculator</string>
@@ -44,18 +45,18 @@
 
     <string name="settings">Settings</string>
     <string name="settings_text">Lets select which units to use for distance, amount, consumption
-        and speed. It saves data to database. If "Restore defaults" is clicked, default units are
+        and speed. It saves data to database. If \"Restore defaults\" is clicked, default units are
         used for distance (km), amount (litres), consumption (l/100km) and speed (km/h).
     </string>
 
     <string name="afcc">Average Fuel Consumption Calculator</string>
     <string name="afcc_text">Allows to calculate average fuel consumption based on distance travelled
-        and amount of fuel consumed. It uses units set in settings "Calculate" button initializes the
-        calculation, "Save" button saves result to database and "View Saved Results" shows previously
+        and amount of fuel consumed. It uses units set in settings. \"Calculate\" button initializes the
+        calculation, \"Save\" button saves result to database and \"Saved Results\" shows previously
         saved results.
     </string>
 
-    <string name="previous_results">Previous Results</string>
+    <string name="previous_results">Saved Results</string>
     <string name="previous_results_text">Shows previously saved results as a list with date when the
         result was saved. When long-clicked on the list item, alert view appears to allow deletion of
         that result.
@@ -64,7 +65,7 @@
     <string name="average_speed_calculator">Average Speed Calculator</string>
     <string name="average_speed_calculator_text">Calculates average speed based on distance and time
         taken. It uses distance unit set in settings. Start and end times are set using time pickers.
-        "Calculate" button initializes the calculation of average speed.
+        \"Calculate\" button initializes the calculation of average speed.
     </string>
 
     <string name="speedometer_text">Shows current speed based on device\'s GPS data. Uses speed unit
