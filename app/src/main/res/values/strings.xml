@@ -25,7 +25,7 @@
     <string name="speedText">Speed:</string>
     <string name="restore">Restore defaults</string>
     <string name="version">Version:</string>
-    <string name="empty">No previous results</string>
+    <string name="empty">No saved results</string>
     <string name="speed_distance">Distance:</string>
     <string name="speed_time">Time:</string>
     <string name="speed_time_from">Start time:</string>

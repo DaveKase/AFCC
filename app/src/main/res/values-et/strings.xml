@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Average Fuel &amp; Speed</string>
+    <string name="action_settings">Seaded</string>
+    <string name="afcc">Keskmise kütusekulu kalkulaator</string>
+    <string name="amount">Maht:</string>
+    <string name="average">Keskmine kütusekulu</string>
+    <string name="average_speed">Keskmine kiirus:</string>
+    <string name="average_speed_calculator">Keskmise kiiruse kalkulaator</string>
+    <string name="banner_ad_unit_id">ca-app-pub-2267964394802376/3218938843</string>
+    <string name="calculate">Arvuta</string>
+    <string name="choose">Mida sa sooviks teha?</string>
+    <string name="consumption">Kulu:</string>
+    <string name="device_id">857F95938F400A5727FD80B1203B624C</string>
+    <string name="distanceUnit">Vahemaa:</string>
+    <string name="empty">Pole salvestatud tulemusi</string>
+    <string name="fuel">Kulutatud kütus:</string>
+    <string name="fuelConsumption">Keskmise kütusekulu kalkulaator</string>
+    <string name="previous_results">Eelmised tulemused</string>
+    <string name="restore">Taasta vaikeseaded</string>
+    <string name="save">Salvesta</string>
+    <string name="search_satellites">Otsin satelliite</string>
+    <string name="settings">Seaded</string>
+    <string name="show">Salvestatud tulemused</string>
+    <string name="speed">Spidomeeter</string>
+    <string name="speedCalculator">Keskmise kiiruse kalkulaator</string>
+    <string name="speedText">Kiirus:</string>
+    <string name="speed_distance">Vahemaa:</string>
+    <string name="speed_text">Sinu kiirus on:</string>
+    <string name="speed_time">Aeg:</string>
+    <string name="speed_time_from">Algusaeg:</string>
+    <string name="speed_time_hint">HH:mm</string>
+    <string name="speed_time_to">Lõpuaeg:</string>
+    <string name="speed_time_unit">Tunnid:minutid</string>
+    <string name="title_activity_about">Info</string>
+    <string name="title_activity_average_fuel">Keskmise kütusekulu kalkulaator</string>
+    <string name="title_activity_average_speed">Keskmise kiiruse kalkulaator</string>
+    <string name="title_activity_results">Salvestatud tulemused</string>
+    <string name="title_activity_settings">Seaded</string>
+    <string name="title_activity_speedometer">Spidomeeter</string>
+    <string name="units">Kasutatavad ühikud:</string>
+    <string name="version">Versioon:</string>
+</resources>
