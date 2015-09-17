@@ -43,13 +43,13 @@ public class ConsumptionTable implements BaseColumns {
         ContentValues values = new ContentValues();
         values.put(_ID, 0);
         values.put(COL_DISTANCE_ID, 0);
-        values.put(COL_TEXT, "l / 100km");
+        values.put(COL_TEXT, "l/100km");
         db.insert(TABLE_NAME, null, values);
 
         values.clear();
         values.put(_ID, 1);
         values.put(COL_DISTANCE_ID, 0);
-        values.put(COL_TEXT, "km / l");
+        values.put(COL_TEXT, "km/l");
         db.insert(TABLE_NAME, null, values);
 
         values.clear();

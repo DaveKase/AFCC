@@ -16,7 +16,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import afcc.taavi.kase.afcc.R;
 import afcc.taavi.kase.afcc.database.PreviousResultsTable;
@@ -47,6 +46,7 @@ public class PreviousResultsActivity extends BaseActivity
         setContentView(R.layout.activity_previous_results);
 
         try {
+            //noinspection ConstantConditions
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         } catch (NullPointerException e) {
             Log.e(TAG, "No actionbar");
@@ -126,14 +126,14 @@ public class PreviousResultsActivity extends BaseActivity
     private boolean longClick(final long id) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(true);
-        builder.setTitle("Delete an Item?");
-        builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+        builder.setTitle(getResourceString(R.string.qst_delete));
+        builder.setPositiveButton(getResourceString(R.string.ans_del), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 onDeleteClicked(id);
             }
         });
 
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getResourceString(R.string.ans_cancel), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
             }
@@ -159,8 +159,7 @@ public class PreviousResultsActivity extends BaseActivity
         getSupportLoaderManager().restartLoader(RESULTS_LOADER, null, this);
         mAdapter.notifyDataSetChanged();
 
-        Toast.makeText(PreviousResultsActivity.this, "Item deleted",
-                Toast.LENGTH_SHORT).show();
+        makeToast(getResourceString(R.string.inf_deleted));
     }
 
     /**

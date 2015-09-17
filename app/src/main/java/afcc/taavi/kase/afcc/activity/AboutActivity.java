@@ -26,6 +26,7 @@ public class AboutActivity extends BaseActivity {
         setContentView(R.layout.activity_about);
 
         try {
+            //noinspection ConstantConditions
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         } catch (NullPointerException e) {
             Log.e(TAG, "No actionbar");
@@ -45,7 +46,7 @@ public class AboutActivity extends BaseActivity {
             version = pInfo.versionName;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
-            version = "Did not get a version name";
+            version = getResourceString(R.string.err_no_ver_name);
         }
 
         TextView versionNumberText = (TextView) findViewById(R.id.versionNumberText);

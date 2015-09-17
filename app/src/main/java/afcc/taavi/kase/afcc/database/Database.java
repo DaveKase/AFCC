@@ -20,9 +20,10 @@ public class Database {
      */
     public static final class DatabaseHelper extends SQLiteOpenHelper {
         private static final String DATABASE_NAME = "averageconsumption.db";
-        private static final int DATABASE_VERSION = 9;
+        private static final int DATABASE_VERSION = 10;
         private static DatabaseHelper mInstance;
         private static SQLiteDatabase myWritableDb;
+        private Context mContext;
 
         /**
          * Constructor
@@ -31,6 +32,7 @@ public class Database {
          */
         public DatabaseHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
+            mContext = context;
         }
 
         /**
@@ -70,8 +72,8 @@ public class Database {
         public void onCreate(SQLiteDatabase db) {
             Log.i(TAG, "creating database " + DATABASE_NAME + " version: " + DATABASE_VERSION);
 
-            DistanceTable.createTable(db);
-            UnitTable.createTable(db);
+            DistanceTable.createTable(db, mContext);
+            UnitTable.createTable(db, mContext);
             ConsumptionTable.createTable(db);
             SpeedTable.createTable(db);
 
@@ -106,7 +108,7 @@ public class Database {
          */
         private void onUpgradeDistance(SQLiteDatabase db) {
             db.execSQL("DROP TABLE IF EXISTS " + DistanceTable.TABLE_NAME);
-            DistanceTable.createTable(db);
+            DistanceTable.createTable(db, mContext);
         }
 
         /**
@@ -116,7 +118,7 @@ public class Database {
          */
         private void onUpgradeUnit(SQLiteDatabase db) {
             db.execSQL("DROP TABLE IF EXISTS " + UnitTable.TABLE_NAME);
-            UnitTable.createTable(db);
+            UnitTable.createTable(db, mContext);
         }
 
         /**

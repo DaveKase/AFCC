@@ -30,7 +30,7 @@ import afcc.taavi.kase.afcc.database.SettingsTable;
 public class AverageFuelConsumptionActivity extends BaseActivity implements
         LoaderManager.LoaderCallbacks<Cursor> {
 
-    private static String TAG = "AverageFuelConsumptionActivity";
+    //private static String TAG = "AverageFuelConsumptionActivity";
     private static final int SETTINGS_LOADER = 0;
     private String mAverageConsumption = "";
     private String mUnit = "";
@@ -47,9 +47,10 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements
         setContentView(R.layout.activity_average_fuel_consumption);
 
         try {
+            //noinspection ConstantConditions
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         } catch (NullPointerException e) {
-            Log.e(TAG, "No actionbar");
+            Log.e("AverageFuelConsumption", "No actionbar");
         }
 
         getSupportLoaderManager().restartLoader(SETTINGS_LOADER, null, this);
@@ -89,7 +90,7 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements
                     result = calculateDistancePerAmount();
                     break;
                 default:
-                    makeToast("Did not find calculation type");
+                    makeToast(getResourceString(R.string.err_no_calc_type));
             }
 
             showResult(result);
@@ -145,11 +146,11 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements
         String text;
 
         if (getTextFromEditText(R.id.distanceEdit).equals("")) {
-            text = "Insert value to distance travelled box!";
+            text = getResourceString(R.string.err_no_distance);
         } else if (getTextFromEditText(R.id.fuelEdit).equals("")) {
-            text = "Insert value to fuel box!";
+            text = getResourceString(R.string.err_no_fuel);
         } else {
-            text = "Wrong values used, try again!";
+            text = getResourceString(R.string.err_wrong_vals);
         }
 
         makeToast(text);
@@ -175,7 +176,7 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements
             averageText.setVisibility(View.GONE);
             averageResultText.setVisibility(View.GONE);
         } else {
-            makeToast("Nothing to save");
+            makeToast(getResourceString(R.string.err_empty));
         }
     }
 
@@ -198,7 +199,7 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements
         ContentResolver resolver = getContentResolver();
         resolver.insert(PreviousResultsTable.CONTENT_URI, values);
 
-        makeToast(mAverageConsumption + " saved!");
+        makeToast(mAverageConsumption + " " + getResourceString(R.string.inf_saved));
     }
 
     /**
@@ -276,9 +277,9 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements
     private String getDistanceUnit(int distance) {
         switch (distance) {
             case DISTANCE_KM:
-                return "kilometres";
+                return getResourceString(R.string.val_km);
             case DISTANCE_MILES:
-                return "miles";
+                return getResourceString(R.string.val_m);
         }
 
         return "";
@@ -293,9 +294,9 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements
     private String getAmountUnit(int unit) {
         switch (unit) {
             case UNIT_LITERS:
-                return "litres";
+                return getResourceString(R.string.val_l);
             case UNIT_GALLONS:
-                return "gallons";
+                return getResourceString(R.string.val_g);
         }
 
         return "";

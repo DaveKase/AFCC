@@ -154,7 +154,7 @@ public class AverageSpeedActivity extends BaseActivity
                 validateEditTexts(distance, startTime, endTime);
             }
         } catch (NumberFormatException e) {
-            makeToast("Distance not inserted");
+            makeToast(getResourceString(R.string.err_no_distance));
         }
     }
 
@@ -167,11 +167,11 @@ public class AverageSpeedActivity extends BaseActivity
      */
     private void validateEditTexts(double distance, String startTime, String endTime) {
         if (distance <= 0) {
-            makeToast("Distance has to be bigger than zero");
+            makeToast(getResourceString(R.string.err_dis_less_zero));
         } else if (startTime.equals("")) {
-            makeToast("Start time is not inserted");
+            makeToast(getResourceString(R.string.err_no_start));
         } else if (endTime.equals("")) {
-            makeToast("End time is not inserted");
+            makeToast(getResourceString(R.string.err_no_end));
         }
     }
 
@@ -193,7 +193,7 @@ public class AverageSpeedActivity extends BaseActivity
                 showResults(speed);
             } else {
                 if (isSecondCall) {
-                    makeToast("There's nothing to calculate, time interval is zero");
+                    makeToast(getResourceString(R.string.err_int_zero));
                 } else {
                     startTime = revertAmPm(startTime);
                     endTime = revertAmPm(endTime);
@@ -202,7 +202,7 @@ public class AverageSpeedActivity extends BaseActivity
                 }
             }
         } catch (Exception e) {
-            makeToast("Time is in wrong format");
+            makeToast(getResourceString(R.string.err_wrong_time));
         }
     }
 
@@ -234,7 +234,7 @@ public class AverageSpeedActivity extends BaseActivity
         String speedUnit = "";
         switch (mUnit) {
             case 0:
-                speedUnit = "km / h";
+                speedUnit = "km/h";
                 break;
             case 1:
                 speedUnit = "mph";
@@ -315,9 +315,9 @@ public class AverageSpeedActivity extends BaseActivity
     private String getDistanceUnit(int distance) {
         switch (distance) {
             case 0:
-                return "km";
+                return getResourceString(R.string.val_km);
             case 1:
-                return "miles";
+                return getResourceString(R.string.val_m);
             default:
                 return "";
         }

@@ -61,6 +61,7 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
         setContentView(R.layout.activity_settings);
 
         try {
+            //noinspection ConstantConditions
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         } catch (NullPointerException e) {
             Log.e(TAG, "No actionbar");
@@ -118,7 +119,7 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
         String selection = SettingsTable._ID + " = 0";
         content.update(SettingsTable.CONTENT_URI, values, selection, null);
 
-        makeToast("Changes saved!");
+        makeToast(getResourceString(R.string.inf_change_save));
         finish();
     }
 
@@ -137,7 +138,7 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
         content.update(SettingsTable.CONTENT_URI, values, selection, null);
 
         getSupportLoaderManager().restartLoader(SETTINGS_LOADER, null, this);
-        makeToast("Defaults restored!");
+        makeToast(getResourceString(R.string.inf_def_rest));
     }
 
     /**

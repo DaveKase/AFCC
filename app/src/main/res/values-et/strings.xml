@@ -4,7 +4,7 @@
     <string name="action_settings">Seaded</string>
     <string name="afcc">Keskmise kütusekulu kalkulaator</string>
     <string name="amount">Maht:</string>
-    <string name="average">Keskmine kütusekulu</string>
+    <string name="average">Keskmine kütusekulu:</string>
     <string name="average_speed">Keskmine kiirus:</string>
     <string name="average_speed_calculator">Keskmise kiiruse kalkulaator</string>
     <string name="banner_ad_unit_id">ca-app-pub-2267964394802376/3218938843</string>
@@ -72,4 +72,31 @@
     <string name="speedometer_text">Näitab hetkekiirust kasutades seadme GPS andmeid. Kasutab kiiruse
         ühikut, mis oli määratud Seadetes.
     </string>
+    <string name="ans_cancel">Loobu</string>
+    <string name="ans_del">Kustuta</string>
+    <string name="err_dis_less_zero">Vahemaa peab olema suurem, kui null</string>
+    <string name="err_empty">Pole midagi salvestada</string>
+    <string name="err_int_zero">Pole midagi arvutada, aja intervall on null</string>
+    <string name="err_no_calc_type">Ei leidnud arvutuse tüüpi</string>
+    <string name="err_no_distance">Sisesta väärtus vahemaa tekstiväljale!</string>
+    <string name="err_no_end">Lõpuaeg pole sisestatud</string>
+    <string name="err_no_fuel">Sisesta väärtus kulutatud kütuse tekstiväljale!</string>
+    <string name="err_no_permission">Ei saa asukoha uuendusi, puudub luba</string>
+    <string name="err_no_start">Algusaeg pole sisestatud</string>
+    <string name="err_no_ver_name">Ei leidnud versiooni nime</string>
+    <string name="err_wrong_time">Aeg on vales formaadis</string>
+    <string name="err_wrong_vals">Kasutati valesid väärtusi, proovi uuesti!</string>
+    <string name="inf_change_save">Muudatused salvestatud!</string>
+    <string name="inf_def_rest">Vaikeseaded taastatud!</string>
+    <string name="inf_deleted">Rida kustutatud</string>
+    <string name="inf_saved">salvestatud!</string>
+    <string name="qst_delete">Kustuta rida?</string>
+    <string name="val_g">gallonit</string>
+    <string name="val_km">kilomeetrit</string>
+    <string name="val_l">liitrit</string>
+    <string name="val_m">miili</string>
+    <string name="val_set_g">Gallonid</string>
+    <string name="val_set_km">Kilomeetrid</string>
+    <string name="val_set_l">Liitrid</string>
+    <string name="val_set_m">Miilid</string>
 </resources>

@@ -1,9 +1,12 @@
 package afcc.taavi.kase.afcc.database;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.UriMatcher;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+
+import afcc.taavi.kase.afcc.R;
 
 /**
  * Created by Taavi on 21.07.2015.
@@ -30,7 +33,7 @@ public class DistanceTable implements BaseColumns {
      *
      * @param db Instance of database
      */
-    public static void createTable(SQLiteDatabase db) {
+    public static void createTable(SQLiteDatabase db, Context context) {
         String sql = "CREATE TABLE " + TABLE_NAME + "("
                 + _ID + " INTEGER PRIMARY KEY, "
                 + COL_TEXT + " TEXT"
@@ -38,14 +41,17 @@ public class DistanceTable implements BaseColumns {
 
         db.execSQL(sql);
 
+        String kmVal = context.getApplicationContext().getString(R.string.val_set_km);
+        String mVal = context.getApplicationContext().getString(R.string.val_set_m);
+
         ContentValues values = new ContentValues();
         values.put(_ID, 0);
-        values.put(COL_TEXT, "Kilometers");
+        values.put(COL_TEXT, kmVal);
         db.insert(TABLE_NAME, null, values);
 
         values.clear();
         values.put(_ID, 1);
-        values.put(COL_TEXT, "Miles");
+        values.put(COL_TEXT, mVal);
         db.insert(TABLE_NAME, null, values);
     }
 }

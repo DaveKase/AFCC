@@ -1,8 +1,6 @@
 package afcc.taavi.kase.afcc.activity;
 
-import android.Manifest;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.location.Location;
 import android.location.LocationManager;
@@ -43,6 +41,7 @@ public class SpeedometerActivity extends BaseActivity implements LoaderManager.L
         setContentView(R.layout.activity_speedometer);
 
         try {
+            //noinspection ConstantConditions
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         } catch (NullPointerException e) {
             Log.e(TAG, "No actionbar");
@@ -81,7 +80,7 @@ public class SpeedometerActivity extends BaseActivity implements LoaderManager.L
             updateSpeed(null);
         } catch (SecurityException se) {
             Log.e(TAG, "No permission to request location updates!");
-            makeToast("Can't get location updates, no permission granted");
+            makeToast(getResourceString(R.string.err_no_permission));
         }
     }
 
@@ -173,7 +172,7 @@ public class SpeedometerActivity extends BaseActivity implements LoaderManager.L
     private String getUnit(int unit) {
         switch (unit) {
             case SPEED_KM_H:
-                return "km / h";
+                return "km/h";
             case SPEED_MPH:
                 return "mph";
             default:

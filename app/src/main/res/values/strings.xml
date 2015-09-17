@@ -74,4 +74,36 @@
 
     <string name="banner_ad_unit_id">ca-app-pub-2267964394802376/3218938843</string>
     <string name="device_id">857F95938F400A5727FD80B1203B624C</string>
+
+    <string name="err_no_ver_name">Did not get a version name</string>
+    <string name="err_no_calc_type">Did not find calculation type</string>
+    <string name="err_no_distance">Insert value to distance travelled box!</string>
+    <string name="err_no_fuel">Insert value to fuel box!</string>
+    <string name="err_wrong_vals">Wrong values used, try again!</string>
+    <string name="err_empty">Nothing to save</string>
+    <string name="err_no_permission">Can\'t get location updates, no permission granted</string>
+    <string name="err_dis_less_zero">Distance has to be bigger than zero</string>
+    <string name="err_no_start">Start time is not inserted</string>
+    <string name="err_no_end">End time is not inserted</string>
+    <string name="err_int_zero">There\'s nothing to calculate, time interval is zero</string>
+    <string name="err_wrong_time">Time is in wrong format</string>
+
+    <string name="inf_change_save">Changes saved!</string>
+    <string name="inf_def_rest">Defaults restored!</string>
+    <string name="inf_saved">saved!</string>
+    <string name="inf_deleted">Item deleted</string>
+    
+    <string name="qst_delete">Delete an Item?</string>
+    <string name="ans_del">Delete</string>
+    <string name="ans_cancel">Cancel</string>
+    
+    <string name="val_km">kilometres</string>
+    <string name="val_m">miles</string>
+    <string name="val_l">litres</string>
+    <string name="val_g">gallons</string>
+    
+    <string name="val_set_km">Kilometers</string>
+    <string name="val_set_m">Miles</string>
+    <string name="val_set_l">Litres</string>
+    <string name="val_set_g">Gallons</string>
 </resources>
