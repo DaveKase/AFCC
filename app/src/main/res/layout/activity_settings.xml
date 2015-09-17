@@ -100,7 +100,6 @@
         android:id="@+id/restoreButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/restore"
         android:onClick="onClick"
         android:layout_below="@+id/speedSpinner"
