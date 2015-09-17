@@ -42,9 +42,9 @@
             android:id="@+id/unitSpinner"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:layout_alignTop="@+id/amountText"
-            android:layout_alignLeft="@+id/distanceSpinner"
-            android:layout_alignStart="@+id/distanceSpinner" />
+            android:layout_below="@+id/amountText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:id="@+id/consumptionText"
@@ -60,17 +60,17 @@
             android:id="@+id/distanceSpinner"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:layout_below="@+id/unitsText"
-            android:layout_toRightOf="@+id/saveButton"
-            android:layout_toEndOf="@+id/saveButton" />
+            android:layout_below="@+id/distanceText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <Spinner
             android:id="@+id/consumptionSpinner"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:layout_below="@+id/unitSpinner"
-            android:layout_alignLeft="@+id/unitSpinner"
-            android:layout_alignStart="@+id/unitSpinner" />
+            android:layout_below="@+id/consumptionText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <Button
             android:id="@+id/saveButton"
@@ -96,9 +96,9 @@
             android:id="@+id/speedSpinner"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:layout_below="@+id/consumptionSpinner"
-            android:layout_alignLeft="@+id/consumptionSpinner"
-            android:layout_alignStart="@+id/consumptionSpinner" />
+            android:layout_below="@+id/speedText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <Button
             android:id="@+id/restoreButton"
