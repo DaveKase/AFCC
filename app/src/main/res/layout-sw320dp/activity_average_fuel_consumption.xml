@@ -83,8 +83,9 @@
         android:layout_height="wrap_content"
         android:text="@string/save"
         android:onClick="onClick"
-        android:layout_alignTop="@+id/calculateButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/litreText"
+        android:layout_toRightOf="@+id/fuelText"
+        android:layout_toEndOf="@+id/fuelText" />
 
     <TextView
         android:id="@+id/kmText"

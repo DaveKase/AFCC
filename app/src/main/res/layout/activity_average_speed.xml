@@ -41,7 +41,9 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/startTimeText"
         android:ems="10"
-        android:hint="@string/speed_time_hint" />
+        android:hint="@string/speed_time_hint"
+        android:inputType="time"
+        android:focusable="false" />
 
     <TextView
         android:id="@+id/distanceUnitText"
@@ -71,7 +73,8 @@
         android:layout_below="@+id/endTimeText"
         android:ems="10"
         android:hint="@string/speed_time_hint"
-        android:inputType="time" />
+        android:inputType="time"
+        android:focusable="false" />
 
     <TextView
         android:id="@+id/averageSpeedText"

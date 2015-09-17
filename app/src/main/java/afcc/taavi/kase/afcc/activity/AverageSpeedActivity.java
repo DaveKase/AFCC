@@ -40,6 +40,7 @@ public class AverageSpeedActivity extends BaseActivity
         setContentView(R.layout.activity_average_speed);
 
         try {
+            //noinspection ConstantConditions
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         } catch (NullPointerException e) {
             Log.e(TAG, "No actionbar");
