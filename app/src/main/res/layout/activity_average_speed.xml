@@ -87,7 +87,7 @@
 
     <Button
         android:id="@+id/calculateButton"
-        android:layout_width="120dp"
+        android:layout_width="110dp"
         android:layout_height="80dp"
         android:onClick="calculate"
         android:text="@string/calculate"

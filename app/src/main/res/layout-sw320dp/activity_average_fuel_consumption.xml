@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/distanceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/distance" />
+
+    <EditText
+        android:id="@+id/distanceEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/distanceText"
+        android:ems="10"
+        android:inputType="phone" >
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/fuelText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/distanceEdit"
+        android:text="@string/fuel" />
+
+    <EditText
+        android:id="@+id/fuelEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/fuelText"
+        android:ems="10"
+        android:inputType="phone" />
+
+    <TextView
+        android:id="@+id/averageText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/fuelEdit" />
+
+    <Button
+        android:id="@+id/calculateButton"
+        android:layout_width="110dp"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/averageText"
+        android:text="@string/calculate"
+        android:textSize="12sp"
+        android:onClick="onClick" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="110dp"
+        android:layout_height="70dp"
+        android:text="@string/save"
+        android:onClick="onClick"
+        android:textSize="12sp"
+        android:layout_below="@+id/averageText"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/kmText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_alignBottom="@+id/distanceEdit"
+        android:layout_toEndOf="@+id/distanceEdit"
+        android:layout_toRightOf="@+id/distanceEdit" />
+
+    <TextView
+        android:id="@+id/litreText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_alignBottom="@+id/fuelEdit"
+        android:layout_toEndOf="@+id/fuelEdit"
+        android:layout_toRightOf="@+id/fuelEdit" />
+
+    <Button
+        android:id="@+id/previousResultsButton"
+        android:layout_width="110dp"
+        android:layout_height="70dp"
+        android:text="@string/show"
+        android:onClick="onClick"
+        android:textSize="12sp"
+        android:layout_alignBottom="@+id/saveButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+</RelativeLayout>

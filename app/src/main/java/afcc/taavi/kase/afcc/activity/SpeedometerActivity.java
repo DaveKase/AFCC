@@ -12,7 +12,6 @@ import android.support.v4.content.Loader;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -96,15 +95,10 @@ public class SpeedometerActivity extends BaseActivity implements LoaderManager.L
         if (location != null) {
             RelativeLayout progress = (RelativeLayout) findViewById(R.id.progress);
             progress.setVisibility(View.GONE);
+
             RelativeLayout speed = (RelativeLayout) findViewById(R.id.speed);
             speed.setVisibility(View.VISIBLE);
 
-//            ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
-//            progressBar.setVisibility(View.GONE);
-//
-//            TextView progressText = (TextView) findViewById(R.id.progressText);
-//            progressText.setVisibility(View.GONE);
-//
             currentSpeed = (int) location.getSpeed();
         }
 
