@@ -88,9 +88,9 @@
     <string name="err_wrong_vals">Kasutati valesid väärtusi, proovi uuesti!</string>
     <string name="inf_change_save">Muudatused salvestatud!</string>
     <string name="inf_def_rest">Vaikeseaded taastatud!</string>
-    <string name="inf_deleted">Rida kustutatud</string>
+    <string name="inf_deleted">Kustutatud</string>
     <string name="inf_saved">salvestatud!</string>
-    <string name="qst_delete">Kustuta rida?</string>
+    <string name="qst_delete">Kustuta?</string>
     <string name="val_g">gallonit</string>
     <string name="val_km">kilomeetrit</string>
     <string name="val_l">liitrit</string>
@@ -99,4 +99,5 @@
     <string name="val_set_km">Kilomeetrid</string>
     <string name="val_set_l">Liitrid</string>
     <string name="val_set_m">Miilid</string>
+    <string name="copyright">&#169; Taavi Kase</string>
 </resources>

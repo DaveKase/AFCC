@@ -70,13 +70,11 @@
 
     <Button
         android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
         android:text="@string/save"
         android:onClick="onClick"
-        android:layout_below="@+id/speedSpinner"
-        android:layout_alignRight="@+id/amountText"
-        android:layout_alignEnd="@+id/amountText" />
+        android:layout_below="@+id/speedSpinner" />
 
     <TextView
         android:id="@+id/speedText"
@@ -98,8 +96,8 @@
 
     <Button
         android:id="@+id/restoreButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
         android:text="@string/restore"
         android:onClick="onClick"
         android:layout_below="@+id/speedSpinner"

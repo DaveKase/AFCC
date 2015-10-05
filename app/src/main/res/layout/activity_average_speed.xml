@@ -83,24 +83,12 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/endTimeEdit"
-        android:text="@string/average_speed"
-        android:visibility="gone" />
-
-    <TextView
-        android:id="@+id/averageSpeedResult"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_alignTop="@+id/averageSpeedText"
-        android:layout_toRightOf="@+id/averageSpeedText"
-        android:layout_toEndOf="@+id/averageSpeedText"
-        android:visibility="gone" />
+        android:layout_below="@+id/endTimeEdit" />
 
     <Button
         android:id="@+id/calculateButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
         android:onClick="calculate"
         android:text="@string/calculate"
         android:layout_below="@+id/averageSpeedText"

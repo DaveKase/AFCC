@@ -91,9 +91,9 @@
     <string name="inf_change_save">Changes saved!</string>
     <string name="inf_def_rest">Defaults restored!</string>
     <string name="inf_saved">saved!</string>
-    <string name="inf_deleted">Item deleted</string>
+    <string name="inf_deleted">Deleted</string>
     
-    <string name="qst_delete">Delete an Item?</string>
+    <string name="qst_delete">Delete?</string>
     <string name="ans_del">Delete</string>
     <string name="ans_cancel">Cancel</string>
     
@@ -106,4 +106,5 @@
     <string name="val_set_m">Miles</string>
     <string name="val_set_l">Litres</string>
     <string name="val_set_g">Gallons</string>
+    <string name="copyright">&#169; Taavi Kase</string>
 </resources>

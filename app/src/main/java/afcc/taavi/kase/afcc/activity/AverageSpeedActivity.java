@@ -229,7 +229,6 @@ public class AverageSpeedActivity extends BaseActivity
      */
     private void showResults(String speed) {
         TextView averageSpeedText = (TextView) findViewById(R.id.averageSpeedText);
-        TextView averageSpeedResult = (TextView) findViewById(R.id.averageSpeedResult);
 
         String speedUnit = "";
         switch (mUnit) {
@@ -241,10 +240,8 @@ public class AverageSpeedActivity extends BaseActivity
                 break;
         }
 
-        String text = speed + " " + speedUnit;
-        averageSpeedResult.setText(text);
-        averageSpeedText.setVisibility(View.VISIBLE);
-        averageSpeedResult.setVisibility(View.VISIBLE);
+        String text = getResourceString(R.string.average_speed) + " " + speed + " " + speedUnit;
+        averageSpeedText.setText(text);
     }
 
     /**

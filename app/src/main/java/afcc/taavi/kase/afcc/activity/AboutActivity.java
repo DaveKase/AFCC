@@ -49,7 +49,8 @@ public class AboutActivity extends BaseActivity {
             version = getResourceString(R.string.err_no_ver_name);
         }
 
-        TextView versionNumberText = (TextView) findViewById(R.id.versionNumberText);
-        versionNumberText.setText(version);
+        TextView versionNumberText = (TextView) findViewById(R.id.versionText);
+        String text = getResourceString(R.string.version) + " " + version;
+        versionNumberText.setText(text);
     }
 }

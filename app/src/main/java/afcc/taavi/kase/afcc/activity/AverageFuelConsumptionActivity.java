@@ -130,13 +130,11 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements
      */
     private void showResult(String result) {
         TextView averageText = (TextView) findViewById(R.id.averageText);
-        TextView averageResultText = (TextView) findViewById(R.id.averageResultText);
         mUnit = getResultUnit();
         mAverageConsumption = result + " " + mUnit;
 
-        averageResultText.setText(mAverageConsumption);
-        averageText.setVisibility(View.VISIBLE);
-        averageResultText.setVisibility(View.VISIBLE);
+        String text = getResourceString(R.string.average) + " " + mAverageConsumption;
+        averageText.setText(text);
     }
 
     /**
@@ -164,17 +162,14 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements
             saveResults();
 
             TextView averageText = (TextView) findViewById(R.id.averageText);
-            TextView averageResultText = (TextView) findViewById(R.id.averageResultText);
             EditText distanceEdit = (EditText) findViewById(R.id.distanceEdit);
             EditText fuelEdit = (EditText) findViewById(R.id.fuelEdit);
 
             mAverageConsumption = "";
 
-            averageResultText.setText(mAverageConsumption);
+            averageText.setText(mAverageConsumption);
             distanceEdit.setText("");
             fuelEdit.setText("");
-            averageText.setVisibility(View.GONE);
-            averageResultText.setVisibility(View.GONE);
         } else {
             makeToast(getResourceString(R.string.err_empty));
         }

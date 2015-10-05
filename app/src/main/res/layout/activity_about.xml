@@ -132,19 +132,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/version"
             android:layout_below="@+id/speedometerText"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="48dp" />
+            android:layout_marginTop="40dp" />
 
         <TextView
-            android:id="@+id/versionNumberText"
+            android:id="@+id/copyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_alignTop="@+id/versionText"
-            android:layout_toRightOf="@+id/versionText"
-            android:layout_toEndOf="@+id/versionText" />
+            android:layout_below="@+id/versionText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:text="@string/copyright" />
     </RelativeLayout>
 </ScrollView>
