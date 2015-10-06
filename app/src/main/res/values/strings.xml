@@ -15,7 +15,7 @@
     <string name="speed">Speedometer</string>
     <string name="distance">Distance travelled:</string>
     <string name="fuel">Fuel consumed:</string>
-    <string name="average">Average fuel consumption:</string>
+    <string name="average">Average consumption:</string>
     <string name="calculate">Calculate</string>
     <string name="save">Save</string>
     <string name="show">Saved results</string>
@@ -97,10 +97,10 @@
     <string name="ans_del">Delete</string>
     <string name="ans_cancel">Cancel</string>
     
-    <string name="val_km">kilometres</string>
-    <string name="val_m">miles</string>
-    <string name="val_l">litres</string>
-    <string name="val_g">gallons</string>
+    <string name="val_km">km</string>
+    <string name="val_m">m</string>
+    <string name="val_l">l</string>
+    <string name="val_g">g</string>
     
     <string name="val_set_km">Kilometers</string>
     <string name="val_set_m">Miles</string>

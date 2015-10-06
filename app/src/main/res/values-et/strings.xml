@@ -4,7 +4,7 @@
     <string name="action_settings">Seaded</string>
     <string name="afcc">Keskmise kütusekulu kalkulaator</string>
     <string name="amount">Maht:</string>
-    <string name="average">Keskmine kütusekulu:</string>
+    <string name="average">Keskmine kulu:</string>
     <string name="average_speed">Keskmine kiirus:</string>
     <string name="average_speed_calculator">Keskmise kiiruse kalkulaator</string>
     <string name="banner_ad_unit_id">ca-app-pub-2267964394802376/3218938843</string>
@@ -40,7 +40,7 @@
     <string name="title_activity_speedometer">Spidomeeter</string>
     <string name="units">Kasutatavad ühikud:</string>
     <string name="version">Versioon:</string>
-    <string name="distance">Vahemaa:</string>
+    <string name="distance">Läbitud vahemaa:</string>
     <string name="action_about">Info</string>
 
     <string name="about">See rakendus on mõeldud sõidukite keskmise kütusekulu arvutamiseks. Rakenduses
@@ -91,10 +91,10 @@
     <string name="inf_deleted">Kustutatud</string>
     <string name="inf_saved">salvestatud!</string>
     <string name="qst_delete">Kustuta?</string>
-    <string name="val_g">gallonit</string>
-    <string name="val_km">kilomeetrit</string>
-    <string name="val_l">liitrit</string>
-    <string name="val_m">miili</string>
+    <string name="val_g">g</string>
+    <string name="val_km">km</string>
+    <string name="val_l">l</string>
+    <string name="val_m">m</string>
     <string name="val_set_g">Gallonid</string>
     <string name="val_set_km">Kilomeetrid</string>
     <string name="val_set_l">Liitrid</string>
