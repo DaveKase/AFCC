@@ -21,8 +21,8 @@
         android:ems="10"
         android:inputType="phone"
         android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/previousResultsButton"
-        android:layout_toStartOf="@+id/previousResultsButton">
+        android:layout_toRightOf="@+id/distanceText"
+        android:layout_toEndOf="@+id/distanceText">
         <requestFocus />
     </EditText>
 
@@ -101,7 +101,7 @@
         android:text="@string/show"
         android:onClick="onClick"
         android:textSize="12sp"
-        android:layout_alignBottom="@+id/saveButton"
+        android:layout_alignTop="@+id/saveButton"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 </RelativeLayout>
