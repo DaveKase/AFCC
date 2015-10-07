@@ -12,6 +12,7 @@ import android.net.Uri;
  */
 public class SettingsTable implements BaseColumns {
     public static final String TABLE_NAME = "settings";
+    public static final String TEMP_TABLE_NAME="temp_settings";
     public static final String COL_DISTANCE = "distance";
     public static final String COL_UNIT = "unit";
     public static final String COL_CONSUMPTION = "consumption";

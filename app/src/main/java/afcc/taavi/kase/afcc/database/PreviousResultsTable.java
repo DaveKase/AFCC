@@ -11,6 +11,7 @@ import android.net.Uri;
  */
 public class PreviousResultsTable implements BaseColumns {
     public static final String TABLE_NAME = "previous_results";
+    public static final String TEMP_TABLE_NAME="temp_previous_results";
     public static final String COL_DATE = "date";
     public static final String COL_RESULT = "result";
     public static final String COL_UNIT = "unit";

@@ -20,7 +20,7 @@ public class Database {
      */
     public static final class DatabaseHelper extends SQLiteOpenHelper {
         private static final String DATABASE_NAME = "averageconsumption.db";
-        private static final int DATABASE_VERSION = 10;
+        private static final int DATABASE_VERSION = 12;
         private static DatabaseHelper mInstance;
         private static SQLiteDatabase myWritableDb;
         private Context mContext;
@@ -147,8 +147,14 @@ public class Database {
          * @param db Instance of database
          */
         private void onUpgradeSettings(SQLiteDatabase db) {
+            db.execSQL("CREATE TABLE " + SettingsTable.TEMP_TABLE_NAME + " AS SELECT * FROM "
+                    + SettingsTable.TABLE_NAME + ";");
+
             db.execSQL("DROP TABLE IF EXISTS " + SettingsTable.TABLE_NAME);
-            SettingsTable.createTable(db);
+            db.execSQL("CREATE TABLE " + SettingsTable.TABLE_NAME + " AS SELECT * FROM "
+                    + SettingsTable.TEMP_TABLE_NAME + ";");
+
+            db.execSQL("DROP TABLE IF EXISTS " + SettingsTable.TEMP_TABLE_NAME);
         }
 
         /**
@@ -157,8 +163,14 @@ public class Database {
          * @param db Instance of database
          */
         private void onUpgradePreviousResults(SQLiteDatabase db) {
+            db.execSQL("CREATE TABLE " + PreviousResultsTable.TEMP_TABLE_NAME + " AS SELECT * FROM "
+                    + PreviousResultsTable.TABLE_NAME + ";");
+
             db.execSQL("DROP TABLE IF EXISTS " + PreviousResultsTable.TABLE_NAME);
-            PreviousResultsTable.createTable(db);
+            db.execSQL("CREATE TABLE " + PreviousResultsTable.TABLE_NAME + " AS SELECT * FROM "
+                    + PreviousResultsTable.TEMP_TABLE_NAME + ";");
+
+            db.execSQL("DROP TABLE IF EXISTS " + PreviousResultsTable.TEMP_TABLE_NAME);
         }
 
         /**
