@@ -187,8 +187,7 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
+            public void onNothingSelected(AdapterView<?> parent) {}
         });
     }
 

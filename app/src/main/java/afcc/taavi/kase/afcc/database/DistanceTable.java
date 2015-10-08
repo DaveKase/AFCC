@@ -10,7 +10,7 @@ import afcc.taavi.kase.afcc.R;
 
 /**
  * Created by Taavi on 21.07.2015.
- * <p/>
+ * 
  * Holds previous results table static variables and URIs
  */
 public class DistanceTable implements BaseColumns {
