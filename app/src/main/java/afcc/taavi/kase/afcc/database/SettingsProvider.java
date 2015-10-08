@@ -96,12 +96,14 @@ public class SettingsProvider extends Provider {
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs,
                         String sortOrder) {
 
-        if (projection == null || projection.length == 0)
+        if (projection == null || projection.length == 0) {
             projection = new String[]{SettingsTable._ID, SettingsTable.COL_DISTANCE,
                     SettingsTable.COL_UNIT, SettingsTable.COL_SPEED, SettingsTable.COL_CONSUMPTION};
+        }
 
-        if (TextUtils.isEmpty(sortOrder))
+        if (TextUtils.isEmpty(sortOrder)) {
             sortOrder = SettingsTable.DEFAULT_SORT_ORDER;
+        }
 
         SQLiteDatabase db = this.mHelper.getMyWritableDatabase();
         Cursor cursor = db.query(SettingsTable.TABLE_NAME, projection, selection, selectionArgs,

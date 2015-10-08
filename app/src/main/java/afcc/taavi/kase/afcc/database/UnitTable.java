@@ -15,7 +15,7 @@ import afcc.taavi.kase.afcc.R;
  */
 public class UnitTable implements BaseColumns {
     public static final String TABLE_NAME = "unit_table";
-    public static final String COL_DISTANCE_ID ="distance_id";
+    public static final String COL_DISTANCE_ID = "distance_id";
     public static final String COL_TEXT = "text";
     public static final String DEFAULT_SORT_ORDER = _ID;
 

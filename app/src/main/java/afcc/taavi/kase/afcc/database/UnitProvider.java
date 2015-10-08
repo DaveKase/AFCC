@@ -54,11 +54,13 @@ public class UnitProvider extends Provider {
      */
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-        if (projection == null || projection.length == 0)
+        if (projection == null || projection.length == 0) {
             projection = new String[]{UnitTable._ID, UnitTable.COL_DISTANCE_ID, UnitTable.COL_TEXT};
+        }
 
-        if (TextUtils.isEmpty(sortOrder))
+        if (TextUtils.isEmpty(sortOrder)) {
             sortOrder = UnitTable.DEFAULT_SORT_ORDER;
+        }
 
         SQLiteDatabase db = this.mHelper.getMyWritableDatabase();
         Cursor cursor = db.query(UnitTable.TABLE_NAME, projection, selection, selectionArgs,

@@ -54,12 +54,14 @@ public class ConsumptionProvider extends Provider {
      */
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-        if (projection == null || projection.length == 0)
+        if (projection == null || projection.length == 0) {
             projection = new String[]{ConsumptionTable._ID, ConsumptionTable.COL_DISTANCE_ID,
                     ConsumptionTable.COL_TEXT};
+        }
 
-        if (TextUtils.isEmpty(sortOrder))
+        if (TextUtils.isEmpty(sortOrder)) {
             sortOrder = ConsumptionTable.DEFAULT_SORT_ORDER;
+        }
 
         SQLiteDatabase db = this.mHelper.getMyWritableDatabase();
         Cursor cursor = db.query(ConsumptionTable.TABLE_NAME, projection, selection, selectionArgs,

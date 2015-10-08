@@ -15,6 +15,7 @@ import afcc.taavi.kase.afcc.R;
  */
 public class AboutActivity extends BaseActivity {
     private static final String TAG = "AboutActivity";
+
     /**
      * Called when the activity is first created.
      *

@@ -24,7 +24,7 @@ import afcc.taavi.kase.afcc.database.SettingsTable;
 
 /**
  * Created by Taavi Kase on 24.09.2014.
- *
+ * 
  * Average fuel consumption activity
  */
 public class AverageFuelConsumptionActivity extends BaseActivity implements
@@ -82,11 +82,12 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements
     private void calculate() {
         try {
             String result = "";
-            switch(mCalculationType) {
+            switch (mCalculationType) {
                 case CONSUMPTION_L_100_KM:
                     result = calculateL100Km();
                     break;
-                case CONSUMPTION_KM_L: case CONSUMPTION_MPG:
+                case CONSUMPTION_KM_L:
+                case CONSUMPTION_MPG:
                     result = calculateDistancePerAmount();
                     break;
                 default:

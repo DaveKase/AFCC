@@ -12,15 +12,14 @@ import android.net.Uri;
  */
 public class SettingsTable implements BaseColumns {
     public static final String TABLE_NAME = "settings";
-    public static final String TEMP_TABLE_NAME="temp_settings";
+    public static final String TEMP_TABLE_NAME = "temp_settings";
     public static final String COL_DISTANCE = "distance";
     public static final String COL_UNIT = "unit";
     public static final String COL_CONSUMPTION = "consumption";
     public static final String COL_SPEED = "speed";
     public static final String DEFAULT_SORT_ORDER = _ID;
 
-    public static final Uri CONTENT_URI = Uri.parse(Database.SCHEME + Database.AUTHORITY + "/"
-            + TABLE_NAME);
+    public static final Uri CONTENT_URI = Uri.parse(Database.SCHEME + Database.AUTHORITY + "/" + TABLE_NAME);
 
     public static final int SETTINGS = 1;
 

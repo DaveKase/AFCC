@@ -5,5 +5,4 @@ package afcc.taavi.kase.afcc.database;
  *
  * Adds basic columns to database tables
  */
-public interface BaseColumns extends android.provider.BaseColumns {
-}
+public interface BaseColumns extends android.provider.BaseColumns {}

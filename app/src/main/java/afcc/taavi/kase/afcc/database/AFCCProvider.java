@@ -4,6 +4,7 @@ import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 
 import java.security.InvalidParameterException;
 
@@ -45,7 +46,7 @@ public class AFCCProvider extends ContentProvider {
      * @throws InvalidParameterException
      */
     @Override
-    public String getType(Uri uri) {
+    public String getType(@NonNull Uri uri) {
         for (Provider p : providers) {
             if (p.matchThisProvider(uri))
                 return p.getType(uri);
@@ -62,7 +63,7 @@ public class AFCCProvider extends ContentProvider {
      * @throws InvalidParameterException
      */
     @Override
-    public Uri insert(Uri uri, ContentValues values) {
+    public Uri insert(@NonNull Uri uri, ContentValues values) {
         for (Provider p : providers) {
             if (p.matchThisProvider(uri))
                 try {
@@ -88,7 +89,7 @@ public class AFCCProvider extends ContentProvider {
      * @throws InvalidParameterException
      */
     @Override
-    public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs,
+    public Cursor query(@NonNull Uri uri, String[] projection, String selection, String[] selectionArgs,
                         String sortOrder) {
 
         for (Provider p : providers) {
@@ -113,7 +114,7 @@ public class AFCCProvider extends ContentProvider {
      * @throws InvalidParameterException
      */
     @Override
-    public int delete(Uri uri, String selection, String[] selectionArgs) {
+    public int delete(@NonNull Uri uri, String selection, String[] selectionArgs) {
         for (Provider p : providers) {
             if (p.matchThisProvider(uri)) {
                 return p.delete(uri, selection, selectionArgs);
@@ -133,7 +134,7 @@ public class AFCCProvider extends ContentProvider {
      * @throws InvalidParameterException
      */
     @Override
-    public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
+    public int update(@NonNull Uri uri, ContentValues values, String selection, String[] selectionArgs) {
         for (Provider p : providers) {
             if (p.matchThisProvider(uri)) {
                 return p.update(uri, values, selection, selectionArgs);

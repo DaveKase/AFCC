@@ -9,88 +9,89 @@
         android:id="@+id/distanceText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/speed_distance" />
+        android:text="@string/speed_distance"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
         android:id="@+id/distanceEdit"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:inputType="phone"
+        android:layout_alignEnd="@+id/startTimeEdit"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/startTimeText"
         android:layout_alignRight="@+id/startTimeEdit"
-        android:layout_alignEnd="@+id/startTimeEdit" />
+        android:layout_toRightOf="@+id/startTimeText"
+        android:layout_toEndOf="@+id/startTimeText"
+        android:inputType="phone" />
 
     <TextView
         android:id="@+id/startTimeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/distanceEdit"
-        android:text="@string/speed_time_from" />
+        android:text="@string/speed_time_from"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
         android:id="@+id/startTimeEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/speed_time_hint"
-        android:inputType="time"
-        android:focusable="false"
         android:layout_alignTop="@+id/startTimeText"
+        android:layout_toEndOf="@+id/startTimeText"
         android:layout_toRightOf="@+id/startTimeText"
-        android:layout_toEndOf="@+id/startTimeText" />
+        android:ems="10"
+        android:focusable="false"
+        android:hint="@string/speed_time_hint"
+        android:inputType="time" />
 
     <TextView
         android:id="@+id/distanceUnitText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignBottom="@+id/distanceEdit"
         android:layout_toEndOf="@+id/distanceEdit"
-        android:layout_toRightOf="@+id/distanceEdit" />
+        android:layout_toRightOf="@+id/distanceEdit"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/endTimeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/startTimeEdit"
-        android:text="@string/speed_time_to" />
+        android:text="@string/speed_time_to"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
         android:id="@+id/endTimeEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/speed_time_hint"
-        android:inputType="time"
-        android:focusable="false"
-        android:layout_below="@+id/startTimeEdit"
         android:layout_alignLeft="@+id/startTimeEdit"
-        android:layout_alignStart="@+id/startTimeEdit" />
+        android:layout_alignStart="@+id/startTimeEdit"
+        android:layout_below="@+id/startTimeEdit"
+        android:ems="10"
+        android:focusable="false"
+        android:hint="@string/speed_time_hint"
+        android:inputType="time" />
 
     <TextView
         android:id="@+id/averageSpeedText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/endTimeEdit" />
+        android:layout_below="@+id/endTimeEdit"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
         android:id="@+id/calculateButton"
         android:layout_width="120dp"
         android:layout_height="80dp"
-        android:onClick="calculate"
-        android:text="@string/calculate"
-        android:layout_below="@+id/averageSpeedText"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/averageSpeedText"
+        android:onClick="calculate"
+        android:text="@string/calculate" />
 </RelativeLayout>

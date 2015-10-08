@@ -17,134 +17,134 @@
             android:id="@+id/aboutText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/about"
-            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentTop="true"
+            android:text="@string/about"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/settings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/aboutText"
             android:layout_marginTop="10dp"
             android:text="@string/settings"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/settingsText"
             android:layout_width="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_height="wrap_content"
             android:layout_below="@+id/settings"
-            android:text="@string/settings_text" />
+            android:text="@string/settings_text"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/afcc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/settingsText"
             android:layout_marginTop="10dp"
             android:text="@string/afcc"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/afccText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/afcc"
-            android:text="@string/afcc_text" />
+            android:text="@string/afcc_text"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/previousResults"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/afccText"
             android:layout_marginTop="10dp"
             android:text="@string/previous_results"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/previousResultsText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/previousResults"
-            android:text="@string/previous_results_text" />
+            android:text="@string/previous_results_text"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/averageSpeed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/previousResultsText"
             android:layout_marginTop="10dp"
             android:text="@string/average_speed_calculator"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/averageSpeedText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/averageSpeed"
-            android:text="@string/average_speed_calculator_text" />
+            android:text="@string/average_speed_calculator_text"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/speedometer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_below="@+id/averageSpeedText"
             android:layout_marginTop="10dp"
             android:text="@string/speed"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/speedometerText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_below="@+id/speedometer"
-            android:text="@string/speedometer_text" />
+            android:text="@string/speedometer_text"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/versionText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_below="@+id/speedometerText"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="40dp" />
+            android:layout_below="@+id/speedometerText"
+            android:layout_marginTop="40dp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/copyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_below="@+id/versionText"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:text="@string/copyright" />
+            android:layout_below="@+id/versionText"
+            android:text="@string/copyright"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
     </RelativeLayout>
 </ScrollView>

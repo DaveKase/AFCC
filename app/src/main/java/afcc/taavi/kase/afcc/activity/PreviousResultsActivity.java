@@ -30,6 +30,27 @@ public class PreviousResultsActivity extends BaseActivity
 
     private static final String TAG = "PreviousResultsActivity";
     private static final int RESULTS_LOADER = 0;
+
+    /**
+     * Here we will change the data from cursor to more convenient format
+     */
+    SimpleCursorAdapter.ViewBinder viewBinder = new SimpleCursorAdapter.ViewBinder() {
+        public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
+            switch (view.getId()) {
+                case R.id.nrText:
+                    TextView nrText = (TextView) view;
+                    int row = cursor.getPosition() + 1;
+                    String rowNr = "" + row;
+                    nrText.setText(rowNr);
+                    break;
+                default:
+                    return false;
+            }
+
+            return true;
+        }
+    };
+
     private SimpleCursorAdapter mAdapter;
     private String[] mProjection = {PreviousResultsTable._ID, PreviousResultsTable.COL_ROW,
             PreviousResultsTable.COL_RESULT, PreviousResultsTable.COL_UNIT,
@@ -71,26 +92,6 @@ public class PreviousResultsActivity extends BaseActivity
                 return super.onOptionsItemSelected(item);
         }
     }
-
-    /**
-     * Here we will change the data from cursor to more convenient format
-     */
-    SimpleCursorAdapter.ViewBinder viewBinder = new SimpleCursorAdapter.ViewBinder() {
-        public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
-            switch (view.getId()) {
-                case R.id.nrText:
-                    TextView nrText = (TextView) view;
-                    int row = cursor.getPosition() + 1;
-                    String rowNr = "" + row;
-                    nrText.setText(rowNr);
-                    break;
-                default:
-                    return false;
-            }
-
-            return true;
-        }
-    };
 
     /**
      * Queries previous results from database, puts it to ListView

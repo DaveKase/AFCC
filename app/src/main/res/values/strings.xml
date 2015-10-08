@@ -92,16 +92,16 @@
     <string name="inf_def_rest">Defaults restored!</string>
     <string name="inf_saved">saved!</string>
     <string name="inf_deleted">Deleted</string>
-    
+
     <string name="qst_delete">Delete?</string>
     <string name="ans_del">Delete</string>
     <string name="ans_cancel">Cancel</string>
-    
+
     <string name="val_km">km</string>
     <string name="val_m">m</string>
     <string name="val_l">l</string>
     <string name="val_g">g</string>
-    
+
     <string name="val_set_km">Kilometers</string>
     <string name="val_set_m">Miles</string>
     <string name="val_set_l">Litres</string>
