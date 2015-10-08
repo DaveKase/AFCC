@@ -43,15 +43,16 @@
     <string name="distance">Läbitud vahemaa:</string>
     <string name="action_about">Info</string>
 
-    <string name="about">See rakendus on mõeldud sõidukite keskmise kütusekulu arvutamiseks. Rakenduses
-        on võimalik arvutada l/100 km, km/l ja mpg. Lisaks on rakenduses võimalik arvutada keskmist
-        kiirust, mis kasutab arvutamiseks aega ja vahemaad, ning vaadata oma hetke kiirust, kasutades
-        GPS\'i andmeid.
+    <string name="about">See rakendus on mõeldud sõidukite keskmise kütusekulu arvutamiseks.
+        Rakenduses on võimalik arvutada l/100 km, km/l ja mpg. Lisaks on rakenduses võimalik arvutada
+        keskmist kiirust, mis kasutab arvutamiseks aega ja vahemaad, ning vaadata oma hetke kiirust,
+        kasutades GPS\'i andmeid.
     </string>
 
     <string name="afcc_text">Võimaldab arvutata keskmist kütusekulu arvestades vahemaad ja kasutatud
-        kütuse hulka. Kasutatud ühikud määratakse Seadete all. Nupp \"Arvuta\" algatab arvutamise. Nupp
-        \"Salvesta\" salvestab tulemuse andmebaasi ja \"Salvestatud tulemused\" näitab salvestatud tulemusi.
+        kütuse hulka. Kasutatud ühikud määratakse Seadete all. Nupp \"Arvuta\" algatab arvutamise.
+        Nupp \"Salvesta\" salvestab tulemuse ja \"Salvestatud tulemused\" näitab
+        salvestatud tulemusi.
     </string>
 
     <string name="average_speed_calculator_text">Arvutab keskmist kiirust võttes arvesse vahemaad ja
@@ -60,13 +61,12 @@
     </string>
 
     <string name="previous_results_text">Näitab salvestatud tulemusi nimekirjana koos salvestamise
-        kuupäevaga. Kui rida pikalt klikkida, siis annab seade võimaluse seda rida kustutada.
+        kuupäevaga. Kui rida pikalt klikkida, siis annab seade võimaluse see rida kustutada.
     </string>
 
     <string name="settings_text">Võimaldab valida milliseid ühikuid kasutada vahemaa, kütuse mahu,
-        kulu ja kiiruse jaoks. "Salvesta" nupp salvestab vastavad andmed andmebaasi. Kui \"Taasta
-        vaikeseaded\" nuppu vajutada, hakatakse kasutama vaikeseadeid vahemaa (km), mahu (liitrid),
-        kulu (l/100km) ja kiiruse (km/h) jaoks.
+        kulu ja kiiruse jaoks. "Salvesta" nupp salvestab valikud. \"Taasta vaikeseaded\" nupp
+        taastab vaikeseaded vahemaa (km), mahu (liitrid), kulu (l/100km) ja kiiruse (km/h) jaoks.
     </string>
 
     <string name="speedometer_text">Näitab hetkekiirust kasutades seadme GPS andmeid. Kasutab kiiruse
