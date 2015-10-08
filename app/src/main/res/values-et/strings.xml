@@ -72,8 +72,8 @@
     <string name="speedometer_text">Näitab hetkekiirust kasutades seadme GPS andmeid. Kasutab kiiruse
         ühikut, mis oli määratud Seadetes.
     </string>
-    <string name="ans_cancel">Loobu</string>
-    <string name="ans_del">Kustuta</string>
+    <string name="ans_cancel">Ei</string>
+    <string name="ans_del">Jah</string>
     <string name="err_dis_less_zero">Vahemaa peab olema suurem, kui null</string>
     <string name="err_empty">Pole midagi salvestada</string>
     <string name="err_int_zero">Pole midagi arvutada, aja intervall on null</string>

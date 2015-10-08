@@ -94,8 +94,8 @@
     <string name="inf_deleted">Deleted</string>
 
     <string name="qst_delete">Delete?</string>
-    <string name="ans_del">Delete</string>
-    <string name="ans_cancel">Cancel</string>
+    <string name="ans_del">Yes</string>
+    <string name="ans_cancel">No</string>
 
     <string name="val_km">km</string>
     <string name="val_m">m</string>
