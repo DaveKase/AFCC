@@ -11,8 +11,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 import java.util.Calendar;
 
+import afcc.taavi.kase.afcc.AfccApplication;
 import afcc.taavi.kase.afcc.R;
 import afcc.taavi.kase.afcc.database.SettingsTable;
 
@@ -28,6 +32,7 @@ public class AverageSpeedActivity extends BaseActivity
     private static final int UNITS_LOADER = 0;
     private int mUnit = 0;
     private EditText mEditText;
+    private Tracker mTracker;
 
     /**
      * Called when the activity is first created.
@@ -38,6 +43,9 @@ public class AverageSpeedActivity extends BaseActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_average_speed);
+
+        AfccApplication application = (AfccApplication) getApplication();
+        mTracker = application.getDefaultTracker();
 
         try {
             //noinspection ConstantConditions
@@ -318,6 +326,17 @@ public class AverageSpeedActivity extends BaseActivity
             default:
                 return "";
         }
+    }
+
+    /**
+     * Called when activity is resumed
+     */
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        mTracker.setScreenName(TAG);
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
     /**

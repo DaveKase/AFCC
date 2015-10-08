@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
+import afcc.taavi.kase.afcc.AfccApplication;
 import afcc.taavi.kase.afcc.R;
 
 /**
@@ -15,6 +19,7 @@ import afcc.taavi.kase.afcc.R;
  */
 public class AboutActivity extends BaseActivity {
     private static final String TAG = "AboutActivity";
+    private Tracker mTracker;
 
     /**
      * Called when the activity is first created.
@@ -26,6 +31,9 @@ public class AboutActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
+        AfccApplication application = (AfccApplication) getApplication();
+        mTracker = application.getDefaultTracker();
+
         try {
             //noinspection ConstantConditions
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -34,6 +42,17 @@ public class AboutActivity extends BaseActivity {
         }
 
         versionName();
+    }
+
+    /**
+     * Called when activity is resumed
+     */
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        mTracker.setScreenName(TAG);
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
     /**

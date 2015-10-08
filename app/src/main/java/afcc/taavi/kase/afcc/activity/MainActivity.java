@@ -7,10 +7,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
+import afcc.taavi.kase.afcc.AfccApplication;
 import afcc.taavi.kase.afcc.R;
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by Taavi Kase
@@ -20,6 +25,7 @@ import afcc.taavi.kase.afcc.R;
 public class MainActivity extends BaseActivity {
     private static final String TAG = "MainActivity";
     private AdView mAdView;
+    private Tracker mTracker;
 
     /**
      * Called when Activity is first created
@@ -29,7 +35,11 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
+
+        AfccApplication application = (AfccApplication) getApplication();
+        mTracker = application.getDefaultTracker();
 
         setAds();
     }
@@ -55,6 +65,9 @@ public class MainActivity extends BaseActivity {
     @Override
     public void onResume() {
         super.onResume();
+
+        mTracker.setScreenName(TAG);
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
 
         if (mAdView != null) {
             mAdView.resume();

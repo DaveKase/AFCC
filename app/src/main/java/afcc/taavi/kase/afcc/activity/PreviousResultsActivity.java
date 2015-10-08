@@ -17,6 +17,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
+import afcc.taavi.kase.afcc.AfccApplication;
 import afcc.taavi.kase.afcc.R;
 import afcc.taavi.kase.afcc.database.PreviousResultsTable;
 
@@ -30,6 +34,7 @@ public class PreviousResultsActivity extends BaseActivity
 
     private static final String TAG = "PreviousResultsActivity";
     private static final int RESULTS_LOADER = 0;
+    private Tracker mTracker;
 
     /**
      * Here we will change the data from cursor to more convenient format
@@ -65,6 +70,9 @@ public class PreviousResultsActivity extends BaseActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_previous_results);
+
+        AfccApplication application = (AfccApplication) getApplication();
+        mTracker = application.getDefaultTracker();
 
         try {
             //noinspection ConstantConditions
@@ -197,6 +205,17 @@ public class PreviousResultsActivity extends BaseActivity
                 mAdapter.swapCursor(cursor);
                 break;
         }
+    }
+
+    /**
+     * Called when activity is resumed
+     */
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        mTracker.setScreenName(TAG);
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
     /**

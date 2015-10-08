@@ -14,27 +14,32 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import afcc.taavi.kase.afcc.AfccApplication;
 import afcc.taavi.kase.afcc.R;
 import afcc.taavi.kase.afcc.database.PreviousResultsTable;
 import afcc.taavi.kase.afcc.database.SettingsTable;
 
 /**
  * Created by Taavi Kase on 24.09.2014.
- * 
+ *
  * Average fuel consumption activity
  */
 public class AverageFuelConsumptionActivity extends BaseActivity implements
         LoaderManager.LoaderCallbacks<Cursor> {
 
-    //private static String TAG = "AverageFuelConsumptionActivity";
+    private static String TAG = "AverageFuelConsumptionActivity";
     private static final int SETTINGS_LOADER = 0;
     private String mAverageConsumption = "";
     private String mUnit = "";
     private int mCalculationType = 0;
+    private Tracker mTracker;
 
     /**
      * Called when the activity is first created.
@@ -46,11 +51,14 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_average_fuel_consumption);
 
+        AfccApplication application = (AfccApplication) getApplication();
+        mTracker = application.getDefaultTracker();
+
         try {
             //noinspection ConstantConditions
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         } catch (NullPointerException e) {
-            Log.e("AverageFuelConsumption", "No actionbar");
+            Log.e(TAG, "No actionbar");
         }
 
         getSupportLoaderManager().restartLoader(SETTINGS_LOADER, null, this);
@@ -314,6 +322,17 @@ public class AverageFuelConsumptionActivity extends BaseActivity implements
             default:
                 return "";
         }
+    }
+
+    /**
+     * Called when activity is resumed
+     */
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        mTracker.setScreenName(TAG);
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
     /**

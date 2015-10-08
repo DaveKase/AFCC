@@ -15,6 +15,10 @@ import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
+import afcc.taavi.kase.afcc.AfccApplication;
 import afcc.taavi.kase.afcc.R;
 import afcc.taavi.kase.afcc.database.SettingsTable;
 
@@ -29,6 +33,7 @@ public class SpeedometerActivity extends BaseActivity implements LoaderManager.L
     private static final String TAG = "SpeedometerActivity";
     private static final int UNIT_LOADER = 0;
     private int mUnit = 0;
+    private Tracker mTracker;
 
     /**
      * Called when Activity is first created
@@ -39,6 +44,9 @@ public class SpeedometerActivity extends BaseActivity implements LoaderManager.L
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speedometer);
+
+        AfccApplication application = (AfccApplication) getApplication();
+        mTracker = application.getDefaultTracker();
 
         try {
             //noinspection ConstantConditions
@@ -191,6 +199,17 @@ public class SpeedometerActivity extends BaseActivity implements LoaderManager.L
             CustomLocation customLocation = new CustomLocation(location, this.useMetricUnits());
             this.updateSpeed(customLocation);
         }
+    }
+
+    /**
+     * Called when activity is resumed
+     */
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        mTracker.setScreenName(TAG);
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
     /**

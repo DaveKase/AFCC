@@ -14,6 +14,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
+import afcc.taavi.kase.afcc.AfccApplication;
 import afcc.taavi.kase.afcc.R;
 import afcc.taavi.kase.afcc.database.ConsumptionTable;
 import afcc.taavi.kase.afcc.database.DistanceTable;
@@ -50,6 +54,8 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
     private Spinner mConsumptionSpinner;
     private Spinner mSpeedSpinner;
 
+    private Tracker mTracker;
+
     /**
      * Called when the activity is first created.
      *
@@ -59,6 +65,9 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        AfccApplication application = (AfccApplication) getApplication();
+        mTracker = application.getDefaultTracker();
 
         try {
             //noinspection ConstantConditions
@@ -187,7 +196,8 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
     }
 
@@ -339,5 +349,16 @@ public class SettingsActivity extends BaseActivity implements LoaderManager.Load
                 mSpeedAdapter.swapCursor(null);
                 break;
         }
+    }
+
+    /**
+     * Called when activity is resumed
+     */
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        mTracker.setScreenName(TAG);
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 }
