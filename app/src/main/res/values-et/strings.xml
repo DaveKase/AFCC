@@ -19,7 +19,7 @@
     <string name="previous_results">Salvestatud tulemused</string>
     <string name="restore">Taasta vaikeseaded</string>
     <string name="save">Salvesta</string>
-    <string name="search_satellites">Otsin satelliite</string>
+    <string name="search_satellites">GPSi käivitamine</string>
     <string name="settings">Seaded</string>
     <string name="show">Salvestatud tulemused</string>
     <string name="speed">Spidomeeter</string>

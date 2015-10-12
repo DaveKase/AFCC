@@ -13,7 +13,7 @@
     <Button
         android:id="@+id/fuelConsumptionButton"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
+        android:layout_height="60dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
@@ -21,12 +21,12 @@
         android:layout_alignParentTop="true"
         android:onClick="onClick"
         android:text="@string/fuelConsumption"
-        android:textSize="20sp" />
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/speedCalculatorButton"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
+        android:layout_height="60dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
@@ -34,12 +34,12 @@
         android:layout_below="@+id/fuelConsumptionButton"
         android:onClick="onClick"
         android:text="@string/speedCalculator"
-        android:textSize="20sp" />
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/speedButton"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
+        android:layout_height="60dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
@@ -47,7 +47,7 @@
         android:layout_below="@+id/speedCalculatorButton"
         android:onClick="onClick"
         android:text="@string/speed"
-        android:textSize="20sp" />
+        android:textSize="18sp" />
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"

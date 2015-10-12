@@ -35,7 +35,7 @@
     <string name="speed_time_unit">Hours:minutes</string>
     <string name="average_speed">Average speed:</string>
     <string name="speed_text">Your speed is:</string>
-    <string name="search_satellites">Searching for satellites</string>
+    <string name="search_satellites">Starting GPS</string>
 
     <string name="about">This app is for calculating average fuel consumption of vehicles. It can
         calculate l/100 km, km/l and mpg. For addition there is an average speed calculator, which

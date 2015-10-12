@@ -17,8 +17,8 @@
         android:layout_width="227dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/distanceText"
-        android:layout_toEndOf="@+id/distanceText"
+        android:layout_toEndOf="@+id/startTimeText"
+        android:layout_toRightOf="@+id/startTimeText"
         android:inputType="phone" />
 
     <TextView
@@ -35,9 +35,9 @@
         android:id="@+id/startTimeEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/distanceEdit"
-        android:layout_alignStart="@+id/distanceEdit"
-        android:layout_below="@+id/distanceUnitText"
+        android:layout_below="@+id/distanceEdit"
+        android:layout_toEndOf="@+id/startTimeText"
+        android:layout_toRightOf="@+id/startTimeText"
         android:ems="10"
         android:focusable="false"
         android:hint="@string/speed_time_hint"
@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/startTimeEdit"
         android:layout_alignStart="@+id/startTimeEdit"
-        android:layout_alignTop="@+id/endTimeText"
+        android:layout_below="@+id/startTimeEdit"
         android:ems="10"
         android:focusable="false"
         android:hint="@string/speed_time_hint"

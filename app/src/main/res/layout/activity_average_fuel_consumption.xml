@@ -58,22 +58,24 @@
 
     <Button
         android:id="@+id/calculateButton"
-        android:layout_width="120dp"
-        android:layout_height="80dp"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/averageText"
         android:onClick="onClick"
-        android:text="@string/calculate" />
+        android:text="@string/calculate"
+        android:textSize="12sp" />
 
     <Button
         android:id="@+id/saveButton"
-        android:layout_width="120dp"
-        android:layout_height="80dp"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
         android:layout_below="@+id/averageText"
         android:layout_centerHorizontal="true"
         android:onClick="onClick"
-        android:text="@string/save" />
+        android:text="@string/save"
+        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/kmText"
@@ -95,11 +97,12 @@
 
     <Button
         android:id="@+id/previousResultsButton"
-        android:layout_width="120dp"
-        android:layout_height="80dp"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/saveButton"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/saveButton"
         android:onClick="onClick"
-        android:text="@string/show" />
+        android:text="@string/show"
+        android:textSize="12sp" />
 </RelativeLayout>

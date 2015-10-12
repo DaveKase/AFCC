@@ -13,28 +13,24 @@
 
     <TextView
         android:id="@+id/nrText"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_width="30dp"
+        android:layout_height="40dp" />
 
     <TextView
         android:id="@+id/resultText"
         android:layout_width="70dp"
         android:layout_height="40dp"
-        android:layout_weight="0.93"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_weight="0.93" />
 
     <TextView
         android:id="@+id/unitText"
         android:layout_width="80dp"
         android:layout_height="40dp"
-        android:layout_weight="0.17"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_weight="0.17" />
 
     <TextView
         android:id="@+id/dateText"
         android:layout_width="120dp"
         android:layout_height="40dp"
-        android:layout_weight="0.60"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_weight="0.60" />
 </LinearLayout>
