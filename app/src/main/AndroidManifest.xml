@@ -31,42 +31,22 @@
 
         <activity
             android:name=".activity.AverageFuelConsumptionActivity"
-            android:label="@string/title_activity_average_fuel"
-            android:parentActivityName=".activity.BaseActivity">
-
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.BaseActivity" />
+            android:label="@string/title_activity_average_fuel">
         </activity>
 
         <activity
             android:name=".activity.SettingsActivity"
-            android:label="@string/title_activity_settings"
-            android:parentActivityName=".activity.BaseActivity">
-
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.BaseActivity" />
+            android:label="@string/title_activity_settings">
         </activity>
 
         <activity
             android:name=".activity.AverageSpeedActivity"
-            android:label="@string/title_activity_average_speed"
-            android:parentActivityName=".activity.BaseActivity">
-
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.BaseActivity" />
+            android:label="@string/title_activity_average_speed">
         </activity>
 
         <activity
             android:name=".activity.SpeedometerActivity"
-            android:label="@string/title_activity_speedometer"
-            android:parentActivityName=".activity.BaseActivity">
-
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.BaseActivity" />
+            android:label="@string/title_activity_speedometer">
         </activity>
 
         <provider
@@ -76,22 +56,12 @@
 
         <activity
             android:name=".activity.AboutActivity"
-            android:label="@string/title_activity_about"
-            android:parentActivityName=".activity.BaseActivity">
-
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.BaseActivity" />
+            android:label="@string/title_activity_about">
         </activity>
 
         <activity
             android:name=".activity.PreviousResultsActivity"
-            android:label="@string/title_activity_results"
-            android:parentActivityName=".activity.BaseActivity">
-
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.BaseActivity" />
+            android:label="@string/title_activity_results">
         </activity>
 
         <activity
