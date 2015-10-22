@@ -46,7 +46,12 @@
     <string name="about">See rakendus on mõeldud sõidukite keskmise kütusekulu arvutamiseks.
         Rakenduses on võimalik arvutada l/100 km, km/l ja mpg. Lisaks on rakenduses võimalik arvutada
         keskmist kiirust, mis kasutab arvutamiseks aega ja vahemaad, ning vaadata oma hetke kiirust,
-        kasutades GPS\'i andmeid.
+        kasutades GPS\'i andmeid. Kõik tulemused on ümmardatud kahe komakohani. Arvutuste tulemusi
+        ei peaks võtma kui absoluutset tõtt, kuna kõikidel mõõteseadmetel esineb mõningane mõõteviga,
+        mis tähendab, et auto odomeeter ei pruugi näidata õiget näitu ja sama kehtib ka tankuri kohta.
+        Ja spidomeeter ei pruugi töötada tänu halbadele ilmaoludele, halvale satelliidi ühendusele
+        või näidata valet kiirust samadel põhjustel. Palun hoida sõitmise ajal pilk teel ja olla
+        ettevaatlik.
     </string>
 
     <string name="afcc_text">Võimaldab arvutata keskmist kütusekulu arvestades vahemaad ja kasutatud
