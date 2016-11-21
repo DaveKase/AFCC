@@ -79,6 +79,9 @@
 
     <string name="banner_ad_unit_id">ca-app-pub-2267964394802376/3218938843</string>
     <string name="device_id">857F95938F400A5727FD80B1203B624C</string>
+    <string name="sec_device_id">BEA46D53A4256E20476183645B087637</string>
+    <string name="property_id">admob-app-id-1742205647</string>
+    <string name="ga_trackingId">UA-68609113-1</string>
 
     <string name="err_no_ver_name">Did not get a version name</string>
     <string name="err_no_calc_type">Did not find calculation type</string>

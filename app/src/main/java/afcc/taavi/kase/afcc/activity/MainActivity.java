@@ -50,10 +50,12 @@ public class MainActivity extends BaseActivity {
     private void setAds() {
         mAdView = (AdView) findViewById(R.id.adView);
         String deviceId = getResourceString(R.string.device_id);
+        String secDeviceId = getResourceString(R.string.sec_device_id);
 
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice(deviceId)
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .addTestDevice(secDeviceId)
                 .build();
 
         mAdView.loadAd(adRequest);

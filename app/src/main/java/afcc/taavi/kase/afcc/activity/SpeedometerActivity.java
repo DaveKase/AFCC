@@ -87,7 +87,12 @@ public class SpeedometerActivity extends BaseActivity implements LoaderManager.L
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
             updateSpeed(null);
         } catch (SecurityException se) {
+            // TODO: Add try again or some other sort of error screen
             Log.e(TAG, "No permission to request location updates!");
+            makeToast(getResourceString(R.string.err_no_permission));
+        } catch (IllegalArgumentException iae) {
+            // TODO: Add try again or some other sort of error screen
+            Log.e(TAG, "Some arguments don't work");
             makeToast(getResourceString(R.string.err_no_permission));
         }
     }
