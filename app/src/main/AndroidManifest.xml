@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="afcc.taavi.kase.afcc">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -11,15 +11,13 @@
     <uses-feature android:name="android.hardware.location.gps" />
 
     <application
-        android:allowBackup="false"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/MyTheme"
         android:name="AfccApplication">
 
         <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
+            android:name="com.google.android.gms.version" />
 
         <activity
             android:name=".activity.MainActivity"
@@ -28,6 +26,9 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.VIEW" />
+                <data android:scheme="http" android:host="https://play.google.com/store/apps/details?id=afcc.taavi.kase.afcc" />
+                <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
 

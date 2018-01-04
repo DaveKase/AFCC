@@ -16,13 +16,12 @@ repositories {
 }
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "21.1.2"
+    compileSdkVersion 27
     defaultConfig {
         applicationId "afcc.taavi.kase.afcc"
-        minSdkVersion 10
-        targetSdkVersion 25
-        versionCode 24
+        minSdkVersion 14
+        targetSdkVersion 27
+        versionCode 27
         versionName "1.0.1 (Development Version)"
     }
     buildTypes {
@@ -37,13 +36,13 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.google.android.gms:play-services:9.8.0'
-    compile 'com.android.support:support-v4:25.0.1'
-    compile "com.android.support:appcompat-v7:25.0.1"
-    compile 'com.google.android.gms:play-services-ads:9.8.0'
-    compile 'com.google.android.gms:play-services-analytics:9.8.0'
-    compile('com.crashlytics.sdk.android:crashlytics:2.6.5@aar') {
-        transitive = true;
+    compile 'com.android.support:support-v4:27.0.2'
+    compile "com.android.support:appcompat-v7:27.0.2"
+    compile 'com.google.android.gms:play-services-ads:11.8.0'
+    compile 'com.google.android.gms:play-services-analytics:11.8.0'
+    compile 'com.google.firebase:firebase-core:11.8.0'
+    compile('com.crashlytics.sdk.android:crashlytics:2.8.0@aar') {
+        transitive = true
     }
 }
 

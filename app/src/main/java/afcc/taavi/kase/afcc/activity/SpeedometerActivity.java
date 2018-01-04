@@ -34,6 +34,7 @@ public class SpeedometerActivity extends BaseActivity implements LoaderManager.L
     private static final int UNIT_LOADER = 0;
     private int mUnit = 0;
     private Tracker mTracker;
+    LocationManager mLocationManager;
 
     /**
      * Called when Activity is first created
@@ -68,6 +69,7 @@ public class SpeedometerActivity extends BaseActivity implements LoaderManager.L
         super.onPause();
 
         getWindow().clearFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        mLocationManager.removeUpdates(this);
     }
 
     /**
@@ -81,19 +83,20 @@ public class SpeedometerActivity extends BaseActivity implements LoaderManager.L
      * Starts location manager to listen to location change to get speed
      */
     private void startSpeedometer() {
-        LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        mLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 
         try {
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+            mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
             updateSpeed(null);
         } catch (SecurityException se) {
-            // TODO: Add try again or some other sort of error screen
-            Log.e(TAG, "No permission to request location updates!");
-            makeToast(getResourceString(R.string.err_no_permission));
+            showErrorText(getResourceString(R.string.err_no_permission2));
+            Log.e(TAG, "No permission to request location updates!" + se.getMessage());
         } catch (IllegalArgumentException iae) {
-            // TODO: Add try again or some other sort of error screen
-            Log.e(TAG, "Some arguments don't work");
-            makeToast(getResourceString(R.string.err_no_permission));
+            showErrorText(getResourceString(R.string.err_no_gps_provider));
+            Log.e(TAG, "No GPS Provider " + iae.getMessage());
+        } catch (NullPointerException npe) {
+            showErrorText(getResourceString(R.string.err_npe));
+            Log.e(TAG,"Error " + npe.getMessage());
         }
     }
 
@@ -106,16 +109,16 @@ public class SpeedometerActivity extends BaseActivity implements LoaderManager.L
         int currentSpeed = 0;
 
         if (location != null) {
-            RelativeLayout progress = (RelativeLayout) findViewById(R.id.progress);
+            RelativeLayout progress = findViewById(R.id.progress);
             progress.setVisibility(View.GONE);
 
-            RelativeLayout speed = (RelativeLayout) findViewById(R.id.speed);
+            RelativeLayout speed = findViewById(R.id.speed);
             speed.setVisibility(View.VISIBLE);
 
             currentSpeed = (int) location.getSpeed();
         }
 
-        TextView txtCurrentSpeed = (TextView) this.findViewById(R.id.speedValue);
+        TextView txtCurrentSpeed = this.findViewById(R.id.speedValue);
         txtCurrentSpeed.setText(String.valueOf(currentSpeed));
     }
 
@@ -172,7 +175,7 @@ public class SpeedometerActivity extends BaseActivity implements LoaderManager.L
         mUnit = cursor.getInt(cursor.getColumnIndex(SettingsTable.COL_SPEED));
         String unitValue = getUnit(mUnit);
 
-        TextView speedUnit = (TextView) findViewById(R.id.speedUnit);
+        TextView speedUnit = findViewById(R.id.speedUnit);
         speedUnit.setText(unitValue);
     }
 
@@ -215,6 +218,26 @@ public class SpeedometerActivity extends BaseActivity implements LoaderManager.L
 
         mTracker.setScreenName(TAG);
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+    }
+
+    /*
+     * Called when there is exception in getting location fix. Shows error message on TextView, so
+     * user can see what happened, instead of Toasting it for couple of seconds.
+     *
+     * @param errorMessage Message that is shown to user
+     */
+    private void showErrorText(String errorMessage) {
+        RelativeLayout progress = findViewById(R.id.progress);
+        progress.setVisibility(View.GONE);
+
+        RelativeLayout speed = findViewById(R.id.speed);
+        speed.setVisibility(View.GONE);
+
+        RelativeLayout errorView = findViewById(R.id.errorView);
+        errorView.setVisibility(View.VISIBLE);
+
+        TextView errorText = findViewById(R.id.errorText);
+        errorText.setText(errorMessage);
     }
 
     /**

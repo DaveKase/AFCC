@@ -95,6 +95,9 @@
     <string name="err_no_end">End time is not inserted</string>
     <string name="err_int_zero">There\'s nothing to calculate, time interval is zero</string>
     <string name="err_wrong_time">Time is in wrong format</string>
+    <string name="err_no_permission2">Error occurred. Allow this app to get location updates under settings.</string>
+    <string name="err_no_gps_provider">Error occurred. Device seems to not have a GPS.</string>
+    <string name="err_npe">Error occured</string>
 
     <string name="inf_change_save">Changes saved!</string>
     <string name="inf_def_rest">Defaults restored!</string>
