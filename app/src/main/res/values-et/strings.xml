@@ -106,4 +106,6 @@
     <string name="copyright">&#169; Taavi Kase</string>
     <string name="err_no_gps_provider">Viga. Seadmel paista olevat GPSi</string>
     <string name="err_no_permission2">Viga. Luba appil seadme seadete alt saada asukoha uuendusi.</string>
+    <string name="speed_error_permission_text">Ava Seaded</string>
+    <string name="speed_error_try_again_text">Proovi uuesti</string>
 </resources>

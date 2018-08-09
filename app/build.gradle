@@ -20,8 +20,8 @@ android {
     defaultConfig {
         applicationId "afcc.taavi.kase.afcc"
         minSdkVersion 14
-        targetSdkVersion 27
-        versionCode 27
+        targetSdkVersion 28
+        versionCode 28
         versionName "1.0.1 (Development Version)"
     }
     buildTypes {

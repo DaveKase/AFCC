@@ -1,17 +1,20 @@
 package afcc.taavi.kase.afcc.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -32,7 +35,12 @@ public class SpeedometerActivity extends BaseActivity implements LoaderManager.L
 
     private static final String TAG = "SpeedometerActivity";
     private static final int UNIT_LOADER = 0;
+    private static final int ERROR_NO_PERMISSION = 1;
+    private static final int ERROR_NO_GPS = 2;
+    private static final int ERROR_GENERAL_ERROR = 3;
+
     private int mUnit = 0;
+    private int mErrorCode = 3;
     private Tracker mTracker;
     LocationManager mLocationManager;
 
@@ -57,8 +65,21 @@ public class SpeedometerActivity extends BaseActivity implements LoaderManager.L
         }
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        initializeSpeedometer();
+    }
+
+    private void initializeSpeedometer() {
+        showInitialScreen();
         getSpeedUnit();
         startSpeedometer();
+    }
+
+    private void showInitialScreen() {
+        RelativeLayout errorView = findViewById(R.id.errorView);
+        errorView.setVisibility(View.GONE);
+
+        RelativeLayout progress = findViewById(R.id.progress);
+        progress.setVisibility(View.VISIBLE);
     }
 
     /**
@@ -86,17 +107,21 @@ public class SpeedometerActivity extends BaseActivity implements LoaderManager.L
         mLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 
         try {
+            assert mLocationManager != null;
             mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
             updateSpeed(null);
         } catch (SecurityException se) {
             showErrorText(getResourceString(R.string.err_no_permission2));
             Log.e(TAG, "No permission to request location updates!" + se.getMessage());
+            mErrorCode = ERROR_NO_PERMISSION;
         } catch (IllegalArgumentException iae) {
             showErrorText(getResourceString(R.string.err_no_gps_provider));
             Log.e(TAG, "No GPS Provider " + iae.getMessage());
+            mErrorCode = ERROR_NO_GPS;
         } catch (NullPointerException npe) {
             showErrorText(getResourceString(R.string.err_npe));
             Log.e(TAG,"Error " + npe.getMessage());
+            mErrorCode = ERROR_GENERAL_ERROR;
         }
     }
 
@@ -218,6 +243,8 @@ public class SpeedometerActivity extends BaseActivity implements LoaderManager.L
 
         mTracker.setScreenName(TAG);
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
+        initializeSpeedometer();
     }
 
     /*
@@ -238,6 +265,44 @@ public class SpeedometerActivity extends BaseActivity implements LoaderManager.L
 
         TextView errorText = findViewById(R.id.errorText);
         errorText.setText(errorMessage);
+
+        Button errorButton = findViewById(R.id.errorButton);
+
+        if(mErrorCode == ERROR_NO_PERMISSION) {
+            errorButton.setVisibility(View.VISIBLE);
+            errorButton.setText(getResourceString(R.string.speed_error_permission_text));
+        } else if (mErrorCode == ERROR_GENERAL_ERROR) {
+            errorButton.setVisibility(View.VISIBLE);
+            errorButton.setText(getResourceString(R.string.speed_error_try_again_text));
+        } else {
+            errorButton.setVisibility(View.GONE);
+        }
+    }
+
+    public void onSettingsButtonClick(View v) {
+        switch(mErrorCode) {
+            case ERROR_NO_PERMISSION:
+                getPermissionFromSettings();
+                break;
+            case ERROR_GENERAL_ERROR:
+                initializeSpeedometer();
+                break;
+            case ERROR_NO_GPS:
+                // Have no idea what else to do here
+                break;
+            default:
+                // Same problem here
+                break;
+        }
+
+    }
+
+    private void getPermissionFromSettings() {
+        Intent intent = new Intent();
+        intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+        Uri uri = Uri.fromParts("package", getPackageName(), null);
+        intent.setData(uri);
+        startActivity(intent);
     }
 
     /**

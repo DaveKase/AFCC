@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
     package="afcc.taavi.kase.afcc">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -26,6 +26,8 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <data android:scheme="http" android:host="https://play.google.com/store/apps/details?id=afcc.taavi.kase.afcc" />
                 <category android:name="android.intent.category.BROWSABLE" />
