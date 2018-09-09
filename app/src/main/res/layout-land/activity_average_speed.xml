@@ -92,5 +92,6 @@
         android:layout_below="@+id/averageSpeedText"
         android:onClick="calculate"
         android:text="@string/calculate"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:background="@drawable/custom_button" />
 </RelativeLayout>

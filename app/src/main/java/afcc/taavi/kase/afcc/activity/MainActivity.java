@@ -48,14 +48,16 @@ public class MainActivity extends BaseActivity {
      * Sets Google Ads to corresponding AdView
      */
     private void setAds() {
-        mAdView = (AdView) findViewById(R.id.adView);
+        mAdView = findViewById(R.id.adView);
         String deviceId = getResourceString(R.string.device_id);
         String secDeviceId = getResourceString(R.string.sec_device_id);
+        String thirdDeviceId = getResourceString(R.string.third_device_id);
 
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice(deviceId)
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .addTestDevice(secDeviceId)
+                .addTestDevice(thirdDeviceId)
                 .build();
 
         mAdView.loadAd(adRequest);

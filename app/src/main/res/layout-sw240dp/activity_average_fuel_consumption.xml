@@ -65,7 +65,8 @@
         android:layout_below="@+id/averageText"
         android:onClick="onClick"
         android:text="@string/calculate"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:background="@drawable/custom_button" />
 
     <Button
         android:id="@+id/saveButton"
@@ -75,7 +76,8 @@
         android:layout_centerHorizontal="true"
         android:onClick="onClick"
         android:text="@string/save"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:background="@drawable/custom_button" />
 
     <TextView
         android:id="@+id/kmText"
@@ -84,7 +86,8 @@
         android:layout_alignBottom="@+id/distanceEdit"
         android:layout_toEndOf="@+id/distanceEdit"
         android:layout_toRightOf="@+id/distanceEdit"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:background="@drawable/custom_button" />
 
     <TextView
         android:id="@+id/litreText"
@@ -104,5 +107,6 @@
         android:layout_alignParentRight="true"
         android:onClick="onClick"
         android:text="@string/show"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:background="@drawable/custom_button" />
 </RelativeLayout>

@@ -83,6 +83,7 @@
     <string name="banner_ad_unit_id">ca-app-pub-2267964394802376/3218938843</string>
     <string name="device_id">857F95938F400A5727FD80B1203B624C</string>
     <string name="sec_device_id">BEA46D53A4256E20476183645B087637</string>
+    <string name="third_device_id">1065C9F5D7BCC19EB5C2F739D66C117A</string>
     <string name="property_id">admob-app-id-1742205647</string>
     <string name="ga_trackingId">UA-68609113-1</string>
 

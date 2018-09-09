@@ -79,7 +79,8 @@
             android:layout_below="@+id/speedSpinner"
             android:onClick="onClick"
             android:text="@string/save"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:background="@drawable/custom_button" />
 
         <TextView
             android:id="@+id/speedText"
@@ -109,6 +110,7 @@
             android:layout_below="@+id/speedSpinner"
             android:onClick="onClick"
             android:text="@string/restore"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:background="@drawable/custom_button" />
     </RelativeLayout>
 </ScrollView>

@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="afcc.kase.taavi.afcc.activity.MainActivity">
+    tools:context="activity.MainActivity">
 
     <Button
         android:id="@+id/fuelConsumptionButton"
@@ -21,7 +21,8 @@
         android:layout_alignParentTop="true"
         android:onClick="onClick"
         android:text="@string/fuelConsumption"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:background="@drawable/custom_button" />
 
     <Button
         android:id="@+id/speedCalculatorButton"
@@ -34,7 +35,8 @@
         android:layout_below="@+id/fuelConsumptionButton"
         android:onClick="onClick"
         android:text="@string/speedCalculator"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:background="@drawable/custom_button" />
 
     <Button
         android:id="@+id/speedButton"
@@ -47,7 +49,8 @@
         android:layout_below="@+id/speedCalculatorButton"
         android:onClick="onClick"
         android:text="@string/speed"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:background="@drawable/custom_button" />
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"

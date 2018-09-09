@@ -86,6 +86,7 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/errorText"
             android:onClick="onSettingsButtonClick"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            android:background="@drawable/custom_button" />
     </RelativeLayout>
 </RelativeLayout>
