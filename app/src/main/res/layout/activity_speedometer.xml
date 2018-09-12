@@ -90,14 +90,30 @@
             android:background="@drawable/custom_button" />
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/nightModeButton"
+    <Switch
+        android:id="@+id/nightModeSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_marginBottom="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
-        android:background="@drawable/custom_button"
         android:onClick="switchNightmodeOnOff"
         android:text="@string/speed_night_mode_text" />
+
+    <ToggleButton
+        android:id="@+id/nightModeToggleButton"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="75dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/custom_toggle_button"
+        android:onClick="toggleNightMode"
+        android:textOff="Nightmode off"
+        android:textOn="Nightmode on" />
 </RelativeLayout>

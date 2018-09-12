@@ -16,7 +16,9 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
@@ -307,10 +309,28 @@ public class SpeedometerActivity extends BaseActivity implements LoaderManager.L
     }
 
     public void switchNightmodeOnOff(View v) {
-        if (mNightmodeOn) {
-            //TODO: change background color to black and text color to l_blue
+        Log.e(TAG, "Switch");
+
+        if (((Switch) v).isChecked()) {
+            //TODO: night mode on
+            Log.e(TAG, "Switch on");
+            mNightmodeOn = true;
         } else {
-            //TODO: change everything back
+            //TODO: night mode off
+            Log.e(TAG, "Switch off");
+        }
+    }
+
+    public void toggleNightMode(View v) {
+        Log.e(TAG, "toggle button");
+
+        if (((ToggleButton) v).isChecked()) {
+            //TODO: night mode on
+            Log.e(TAG, "Switch on");
+            mNightmodeOn = true;
+        } else {
+            //TODO: night mode off
+            Log.e(TAG, "Switch off");
         }
     }
 
