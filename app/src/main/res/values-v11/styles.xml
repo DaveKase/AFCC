@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="MyTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+
+    <style name="MyTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
         <item name="android:windowBackground">@color/l_blue</item>
         <item name="android:actionBarStyle">@style/MyActionBar</item>
 

@@ -14,7 +14,7 @@ import java.math.RoundingMode;
  * This class is used to contain constants and methods that would otherwise be repeated in
  * sub-activities.
  */
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
     public static final int DISTANCE_KM = 0;
     public static final int DISTANCE_MILES = 1;
 
@@ -85,7 +85,7 @@ public class BaseActivity extends AppCompatActivity {
      * @return String gotten from EditText
      */
     public String getTextFromEditText(int textViewId) {
-        EditText editText = (EditText) findViewById(textViewId);
+        EditText editText = findViewById(textViewId);
         return editText.getText().toString();
     }
 

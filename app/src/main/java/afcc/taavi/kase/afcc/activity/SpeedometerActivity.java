@@ -41,6 +41,7 @@ public class SpeedometerActivity extends BaseActivity implements LoaderManager.L
 
     private int mUnit = 0;
     private int mErrorCode = 3;
+    private boolean mNightmodeOn = false;
     private Tracker mTracker;
     LocationManager mLocationManager;
 
@@ -303,6 +304,14 @@ public class SpeedometerActivity extends BaseActivity implements LoaderManager.L
         Uri uri = Uri.fromParts("package", getPackageName(), null);
         intent.setData(uri);
         startActivity(intent);
+    }
+
+    public void switchNightmodeOnOff(View v) {
+        if (mNightmodeOn) {
+            //TODO: change background color to black and text color to l_blue
+        } else {
+            //TODO: change everything back
+        }
     }
 
     /**

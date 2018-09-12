@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -89,4 +89,15 @@
             android:visibility="gone"
             android:background="@drawable/custom_button" />
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/nightModeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/custom_button"
+        android:onClick="switchNightmodeOnOff"
+        android:text="@string/speed_night_mode_text" />
 </RelativeLayout>

@@ -108,4 +108,5 @@
     <string name="err_no_permission2">Viga. Luba appil seadme seadete alt saada asukoha uuendusi.</string>
     <string name="speed_error_permission_text">Ava Seaded</string>
     <string name="speed_error_try_again_text">Proovi uuesti</string>
+    <string name="speed_night_mode_text">Öörežiim</string>
 </resources>

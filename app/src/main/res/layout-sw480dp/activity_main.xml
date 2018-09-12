@@ -14,15 +14,12 @@
         android:id="@+id/fuelConsumptionButton"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/custom_button"
         android:onClick="onClick"
         android:text="@string/fuelConsumption"
-        android:textSize="20sp"
-        android:background="@drawable/custom_button" />
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/speedCalculatorButton"
@@ -33,7 +30,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/fuelConsumptionButton"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="5dp"
         android:onClick="onClick"
         android:text="@string/speedCalculator"
         android:textSize="20sp"
@@ -48,7 +45,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/speedCalculatorButton"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="5dp"
         android:onClick="onClick"
         android:text="@string/speed"
         android:textSize="20sp"
