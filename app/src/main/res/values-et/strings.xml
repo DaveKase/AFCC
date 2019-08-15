@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Average Fuel &amp; Speed</string>
     <string name="action_settings">Seaded</string>
     <string name="afcc">Keskmise kütusekulu kalkulaator</string>
     <string name="amount">Maht:</string>
@@ -37,7 +36,6 @@
     <string name="title_activity_settings">Seaded</string>
     <string name="title_activity_speedometer">Spidomeeter</string>
     <string name="units">Kasutatavad ühikud:</string>
-    <string name="version">Versioon:</string>
     <string name="distance">Läbitud vahemaa:</string>
     <string name="action_about">Info</string>
 
@@ -109,4 +107,5 @@
     <string name="speed_error_permission_text">Ava Seaded</string>
     <string name="speed_error_try_again_text">Proovi uuesti</string>
     <string name="speed_night_mode_text">Öörežiim</string>
+    <string name="version">Versioonid</string>
 </resources>

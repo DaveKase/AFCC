@@ -1,6 +1,6 @@
 package afcc.taavi.kase.afcc.activity;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;

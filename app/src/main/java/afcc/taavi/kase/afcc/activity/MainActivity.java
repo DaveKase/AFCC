@@ -10,6 +10,7 @@ import android.view.View;
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
@@ -48,18 +49,11 @@ public class MainActivity extends BaseActivity {
      * Sets Google Ads to corresponding AdView
      */
     private void setAds() {
+        String adAppId = getResourceString(R.string.test_add_app_id);
+        MobileAds.initialize(this, adAppId);
+
         mAdView = findViewById(R.id.adView);
-        String deviceId = getResourceString(R.string.device_id);
-        String secDeviceId = getResourceString(R.string.sec_device_id);
-        String thirdDeviceId = getResourceString(R.string.third_device_id);
-
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice(deviceId)
-                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                .addTestDevice(secDeviceId)
-                .addTestDevice(thirdDeviceId)
-                .build();
-
+        AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
     }
 

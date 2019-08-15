@@ -1,0 +1,43 @@
+{
+  "project_info": {
+    "project_number": "78579436493",
+    "firebase_url": "https://admob-app-id-1742205647.firebaseio.com",
+    "project_id": "admob-app-id-1742205647",
+    "storage_bucket": "admob-app-id-1742205647.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78579436493:android:3609bb3efbb933b0",
+        "android_client_info": {
+          "package_name": "afcc.taavi.kase.afcc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "78579436493-05vp5q87bqgn4k07fa28nnlge2ffb1aa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAH7Ranrycl3T5JZtfQnRW_dG-Lk6K9yq0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      },
+      "admob_app_id": "ca-app-pub-2267964394802376~1742205647"
+    }
+  ],
+  "configuration_version": "1"
+}
